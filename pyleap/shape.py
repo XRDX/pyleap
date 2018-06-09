@@ -1,18 +1,18 @@
 import pyglet
-
+from pyglet import gl
 from math import sin, cos, pi
-
 from .util import color2list
 
 
 class Shape():
     """ base shape class """
 
-    def __init__(self, color="orange", point_count=0,
-                 glType=pyglet.gl.GL_LINE_LOOP):
+    def __init__(self, x, y, color, ps_len=1, gl=gl.GL_LINE_LOOP):
+        self._x = int(x)
+        self._y = int(y)
         self._color = color
-        self.point_count = point_count
-        self.glType = glType
+        self.ps_len = ps_len
+        self.gl = gl
 
     @property
     def color(self):
@@ -42,10 +42,10 @@ class Shape():
         self.update_vertex_list()
 
     def draw(self):
-        self.vertex_list.draw(self.glType)
+        self.vertex_list.draw(self.gl)
 
     def stroke(self):
-        self.vertex_list.draw(pyglet.gl.GL_LINE_LOOP)
+        self.vertex_list.draw(gl.GL_LINE_LOOP)
 
     def collide(self, other):
         return False
@@ -53,18 +53,23 @@ class Shape():
     def update_vertex_list(self):
         fmt, color = color2list(self._color)
         self.vertex_list = pyglet.graphics.vertex_list(
-            self.point_count,
+            self.ps_len,
             ('v2i', self.points),
-            (fmt, color * self.point_count))
+            (fmt, color * self.ps_len))
+
+
+class Point(Shape):
+    """ Point """
+
+    def __init__(self, x=100, y=100, color="orange"):
+        super().__init__(x, y, color, gl=gl.GL_POINTS)
 
 
 class Rectangle(Shape):
     """ Rectangle """
 
     def __init__(self, x=100, y=100, w=100, h=50, color="orange"):
-        super().__init__(color, point_count=4, glType=pyglet.gl.GL_QUADS)
-        self._x = int(x)
-        self._y = int(y)
+        super().__init__(x, y, color, ps_len=4, gl=gl.GL_QUADS)
         self._w = int(w)
         self._h = int(h)
         self.update_vertex_list()
@@ -75,7 +80,7 @@ class Rectangle(Shape):
 
     @w.setter
     def w(self, w):
-        self._w = w
+        self._w = int(w)
         self.update_vertex_list()
 
     @property
@@ -84,7 +89,7 @@ class Rectangle(Shape):
 
     @h.setter
     def h(self, h):
-        self._h = h
+        self._h = int(h)
         self.update_vertex_list()
 
     @property
@@ -98,11 +103,14 @@ class Rectangle(Shape):
 
 class Line(Shape):
     def __init__(self, x1=100, y1=100, x2=200, y2=200, color="orange"):
-        super().__init__(color, point_count=2, glType=pyglet.gl.GL_LINES)
-        self._x1 = x1
-        self._y1 = y1
-        self._x2 = x2
-        self._y2 = y2
+        x = (x1 + x2) // 2
+        y = (y1 + y2) // 2
+        super().__init__(x, y, color, ps_len=2, gl=gl.GL_LINES)
+        self._x1 = int(x1)
+        self._y1 = int(y1)
+        self._x2 = int(x2)
+        self._y2 = int(y2)
+
         self.update_vertex_list()
 
     @property
@@ -115,8 +123,9 @@ class Triangle(Shape):
 
     def __init__(self, x1=100, y1=100, x2=200, y2=150, x3=200, y3=100,
                  color='orange'):
-        super().__init__(color, point_count=3,
-                         glType=pyglet.gl.GL_TRIANGLES)
+        x = (x1 + x2 + x3) // 2
+        y = (y1 + y2 + y3) // 2
+        super().__init__(x, y, color, ps_len=3, gl=gl.GL_TRIANGLES)
         self._x1 = x1
         self._y1 = y1
         self._x2 = x2
@@ -134,16 +143,14 @@ class Circle(Shape):
     """ Circle """
 
     def __init__(self, x=100, y=100, r=30, color="orange"):
-        super().__init__(color, point_count=32, glType=pyglet.gl.GL_POLYGON)
-        self._x = x
-        self._y = y
+        super().__init__(x, r, color, ps_len=32, gl=gl.GL_POLYGON)
         self._r = r
 
         self.update_vertex_list()
 
     @property
     def points(self):
-        n = self.point_count
+        n = self.ps_len
         d = pi * 2 / n
         x, y, r = self._x, self._y, self._r
 
@@ -165,3 +172,12 @@ class Sprite(pyglet.sprite.Sprite):
         """Sets an image's anchor point to its center"""
         self.img.anchor_x = self.img.width // 2
         self.img.anchor_y = self.img.height // 2
+
+    @property
+    def points(self):
+        min_x = self.x - self.img.anchor_x
+        min_y = self.y - self.img.anchor_y
+        max_x = self.x + self.img.width - self.img.anchor_x
+        max_y = self.y + self.img.width - self.img.anchor_y
+
+        return (min_x, min_y, max_x, min_y, max_x, max_y, min_x, max_y)
