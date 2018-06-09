@@ -1,9 +1,9 @@
-from constant_colors import color_dict
+from .constant_colors import color_dict
 
 def color2list(color):
-    """ convert any color to standard () 
+    """ convert any color to standard ()
     "red"       ->  'c3B', (255, 125, 0)
-    "#ffffff"   ->  'c3B', (255, 255, 255) 
+    "#ffffff"   ->  'c3B', (255, 255, 255)
     "#ffffffff" ->  'c3B', (255, 255, 255, 255)
     """
     if(type(color) == tuple and len(color) == 3):

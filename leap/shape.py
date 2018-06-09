@@ -1,10 +1,15 @@
 import pyglet
-import util 
+
 from math import sin, cos, pi
+
+from .util import color2list
+
 
 class Shape():
     """ base shape class """
-    def __init__(self, color="orange", point_count=0, glType=pyglet.gl.GL_LINE_LOOP):
+
+    def __init__(self, color="orange", point_count=0,
+                 glType=pyglet.gl.GL_LINE_LOOP):
         self._color = color
         self.point_count = point_count
         self.glType = glType
@@ -12,7 +17,7 @@ class Shape():
     @property
     def color(self):
         return self._color
-    
+
     @color.setter
     def color(self, color):
         self._color = color
@@ -21,7 +26,7 @@ class Shape():
     @property
     def x(self):
         return self._x
-    
+
     @x.setter
     def x(self, x):
         self._x = x
@@ -46,25 +51,28 @@ class Shape():
         return False
 
     def update_vertex_list(self):
-        fmt, color = util.color2list(self._color)
-        self.vertex_list = pyglet.graphics.vertex_list(self.point_count,
+        fmt, color = color2list(self._color)
+        self.vertex_list = pyglet.graphics.vertex_list(
+            self.point_count,
             ('v2i', self.points),
             (fmt, color * self.point_count))
 
+
 class Rectangle(Shape):
+    """ Rectangle """
 
     def __init__(self, x=100, y=100, w=100, h=50, color="orange"):
         super().__init__(color, point_count=4, glType=pyglet.gl.GL_QUADS)
-        self._x = x
-        self._y = y
-        self._w = w
-        self._h = h
+        self._x = int(x)
+        self._y = int(y)
+        self._w = int(w)
+        self._h = int(h)
         self.update_vertex_list()
-    
+
     @property
     def w(self):
         return self._w
-    
+
     @w.setter
     def w(self, w):
         self._w = w
@@ -85,7 +93,8 @@ class Rectangle(Shape):
         y = self._y
         w = self._w
         h = self._h
-        return (x, y, x+w, y, x+w, y+h, x, y+h)
+        return (x, y, x + w, y, x + w, y + h, x, y + h)
+
 
 class Line(Shape):
     def __init__(self, x1=100, y1=100, x2=200, y2=200, color="orange"):
@@ -100,11 +109,14 @@ class Line(Shape):
     def points(self):
         return (self._x1, self._y1, self._x2, self._y2)
 
+
 class Triangle(Shape):
     """ Triangle """
 
-    def __init__(self, x1=100, y1=100, x2=200, y2=150, x3=200, y3=100, color="orange"):
-        super().__init__(color, point_count=3, glType=pyglet.gl.GL_TRIANGLES)
+    def __init__(self, x1=100, y1=100, x2=200, y2=150, x3=200, y3=100,
+                 color='orange'):
+        super().__init__(color, point_count=3,
+                         glType=pyglet.gl.GL_TRIANGLES)
         self._x1 = x1
         self._y1 = y1
         self._x2 = x2
@@ -117,8 +129,10 @@ class Triangle(Shape):
     def points(self):
         return (self._x1, self._y1, self._x2, self._y2, self._x3, self._y3)
 
+
 class Circle(Shape):
     """ Circle """
+
     def __init__(self, x=100, y=100, r=30, color="orange"):
         super().__init__(color, point_count=32, glType=pyglet.gl.GL_POLYGON)
         self._x = x
@@ -135,7 +149,19 @@ class Circle(Shape):
 
         ps = []
         for i in range(n):
-            ps += [int(x + r*sin(d*i)), int(y + r*cos(d*i))]
-
+            ps += [int(x + r * sin(d * i)), int(y + r * cos(d * i))]
         return tuple(ps)
-    
+
+
+class Sprite(pyglet.sprite.Sprite):
+    """ Sprite """
+
+    def __init__(self, src, x=100, y=100):
+        self.img = pyglet.image.load(src)
+        self.center_image()
+        super().__init__(img=self.img, x=x, y=y)
+
+    def center_image(self):
+        """Sets an image's anchor point to its center"""
+        self.img.anchor_x = self.img.width // 2
+        self.img.anchor_y = self.img.height // 2

@@ -1,4 +1,4 @@
-from shape import *
+from .shape import *
 
 def rectangle(x, y, w, h, color, fill=True):
     r = Rectangle(x, y, w, h, color)

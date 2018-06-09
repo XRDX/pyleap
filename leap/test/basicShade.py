@@ -4,9 +4,10 @@ canvas.set_caption("LeapLearner")
 
 bg = Rectangle(0, 0, canvas.width, canvas.height, color="white")
 r = Rectangle(color=(125, 125, 0))
-l = Line(100, 200, 300, 400, 'black')
+line1 = Line(100, 200, 300, 400, 'pink')
 t = Triangle(200, 100, 300, 100, 250, 150, "green")
 c = Circle(200, 200, 50, "red")
+
 
 def update(dt):
     canvas.clear()
@@ -18,12 +19,13 @@ def update(dt):
     r.y += 1
     r.stroke()
 
-    l.draw()
+    line1.draw()
 
     t.stroke()
 
     c.x += 1
     c.draw()
 
-setInterval(update, 1/20)
+
+setInterval(update, 1 / 60)
 run()
