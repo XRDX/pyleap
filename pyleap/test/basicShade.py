@@ -1,4 +1,4 @@
-from leap import *
+from pyleap import *
 
 canvas.set_caption("LeapLearner")
 
