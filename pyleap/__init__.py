@@ -1,7 +1,7 @@
-from .shape import *
-from .basicDraw import *
-from .window import *
-from .event import *
+from pyleap.window import window
 
+from pyleap.basicDraw import *
+from pyleap.util import *
+from pyleap.shape import *
 
-name = "pyleap"
+from pyleap.event import *

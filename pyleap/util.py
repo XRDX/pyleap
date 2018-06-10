@@ -1,4 +1,7 @@
-from .constant_colors import color_dict
+import pyglet
+
+from pyleap.constant_colors import color_dict
+
 
 def color2list(color):
     """ convert any color to standard ()
@@ -22,5 +25,16 @@ def color2list(color):
         return ('c3B/static', (255, 125, 0))
 
 
+unschedule = pyglet.clock.unschedule
 
 
+def schedule_interval(func, dt):
+    unschedule(func)
+    pyglet.clock.schedule_interval(func, dt)
+
+
+def schedule_once(func, dt):
+    pyglet.clock.schedule_once(func, dt)
+
+
+run = pyglet.app.run

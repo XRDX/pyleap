@@ -1,3 +1,9 @@
+"""
+collide(shape1, shape2)
+
+Detect if shape1 hit shape2
+
+"""
 
 
 class CollisionShape():

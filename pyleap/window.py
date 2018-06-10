@@ -33,4 +33,4 @@ class Window(pyglet.window.Window):
         return self.height // 2
 
 
-canvas = Window()
+window = Window()

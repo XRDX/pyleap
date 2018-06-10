@@ -1,20 +1,20 @@
 import pyglet
 from pyglet import gl
 from math import sin, cos, pi
-from .util import color2list
-from .collision import collide
-from .window import canvas
+
+from pyleap.util import color2list
+from pyleap.collision import collide
+from pyleap.window import window
+
 
 class Shape():
     """ base shape class """
 
-    def __init__(self, x, y, color, len=1, gl=gl.GL_LINE_LOOP):
+    def __init__(self, x, y, color, gl=gl.GL_LINE_LOOP):
         self._x = int(x)
         self._y = int(y)
         self._color = color
-        self.len = len
         self.gl = gl
-        self.points = ()
 
     @property
     def color(self):
@@ -58,7 +58,7 @@ class Shape():
 
     @property
     def len(self):
-        return (self.points) // 2
+        return len(self.points) // 2
 
     def collide(self, shape):
         return collide(self, shape)
@@ -75,7 +75,7 @@ class Rectangle(Shape):
     """ Rectangle """
 
     def __init__(self, x=100, y=100, w=100, h=50, color="orange"):
-        super().__init__(x, y, color, len=4, gl=gl.GL_QUADS)
+        super().__init__(x, y, color, gl=gl.GL_QUADS)
         self._w = int(w)
         self._h = int(h)
         self.update_vertex_list()
@@ -111,7 +111,7 @@ class Line(Shape):
     def __init__(self, x1=100, y1=100, x2=200, y2=200, color="orange"):
         x = (x1 + x2) // 2
         y = (y1 + y2) // 2
-        super().__init__(x, y, color, len=2, gl=gl.GL_LINES)
+        super().__init__(x, y, color, gl=gl.GL_LINES)
         self._x1 = int(x1)
         self._y1 = int(y1)
         self._x2 = int(x2)
@@ -131,7 +131,7 @@ class Triangle(Shape):
                  color='orange'):
         x = (x1 + x2 + x3) // 2
         y = (y1 + y2 + y3) // 2
-        super().__init__(x, y, color, len=3, gl=gl.GL_TRIANGLES)
+        super().__init__(x, y, color, gl=gl.GL_TRIANGLES)
         self._x1 = x1
         self._y1 = y1
         self._x2 = x2
@@ -149,14 +149,14 @@ class Circle(Shape):
     """ Circle """
 
     def __init__(self, x=100, y=100, r=30, color="orange"):
-        super().__init__(x, r, color, len=32, gl=gl.GL_POLYGON)
+        super().__init__(x, r, color, gl=gl.GL_POLYGON)
         self._r = r
 
         self.update_vertex_list()
 
     @property
     def points(self):
-        n = self.len
+        n = 32
         d = pi * 2 / n
         x, y, r = self._x, self._y, self._r
 
@@ -169,7 +169,7 @@ class Circle(Shape):
 class Sprite(pyglet.sprite.Sprite):
     """ Sprite """
 
-    def __init__(self, src, x=canvas.center_x, y=canvas.center_y):
+    def __init__(self, src, x=window.center_x, y=window.center_y):
         self.img = pyglet.image.load(src)
         self.center_image()
         super().__init__(img=self.img, x=x, y=y)
