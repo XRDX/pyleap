@@ -3,12 +3,13 @@ import random
 
 window.set_caption("雷霆战机")
 
-bg = Sprite("../../images/bg.jpg")
-bg.scale = 4
-
-hero = Sprite("../../images/hero.png", 100, 100)
-enemy = Sprite("../../images/enemy.png")
-bullet = Sprite("../../images/bullet.png")
+bg = Sprite("https://rss.leaplearner.com/Image/Bgs/BG.png")
+bg.scale = 0.4
+hero = Sprite("https://rss.leaplearner.com/Image/Role/Fighter15.png", 100, 100)
+enemy = Sprite("https://rss.leaplearner.com/Image/Role/Fighter10.png")
+bullet = Sprite("https://rss.leaplearner.com/Image/Role/Fish6.png")
+bullet.scale = 0.2
+# msc = Audio("../../images/foodback.mp3")
 
 
 def draw():
@@ -41,8 +42,8 @@ def move():
     hero.x = mouse.x
     hero.y = mouse.y
 
-
 mouse.on_move(move)
+# mouse.on_press(msc.play)
 
 schedule_interval(main, 1 / 60)
 run()

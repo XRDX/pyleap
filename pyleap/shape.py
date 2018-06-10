@@ -5,6 +5,7 @@ from math import sin, cos, pi
 from pyleap.util import color2list
 from pyleap.collision import collide
 from pyleap.window import window
+from pyleap.resource import rss
 
 
 class Shape():
@@ -170,7 +171,7 @@ class Sprite(pyglet.sprite.Sprite):
     """ Sprite """
 
     def __init__(self, src, x=window.center_x, y=window.center_y):
-        self.img = pyglet.image.load(src)
+        self.img = rss.load(src)
         self.center_image()
         super().__init__(img=self.img, x=x, y=y)
 
@@ -190,3 +191,10 @@ class Sprite(pyglet.sprite.Sprite):
 
     def collide(self, shape):
         return collide(self, shape)
+
+
+class Text(pyglet.text.Label):
+    """ Text """
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
