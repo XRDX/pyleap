@@ -1,12 +1,12 @@
 from pyleap import *
 
 def draw(dt):
-    rectangle(0, 0, window.width, window.height, "orange")
-    rectangle(100, 200, 300, 400, "green")
-    line(100, 200, 300, 400, 2, 'pink')
+    Rectangle(0, 0, window.width, window.height, "white").draw()
+    Rectangle(100, 200, 300, 400, "green").draw()
+    Line(100, 100, 500, 100, 2, 'pink').draw()
     # triangle(200, 100, 300, 100, 250, 150, "green")
-    circle(200, 200, 50, "red")
-    # text('Hello, world')
+    Circle(200, 200, 50, "red").draw()
+    Text('Hello, world', 350, 100).draw()
 
 schedule_interval(draw)
 run()

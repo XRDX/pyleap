@@ -16,13 +16,13 @@ def color2list(color):
         return ('c4B/static', color)
 
     elif(type(color) == str and color[0] == "#"):
-        return ('c3B/static', (255, 255, 255))
+        return ('c4B/static', (255, 255, 255, 255))
 
     elif(type(color) == str and color in color_dict):
-        return ('c3B/static', color_dict[color.lower()])
+        return ('c4B/static', color_dict[color.lower()] + (255,))
 
     else:
-        return ('c3B/static', (255, 125, 0))
+        return ('c4B/static', (255, 125, 0, 255))
 
 
 unschedule = pyglet.clock.unschedule

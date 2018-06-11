@@ -109,7 +109,7 @@ class Rectangle(Shape):
 
 
 class Line(Shape):
-    def __init__(self, x1=100, y1=100, x2=200, y2=200, color="orange"):
+    def __init__(self, x1=100, y1=100, x2=200, y2=200, lineWidth=1, color="orange"):
         x = (x1 + x2) // 2
         y = (y1 + y2) // 2
         super().__init__(x, y, color, gl=gl.GL_LINES)
@@ -117,6 +117,7 @@ class Line(Shape):
         self._y1 = int(y1)
         self._x2 = int(x2)
         self._y2 = int(y2)
+        self._lineWidth = lineWidth
 
         self.update_vertex_list()
 
@@ -196,5 +197,6 @@ class Sprite(pyglet.sprite.Sprite):
 class Text(pyglet.text.Label):
     """ Text """
 
-    def __init__(self, *args, **kwargs):
-        super().__init__(*args, **kwargs)
+    def __init__(self, src, x=window.center_x, y=window.center_y, font_size=16, color="orange"):
+        super().__init__(src, x=x, y=y, font_size=font_size)
+        self.color = color2list(color)[1]
