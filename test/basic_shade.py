@@ -19,7 +19,7 @@ def draw(dt):
     window.clear()
     bg.draw()
 
-    rectangle(100, 100, 50, 25, 'pink')
+    Rectangle(100, 100, 50, 25, 'pink').draw()
     r.stroke()
     line1.draw()
     tri.stroke()
@@ -28,7 +28,7 @@ def draw(dt):
 
 
 def start_move():
-    schedule_interval(update, 1 / 60)
+    schedule_interval(update)
 
 def stop_move():
     unschedule(update)
@@ -38,5 +38,5 @@ mouse.on_press(start_move)
 mouse.on_release(stop_move)
 
 
-schedule_interval(draw, 1 / 60)
+schedule_interval(draw)
 run()

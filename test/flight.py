@@ -2,20 +2,15 @@ from pyleap import *
 import random
 
 bg = Sprite("https://rss.leaplearner.com/Image/Bgs/BG.png")
-bg.scale = 0.4
-hero = Sprite("https://rss.leaplearner.com/Image/Role/Fighter15.png", 100, 100)
+hero = Sprite("https://rss.leaplearner.com/Image/Role/Fighter15.png")
 enemy = Sprite("https://rss.leaplearner.com/Image/Role/Fighter10.png")
 bullet = Sprite("https://rss.leaplearner.com/Image/Role/Fish6.png")
-bullet.scale = 0.2
 msc = Audio("https://rss.leaplearner.com/Audio/BallGame/buySuccess.mp3")
 
-
-def draw():
-    window.clear()
-    bg.draw()
-    hero.draw()
-    enemy.draw()
-    bullet.draw()
+bg.scale = 0.4
+hero.scale = 0.8
+enemy.scale = 0.5
+bullet.scale = 0.1
 
 
 def new_enemy():
@@ -23,7 +18,7 @@ def new_enemy():
     enemy.y = window.h
 
 
-def main(dt):
+def update(dt):
     bullet.y += 50
     if bullet.y > window.h:
         bullet.x = hero.x
@@ -33,7 +28,13 @@ def main(dt):
     if enemy.y < 0 or bullet.collide(enemy):
         new_enemy()
 
-    draw()
+
+def draw(dt):
+    window.clear()
+    bg.draw()
+    hero.draw()
+    enemy.draw()
+    bullet.draw()
 
 
 def move():
@@ -43,5 +44,7 @@ def move():
 mouse.on_move(move)
 mouse.on_press(msc.play)
 
-schedule_interval(main, 1 / 60)
+schedule_interval(update)
+schedule_interval(draw)
+
 run()
