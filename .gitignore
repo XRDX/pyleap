@@ -104,3 +104,4 @@ venv.bak/
 .mypy_cache/
 *.mp3
 test/download/
+server/download/
