@@ -13,6 +13,9 @@ setuptools.setup(
     long_description_content_type="text/markdown",
     url='http://github.com/XRDX/pyleap',
     packages=setuptools.find_packages(),
+    install_requires=[
+        'pyglet',
+    ],
     classifiers=(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: BSD License",
