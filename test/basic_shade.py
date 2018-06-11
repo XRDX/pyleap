@@ -1,8 +1,6 @@
 from pyleap import *
 
-window.set_caption("LeapLearner")
-
-bg = Rectangle(0, 0, window.width, window.height, color="orange")
+bg = Rectangle(0, 0, window.width, window.height, color="white")
 r = Rectangle(color=(125, 125, 0))
 line1 = Line(100, 200, 300, 400, 'pink')
 tri = Triangle(200, 100, 300, 100, 250, 150, "green")
@@ -29,11 +27,15 @@ def draw(dt):
     txt.draw()
 
 
-def startMove():
+def start_move():
     schedule_interval(update, 1 / 60)
 
+def stop_move():
+    unschedule(update)
 
-mouse.on_press(startMove)
+
+mouse.on_press(start_move)
+mouse.on_release(stop_move)
 
 
 schedule_interval(draw, 1 / 60)

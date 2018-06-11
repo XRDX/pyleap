@@ -1,4 +1,4 @@
-from pyleap.shape import Rectangle, Line
+from pyleap.shape import Rectangle, Line, Circle
 
 
 def rectangle(x, y, w, h, color, fill=True):
@@ -9,8 +9,12 @@ def rectangle(x, y, w, h, color, fill=True):
         r.stroke()
 
 
-def circle(x, y, r, color):
-    pass
+def circle(x, y, r, color, fill=True):
+    c = Circle(x, y, r, color)
+    if fill:
+        c.draw()
+    else:
+        c.stroke()
 
 
 def line(x1, y1, x2, y2, lineWidth, color):

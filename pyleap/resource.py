@@ -2,6 +2,7 @@ import os
 import hashlib
 import urllib.request
 import pyglet
+import re
 
 
 class Resource():
@@ -9,32 +10,38 @@ class Resource():
     def __init__(self, path="download"):
         self.path = path
 
-    def get_fullname(self, name):
-        return '{}{}{}'.format(self.path, os.sep, name)
+    def get(self, url):
+        if not self.is_url(url):
+            return url
 
-    def load(self, url):
-        if self.is_url(url):
-            filename = self.md5_8_name(url)
-            if not os.path.exists(self.get_fullname(filename)):
-                self.download(url, filename)
+        filename = self.md5_8_name(url)
+        fullname =  '{}{}{}'.format(self.path, os.sep, filename)
 
-            return pyglet.image.load(self.get_fullname(filename))
-        else:
-            return pyglet.image.load(url)
+        if not os.path.exists(fullname):
+            self.download(url, fullname)
+
+        return fullname
 
     def md5_8_name(self, url):
         m = hashlib.md5()
         m.update(url.encode('utf-8'))
         return m.hexdigest()[:8] + os.path.splitext(url)[1]
 
-    def download(self, url, name):
+    def download(self, url, fullname):
         if not os.path.exists(self.path):
             os.makedirs(self.path)
 
         print("Downloading: " + url)
-        urllib.request.urlretrieve(url, filename=self.get_fullname(name))
+        urllib.request.urlretrieve(url, filename=fullname)
 
     def is_url(self, url):
-        return url[:4] == 'www.' or url[:4] == 'http'
+        regex = re.compile(
+                r'^(?:http|ftp)s?://' # http:// or https://
+                r'(?:(?:[A-Z0-9](?:[A-Z0-9-]{0,61}[A-Z0-9])?\.)+(?:[A-Z]{2,6}\.?|[A-Z0-9-]{2,}\.?)|' #domain...
+                r'localhost|' #localhost...
+                r'\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3})' # ...or ip
+                r'(?::\d+)?' # optional port
+                r'(?:/?|[/?]\S+)$', re.IGNORECASE)
+        return re.match(regex, url) is not None
 
 rss = Resource()

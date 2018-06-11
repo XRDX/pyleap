@@ -32,5 +32,13 @@ class Window(pyglet.window.Window):
     def center_y(self):
         return self.height // 2
 
+    def set_caption(self, title):
+        self.title = title
+        super().set_caption(title)
+
+    def update_caption(self, mouse):
+        super().set_caption("{}  x: {}, y: {}".format(self.title, mouse.x, mouse.y))
+
 
 window = Window()
+window.set_caption("LeapLearner")

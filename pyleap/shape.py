@@ -150,7 +150,7 @@ class Circle(Shape):
     """ Circle """
 
     def __init__(self, x=100, y=100, r=30, color="orange"):
-        super().__init__(x, r, color, gl=gl.GL_POLYGON)
+        super().__init__(x, y, color, gl=gl.GL_POLYGON)
         self._r = r
 
         self.update_vertex_list()
@@ -171,7 +171,7 @@ class Sprite(pyglet.sprite.Sprite):
     """ Sprite """
 
     def __init__(self, src, x=window.center_x, y=window.center_y):
-        self.img = rss.load(src)
+        self.img = pyglet.image.load(rss.get(src))
         self.center_image()
         super().__init__(img=self.img, x=x, y=y)
 
