@@ -40,5 +40,14 @@ class Window(pyglet.window.Window):
         super().set_caption("{}  x: {}, y: {}".format(self.title, mouse.x, mouse.y))
 
 
+# alpha
+
+# pyglet.gl.glEnable(pyglet.gl.GL_BLEND)
+# pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA)
+
+# config = pyglet.gl.Config(alpha_size=8)
+
+
+# window = Window(config=config)
 window = Window()
 window.set_caption("LeapLearner")

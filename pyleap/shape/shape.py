@@ -1,11 +1,11 @@
 import pyglet
 from pyglet import gl
 
-from pyleap.util import color2list
-from pyleap.collision import collide
+from pyleap.collision import CollisionMixin
+from pyleap.util import color_to_tuple
 
 
-class Shape():
+class Shape(CollisionMixin):
     """ base shape class """
 
     def __init__(self, x, y, color, gl=gl.GL_LINE_LOOP):
@@ -48,13 +48,13 @@ class Shape():
         self.vertex_list.draw(gl.GL_LINE_LOOP)
 
     def update_vertex_list(self):
-        fmt, color = color2list(self._color)
+        color = color_to_tuple(self._color)
         points = self.points
         length = len(points) // 2
         self.vertex_list = pyglet.graphics.vertex_list(
             length,
             ('v2f', points),
-            (fmt, color * length))
+            ('c{}B'.format(len(color)), color * length))
 
     def collide(self, shape):
         return collide(self, shape)

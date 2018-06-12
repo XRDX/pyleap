@@ -19,7 +19,7 @@ def new_enemy():
 
 
 def update(dt):
-    bullet.y += 50
+    bullet.y += 10
     if bullet.y > window.h:
         bullet.x = hero.x
         bullet.y = hero.y

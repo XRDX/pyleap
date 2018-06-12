@@ -4,7 +4,8 @@ bg = Rectangle(0, 0, window.width, window.height, color="white")
 r = Rectangle(color=(125, 125, 0))
 line1 = Line(100, 200, 300, 400, 2, 'pink')
 tri = Triangle(200, 100, 300, 100, 250, 150, "green")
-c = Circle(200, 200, 50, "red")
+c2 = Circle(200, 200, 50, "#ffff00")
+c = Circle(200, 200, 100, "red")
 txt = Text('Hello, world')
 
 
@@ -24,6 +25,7 @@ def draw(dt):
     line1.draw()
     tri.stroke()
     c.draw()
+    c2.draw()
     txt.draw()
 
 

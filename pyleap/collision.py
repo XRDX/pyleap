@@ -4,12 +4,10 @@ collide(shape1, shape2)
 Detect if shape1 hit shape2
 
 """
+from pyleap.util import SimplePoint
 
 
-class CollisionShape():
-
-    def __init__(self, points):
-        self.points = points
+class CollisionMixin():
 
     @property
     def min_x(self):
@@ -28,14 +26,12 @@ class CollisionShape():
         return max(self.points[1::2])
 
 
-def collide(s1, s2):
-    cs1 = CollisionShape(s1.points)
-    cs2 = CollisionShape(s2.points)
+    def collide(self, s2):
+        s1 = self
+        if s1.min_x < s2.max_x and s1.max_x > s2.min_x \
+                and s1.min_y < s2.max_y and s1.max_y > s2.min_y:
+            x = (min(s1.max_x, s2.max_x) + max(s1.min_x, s2.min_x)) / 2
+            y = (min(s1.max_y, s2.max_y) + max(s1.min_y, s2.min_y)) / 2
+            return SimplePoint(x, y)
 
-    if cs1.min_x < cs2.max_x and cs1.max_x > cs2.min_x \
-            and cs1.min_y < cs2.max_y and cs1.max_y > cs2.min_y:
-        x = (min(cs1.max_x, cs2.max_x) + max(cs1.min_x, cs2.min_x)) // 2
-        y = (min(cs1.max_y, cs2.max_y) + max(cs1.min_y, cs2.min_y)) // 2
-        return (x, y)
-
-    return False
+        return False
