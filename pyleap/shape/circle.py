@@ -20,5 +20,5 @@ class Circle(Shape):
 
         ps = []
         for i in range(n):
-            ps += [int(x + r * sin(d * i)), int(y + r * cos(d * i))]
+            ps += [(x + r * sin(d * i)), (y + r * cos(d * i))]
         return tuple(ps)

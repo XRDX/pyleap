@@ -49,14 +49,12 @@ class Shape():
 
     def update_vertex_list(self):
         fmt, color = color2list(self._color)
+        points = self.points
+        length = len(points) // 2
         self.vertex_list = pyglet.graphics.vertex_list(
-            self.len,
-            ('v2i', self.points),
-            (fmt, color * self.len))
-
-    @property
-    def len(self):
-        return len(self.points) // 2
+            length,
+            ('v2f', points),
+            (fmt, color * length))
 
     def collide(self, shape):
         return collide(self, shape)

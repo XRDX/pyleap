@@ -2,7 +2,7 @@ from pyleap import *
 
 bg = Rectangle(0, 0, window.width, window.height, color="white")
 r = Rectangle(color=(125, 125, 0))
-line1 = Line(100, 200, 300, 400, 'pink')
+line1 = Line(100, 200, 300, 400, 2, 'pink')
 tri = Triangle(200, 100, 300, 100, 250, 150, "green")
 c = Circle(200, 200, 50, "red")
 txt = Text('Hello, world')

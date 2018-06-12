@@ -7,8 +7,8 @@ class Rectangle(Shape):
 
     def __init__(self, x=100, y=100, w=100, h=50, color="orange"):
         super().__init__(x, y, color, gl=gl.GL_QUADS)
-        self._w = int(w)
-        self._h = int(h)
+        self._w = w
+        self._h = h
         self.update_vertex_list()
 
     @property
@@ -17,7 +17,7 @@ class Rectangle(Shape):
 
     @w.setter
     def w(self, w):
-        self._w = int(w)
+        self._w = w
         self.update_vertex_list()
 
     @property
@@ -26,7 +26,7 @@ class Rectangle(Shape):
 
     @h.setter
     def h(self, h):
-        self._h = int(h)
+        self._h = h
         self.update_vertex_list()
 
     @property
