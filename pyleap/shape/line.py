@@ -1,7 +1,7 @@
 from pyleap.shape.shape import Shape
 from pyglet import gl
 import math
-    
+
 
 class Line(Shape):
     def __init__(self, x1=100, y1=100, x2=200, y2=200, lineWidth=1, color="orange"):
@@ -14,18 +14,15 @@ class Line(Shape):
         self.y2 = y2
         self.lineWidth = lineWidth
 
-        self.update_vertex_list()
-
-    @property
-    def points(self):
+    def _update_points(self):
         dx = (self.y2-self.y1) * self.lineWidth / self.length / 2
         dy = (self.x1-self.x2) * self.lineWidth / self.length / 2
-        return (self.x1 - dx, self.y1 - dy,
-                self.x1 + dx, self.y1 + dy,
-                self.x2 + dx, self.y2 + dy,
-                self.x2 - dx, self.y2 - dy)
+        self.points = (self.x1 - dx, self.y1 - dy,
+                    self.x1 + dx, self.y1 + dy,
+                    self.x2 + dx, self.y2 + dy,
+                    self.x2 - dx, self.y2 - dy)
 
-    @property    
+    @property
     def length(self):
         return math.sqrt((self.x1-self.x2)*(self.x1-self.x2) \
                         +(self.y1-self.y2)*(self.y1-self.y2))

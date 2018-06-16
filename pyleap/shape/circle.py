@@ -8,17 +8,14 @@ class Circle(Shape):
 
     def __init__(self, x=100, y=100, r=30, color="orange"):
         super().__init__(x, y, color, gl=gl.GL_POLYGON)
-        self._r = r
+        self.r = r
 
-        self.update_vertex_list()
-
-    @property
-    def points(self):
+    def _update_points(self):
         n = 32
         d = pi * 2 / n
-        x, y, r = self._x, self._y, self._r
+        x, y, r = self.x, self.y, self.r
 
         ps = []
         for i in range(n):
             ps += [(x + r * sin(d * i)), (y + r * cos(d * i))]
-        return tuple(ps)
+        self.points = tuple(ps)

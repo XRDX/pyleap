@@ -20,8 +20,7 @@ class Sprite(pyglet.sprite.Sprite, CollisionMixin):
         self.img.anchor_x = self.img.width // 2 # int
         self.img.anchor_y = self.img.height // 2 # int
 
-    @property
-    def points(self):
+    def _update_pointss(self):
         w = self.img.width
         h = self.img.height
         a_x = self.img.anchor_x
@@ -33,4 +32,4 @@ class Sprite(pyglet.sprite.Sprite, CollisionMixin):
         min_y = self.y - a_y * scale_y
         max_x = self.x + (w - a_x) * scale_x
         max_y = self.y + (h - a_y) * scale_y
-        return (min_x, min_y, max_x, min_y, max_x, max_y, min_x, max_y)
+        self.points = (min_x, min_y, max_x, min_y, max_x, max_y, min_x, max_y)

@@ -10,14 +10,12 @@ class Triangle(Shape):
         x = (x1 + x2 + x3) / 3
         y = (y1 + y2 + y3) / 3
         super().__init__(x, y, color, gl=gl.GL_TRIANGLES)
-        self._x1 = x1
-        self._y1 = y1
-        self._x2 = x2
-        self._y2 = y2
-        self._x3 = x3
-        self._y3 = y3
-        self.update_vertex_list()
+        self.x1 = x1
+        self.y1 = y1
+        self.x2 = x2
+        self.y2 = y2
+        self.x3 = x3
+        self.y3 = y3
 
-    @property
-    def points(self):
-        return (self._x1, self._y1, self._x2, self._y2, self._x3, self._y3)
+    def _update_points(self):
+        self.points = (self.x1, self.y1, self.x2, self.y2, self.x3, self.y3)

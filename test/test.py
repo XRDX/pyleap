@@ -1,13 +1,11 @@
-import pyglet
+class P:
+    x = 0
+    y = 0
 
-window = pyglet.window.Window()
+a = P()
 
+b = P()
 
-@window.event
-def on_draw():
-    pyglet.graphics.draw(4, pyglet.gl.GL_QUADS,
-        ('v2i', (100, 100, 105, 100, 105, 300, 100, 300))
-    )
+a.x = 1
 
-
-pyglet.app.run()
+print(a.x, b.x)
