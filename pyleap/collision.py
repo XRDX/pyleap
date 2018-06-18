@@ -7,7 +7,7 @@ Detect if shape1 hit shape2
 class CollisionMixin():
 
 
-    def update_colision_rect(self):
+    def update_collision_rect(self):
         self.min_x = min(self.points[::2])
         self.max_x = max(self.points[::2])
         self.min_y = min(self.points[1::2])
@@ -16,8 +16,8 @@ class CollisionMixin():
     def collide(self, s2):
         s1 = self
 
-        s1.update_colision_rect()
-        s2.update_colision_rect()
+        s1.update_collision_rect()
+        s2.update_collision_rect()
 
         if s1.min_x < s2.max_x and s1.max_x > s2.min_x \
                 and s1.min_y < s2.max_y and s1.max_y > s2.min_y:

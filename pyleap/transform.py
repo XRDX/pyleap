@@ -3,7 +3,7 @@ import math
 class TransformMixin():
 
 
-    def __init__(self):
+    def init_transform(self):
         self.anchor_x = None
         self.anchor_y = None
         self.anchor_x_r = 0.5
@@ -48,3 +48,15 @@ class TransformMixin():
         y += self.anchor_y
 
         return (x, y)
+
+    def update_real_points(self):
+        self.real_points = ()
+        ps = self.points
+        for i in range(0, len(ps), 2):
+            self.real_points += self.get_real_point(ps[i], ps[i+1])
+
+    def update_points(self):
+        self._update_points()
+        self.update_collision_rect()
+        self.update_real_points()
+

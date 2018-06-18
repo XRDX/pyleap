@@ -9,6 +9,7 @@ class Rectangle(Shape):
         super().__init__(x, y, color, gl=gl.GL_QUADS)
         self.w = w
         self.h = h
+        self.update_points()
 
     def _update_points(self):
         x = self.x

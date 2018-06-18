@@ -13,6 +13,7 @@ class Line(Shape):
         self.x2 = x2
         self.y2 = y2
         self.lineWidth = lineWidth
+        self.update_points()
 
     def _update_points(self):
         dx = (self.y2-self.y1) * self.lineWidth / self.length / 2

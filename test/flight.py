@@ -19,10 +19,12 @@ def new_enemy():
 
 
 def update(dt):
-    bullet.y += 10
+    bullet.y += 3
     if bullet.y > window.h:
         bullet.x = hero.x
         bullet.y = hero.y
+
+    bullet.rotation += 10
 
     enemy.y -= 2
     if enemy.y < 0 or bullet.collide(enemy):
