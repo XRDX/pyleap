@@ -18,13 +18,20 @@ class CollisionMixin():
         if not (s1.points and s2.points):
             return False
 
-        s1.update_collision_rect()
-        s2.update_collision_rect()
+        t1 = s1.transform
+        t2 = s2.transform
 
-        if s1.min_x < s2.max_x and s1.max_x > s2.min_x \
-                and s1.min_y < s2.max_y and s1.max_y > s2.min_y:
-            x = (min(s1.max_x, s2.max_x) + max(s1.min_x, s2.min_x)) / 2
-            y = (min(s1.max_y, s2.max_y) + max(s1.min_y, s2.min_y)) / 2
+        t1.update_points(s1.points)
+        t2.update_points(s2.points)
+
+        t1.update_collision_rect()
+        t2.update_collision_rect()
+
+        if t1.min_x < t2.max_x and t1.max_x > t2.min_x \
+                and t1.min_y < t2.max_y and t1.max_y > t2.min_y:
+
+            x = (min(t1.max_x, t2.max_x) + max(t1.min_x, t2.min_x)) / 2
+            y = (min(t1.max_y, t2.max_y) + max(t1.min_y, t2.min_y)) / 2
             return (x, y)
 
         return False
