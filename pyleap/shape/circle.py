@@ -9,10 +9,9 @@ class Circle(Shape):
     def __init__(self, x=100, y=100, r=30, color="orange"):
         super().__init__(x, y, color, gl=gl.GL_POLYGON)
         self.r = r
-        self.update_points()
 
-    def _update_points(self):
-        n = 32
+    def update_points(self):
+        n = 72
         d = pi * 2 / n
         x, y, r = self.x, self.y, self.r
 

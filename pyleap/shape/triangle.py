@@ -1,5 +1,5 @@
 from pyglet import gl
-from pyleap.shape.circle import Shape
+from pyleap.shape.shape import Shape
 
 
 class Triangle(Shape):
@@ -10,13 +10,6 @@ class Triangle(Shape):
         x = (x1 + x2 + x3) / 3
         y = (y1 + y2 + y3) / 3
         super().__init__(x, y, color, gl=gl.GL_TRIANGLES)
-        self.x1 = x1
-        self.y1 = y1
-        self.x2 = x2
-        self.y2 = y2
-        self.x3 = x3
-        self.y3 = y3
-        self.update_points()
+        self.points = (x1, y1, x2, y2, x3, y3)
 
-    def _update_points(self):
-        self.points = (self.x1, self.y1, self.x2, self.y2, self.x3, self.y3)
+

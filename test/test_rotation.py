@@ -2,12 +2,12 @@ from pyleap import *
 
 bg = Rectangle(0, 0, window.width, window.height, color="white")
 c = Circle(200, 200, 100, "red")
-c.scale_y = 0.5
+c.transform.scale_y = 0.5
 
 
 def update(dt):
     c.x += 1
-    c.rotation -= 1
+    c.transform.rotation -= 1
 
 def draw(dt):
     # update()

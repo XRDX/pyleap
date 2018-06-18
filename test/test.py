@@ -1,11 +1,24 @@
-class P:
-    x = 0
-    y = 0
+import pyglet
+from pyglet import gl
 
-a = P()
+window = pyglet.window.Window(resizable=True)
 
-b = P()
+@window.event
+def on_draw():
+    # x, y, z
+    gl.glLoadIdentity()
+    gl.glTranslatef(100, 100, 0)
+    gl.glScalef(1.0, 1.0, 1.0)
+    gl.glRotatef(30, 0.0, 0.0, 1.0)
+    gl.glTranslatef(-100, -100, 0)
 
-a.x = 1
+    pyglet.graphics.draw_indexed(4, pyglet.gl.GL_TRIANGLES,
+        [0, 1, 2, 0, 2, 3],
+        ('v2i', (100, 100,
+                 150, 100,
+                 150, 150,
+                 100, 150))
+    )
 
-print(a.x, b.x)
+
+pyglet.app.run()
