@@ -5,11 +5,11 @@ from pyleap.resource import rss
 from pyleap.window import window
 
 from pyleap.transform import Transform
-from pyleap.collision import collide, update_collision_rect
-from pyleap.util import color_to_tuple, UpdateInfo
+from pyleap.collision import CollisionMixin
+from pyleap.util import color_to_tuple
 
 
-class Sprite(pyglet.sprite.Sprite):
+class Sprite(pyglet.sprite.Sprite, CollisionMixin):
     """ Sprite """
 
     def __init__(self, src, x=window.center_x, y=window.center_y):
@@ -43,11 +43,12 @@ class Sprite(pyglet.sprite.Sprite):
         self.update_points()
         self.update_anchor()
         self.update_gl()
+        # call pyglet.sprite.Sprite.draw
         super().draw()
 
     def update_anchor(self):
         t = self.transform
-        update_collision_rect(self)
+        self.update_collision_rect()
         if t.anchor_x_r != None and t.anchor_y_r != None:
             t.anchor_x = self.min_x + (self.max_x - self.min_x) * t.anchor_x_r
             t.anchor_y = self.min_y + (self.max_y - self.min_y) * t.anchor_y_r
@@ -55,6 +56,3 @@ class Sprite(pyglet.sprite.Sprite):
     def update_gl(self):
         gl.glLoadIdentity()
         self.transform.update_gl()
-
-    def collide(self, other_shape):
-        return collide(self, other_shape)

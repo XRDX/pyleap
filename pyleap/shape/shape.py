@@ -2,23 +2,24 @@ import pyglet
 from pyglet import gl
 
 from pyleap.transform import Transform
-from pyleap.collision import collide, update_collision_rect
-from pyleap.util import color_to_tuple, UpdateInfo
+from pyleap.collision import CollisionMixin
+from pyleap.util import color_to_tuple
 
 
-class Shape():
+class Shape(CollisionMixin):
     """ base shape class """
 
-    def __init__(self, x, y, color="orange", gl=gl.GL_LINE_LOOP, line_width=1, point_size=1):
-        super().__init__()
+    def __init__(self, x, y, color="orange", gl=gl.GL_LINE_LOOP,
+                 line_width=1, point_size=1):
         self.x = x
         self.y = y
         self.color = color
         self.gl = gl
         self.transform = Transform()
         self.line_width = line_width
-        self.point_size = point_size
+        self.point_size = point_size # only for point
         self.points = ()
+        self.screen_points = ()
 
     def draw(self):
         self.update_points()
@@ -52,12 +53,9 @@ class Shape():
             ('v2f', self.points),
             ('c4B'.format(len(color)), color * length))
 
-    def collide(self, other_shape):
-        return collide(self, other_shape)
-
     def update_anchor(self):
         t = self.transform
-        update_collision_rect(self)
+        self.update_collision_rect()
         if t.anchor_x_r != None and t.anchor_y_r != None:
             t.anchor_x = self.min_x + (self.max_x - self.min_x) * t.anchor_x_r
             t.anchor_y = self.min_y + (self.max_y - self.min_y) * t.anchor_y_r

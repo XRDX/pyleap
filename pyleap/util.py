@@ -3,15 +3,6 @@ import pyglet
 from pyleap.constant_colors import color_dict
 
 
-class UpdateInfo:
-
-    def __init__(self):
-        self.id = 1
-        self.points = 0
-        self.vertex_list = 0
-        self.colision_rect = 0
-        self.real_points = 0
-
 def color_to_tuple(color):
     """ convert any color to standard ()
     "red"       ->  'c3B', (255, 125, 0)
