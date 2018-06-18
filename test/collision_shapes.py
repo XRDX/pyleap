@@ -7,13 +7,14 @@ circle = Circle(200, 200, 50)
 
 p = Point(point_size=10, color="red")
 circle.transform.scale_x = 2
+rect.transform.set_anchor_rate(1, 1)
 
 
 def draw(dt):
     window.clear()
     c = rect.collide(circle)
     rect.transform.rotation += 1
-    circle.transform.rotation += 1
+    circle.transform.rotation -= 1
     rect.stroke()
     circle.stroke()
     if(c):

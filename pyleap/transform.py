@@ -29,8 +29,8 @@ class Transform(CollisionMixin):
         self.anchor_y_r = None
 
     def set_anchor_rate(self, x, y):
-        self.anchor_x_r = 0.5
-        self.anchor_y_r = 0.5
+        self.anchor_x_r = x
+        self.anchor_y_r = y
 
     def get_point(self, x, y):
         x -= self.anchor_x
@@ -61,7 +61,6 @@ class Transform(CollisionMixin):
 
     def update_gl(self):
         gl.glTranslatef(self.anchor_x, self.anchor_y, 0)
-
         gl.glRotatef(self.rotation, 0.0, 0.0, 1.0)
         gl.glScalef(self.scale_x, self.scale_y, 1.0)
         gl.glTranslatef(-self.anchor_x, -self.anchor_y, 0)

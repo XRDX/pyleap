@@ -4,6 +4,41 @@ collide(shape1, shape2)
 Detect if shape1 hit shape2
 
 """
+def point_in_points(p, s2):
+    x = p[0]
+    y = p[1]
+    cross_count = 0
+    for i in range(0, len(s2.points), 2):
+        x1 = s2.points[i-2]
+        y1 = s2.points[i-1]
+        x2 = s2.points[i]
+        y2 = s2.points[i+1]
+        if (x1 < x and x2 < x) or (y1-y)*(y2-y) > 0 or (y1==y2) or (y2==y):
+            continue
+        cross_x = x1 - (x1-x2)*(y1-y)/(y1-y2)
+        if(cross_x >= x):
+            cross_count += 1
+
+    if cross_count %2 == 1:
+        return True
+    else:
+        return False
+
+
+def points_in_points(s1, s2):
+    for i in range(0, len(s1.points), 2):
+        x = s1.points[i]
+        y = s1.points[i+1]
+
+        # outside the collide rect
+        if(x < s2.min_x or x > s2.max_x or y < s2.min_y or y > s2.max_y):
+            continue
+
+        if(point_in_points((x, y), s2)):
+            return (x, y)
+
+    return False
+
 class CollisionMixin():
 
 
@@ -27,11 +62,13 @@ class CollisionMixin():
         t1.update_collision_rect()
         t2.update_collision_rect()
 
-        if t1.min_x < t2.max_x and t1.max_x > t2.min_x \
-                and t1.min_y < t2.max_y and t1.max_y > t2.min_y:
+        # simple collide rect
+        if not (t1.min_x < t2.max_x and t1.max_x > t2.min_x \
+                and t1.min_y < t2.max_y and t1.max_y > t2.min_y):
+            return False
 
-            x = (min(t1.max_x, t2.max_x) + max(t1.min_x, t2.min_x)) / 2
-            y = (min(t1.max_y, t2.max_y) + max(t1.min_y, t2.min_y)) / 2
-            return (x, y)
+        return points_in_points(t1, t2) or points_in_points(t2, t1)
 
         return False
+
+

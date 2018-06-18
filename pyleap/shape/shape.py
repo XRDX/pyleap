@@ -56,7 +56,7 @@ class Shape(CollisionMixin):
     def update_anchor(self):
         t = self.transform
         self.update_collision_rect()
-        if t.anchor_x_r != None and t.anchor_y_r != None:
+        if t.anchor_x_r and t.anchor_y_r:
             t.anchor_x = self.min_x + (self.max_x - self.min_x) * t.anchor_x_r
             t.anchor_y = self.min_y + (self.max_y - self.min_y) * t.anchor_y_r
 
