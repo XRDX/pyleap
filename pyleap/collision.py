@@ -39,6 +39,55 @@ def points_in_points(s1, s2):
 
     return False
 
+def lines_cross(s1, s2):
+    for i in range(0, len(s1.points), 2):
+        x1 = s1.points[i-2]
+        y1 = s1.points[i-1]
+        x2 = s1.points[i]
+        y2 = s1.points[i+1]
+        for i in range(0, len(s2.points), 2):
+            x3 = s2.points[i-2]
+            y3 = s2.points[i-1]
+            x4 = s2.points[i]
+            y4 = s2.points[i+1]
+            p = line_cross(x1, y1, x2, y2, x3, y3, x4, y4)
+            if p: return p
+
+    return False
+
+def line_cross(x1, y1, x2, y2, x3, y3, x4, y4):
+
+    # out of the rect
+    if min(x1, x2) > max(x3, x4) or max(x1, x2) < min(x3, x4) or \
+       min(y1, y2) > max(y3, y4) or max(y1, y2) < min(y3, y4):
+        return False
+
+    # same slope rate
+    if ((y1 - y2) * (x3 - x4) == (x1 - x2) * (y3 - y4)):
+        return False
+
+    if cross_product(x3, y3, x2, y2, x4, y4) * cross_product(x3, y3, x4, y4, x1, y1) < 0 or \
+       cross_product(x1, y1, x4, y4, x2, y2) * cross_product(x1, y1, x2, y2, x3, y3) < 0:
+        return False
+
+    # get collide point
+    b1 = (y2 - y1) * x1 + (x1 - x2) * y1
+    b2 = (y4 - y3) * x3 + (x3 - x4) * y3
+    D = (x2 - x1) * (y4 - y3) - (x4 - x3) * (y2 - y1)
+    D1 = b2 * (x2 - x1) - b1 * (x4 - x3)
+    D2 = b2 * (y2 - y1) - b1 * (y4 - y3)
+
+    return (D1 / D, D2 / D)
+
+
+def cross_product (x1, y1, x2, y2, x3, y3):
+    """ 
+    vector 1: x1, y1, x2, y2
+    vector 2: x1, y1, x3, y3
+    """
+    return (x2 - x1) * (y3 - y1) - (x3 - x1) * (y2 - y1)
+
+
 class CollisionMixin():
 
 
@@ -67,8 +116,10 @@ class CollisionMixin():
                 and t1.min_y < t2.max_y and t1.max_y > t2.min_y):
             return False
 
-        return points_in_points(t1, t2) or points_in_points(t2, t1)
+        return points_in_points(t1, t2) or \
+               points_in_points(t2, t1) or \
+               lines_cross(t1, t2)
 
-        return False
+
 
 
