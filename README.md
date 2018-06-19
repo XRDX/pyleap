@@ -1,7 +1,16 @@
 # pyleap: A simple 2D game engine base on pyglet
 
-upload to pypu
+upload to pypi
 ```shell
-python3 setup.py sdist bdist_wheel
-twine upload dist/* -u VicWang -p PYPI******
+$ python setup.py sdist bdist_wheel
+$ twine upload dist/* -u VicWang -p PYPI******
 ```
+
+pyinstaller
+
+```shell
+$ pyinstaller -F leap_server.py -i pyleap.ico
+```
+
+
+
