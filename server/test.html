@@ -1,0 +1,33 @@
+<head>
+    <script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script>
+</head>
+<body>
+    <div>
+        <textarea id="code">print("Hello, World")</textarea>
+        <button id="run"  onClick="run()">RUN</button>
+    </div>
+    <div>
+        <textarea id="output"></textarea>
+    </div>
+
+    <script type="text/javascript">
+        function run(){
+            code = $("#code").val();
+            data = {
+                name: "temp",
+                code: code
+            };
+            console.log(data);
+            $.ajax({
+                type: "POST",
+                url: "http://localhost:1024/run",
+                data: data,
+                dataType: 'json',
+                success: function(data){
+                    console.log(data);
+                    $("#output").val(data.output)
+                }
+            });
+        }
+    </script>
+</body>

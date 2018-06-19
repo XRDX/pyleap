@@ -72,6 +72,7 @@ def application(environ, start_response):
         return [b'{"error":"bad_request"}']
     s = environ['wsgi.input'].read(int(environ['CONTENT_LENGTH']))
     qs = parse.parse_qs(s.decode('utf-8'))
+    print(qs)
     if not 'code' in qs:
         start_response('400 Bad Request', [('Content-Type', 'application/json')])
         return [b'{"error":"invalid_params"}']
