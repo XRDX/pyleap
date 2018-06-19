@@ -6,7 +6,8 @@ from pyleap.window import window
 
 from pyleap.transform import Transform
 from pyleap.collision import CollisionMixin
-from pyleap.util import color_to_tuple
+from pyleap.color import color_to_tuple
+from pyleap.util import all_shapes
 
 
 class Sprite(pyglet.sprite.Sprite, CollisionMixin):
@@ -21,6 +22,7 @@ class Sprite(pyglet.sprite.Sprite, CollisionMixin):
 
         self.points = ()
         self.transform = Transform()
+        self.press_events = []
 
     def center_image(self):
         """Sets an image's anchor point to its center"""
@@ -44,6 +46,8 @@ class Sprite(pyglet.sprite.Sprite, CollisionMixin):
         self.update_anchor()
         self.update_gl()
         # call pyglet.sprite.Sprite.draw
+        all_shapes.discard(self)
+        all_shapes.add(self)
         super().draw()
 
     def update_anchor(self):

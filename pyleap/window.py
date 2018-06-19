@@ -1,5 +1,6 @@
 import pyglet
 from pyglet import gl
+from pyleap.util import all_shapes
 
 class Window(pyglet.window.Window):
     """ self define window """
@@ -39,6 +40,10 @@ class Window(pyglet.window.Window):
     def update_caption(self, mouse):
         super().set_caption("{}  x: {}, y: {}".format(self.title, mouse.x, mouse.y))
 
+    def clear(self):
+        all_shapes.clear()
+        super().clear()
+
 
 platform = pyglet.window.get_platform()
 display = platform.get_default_display()
@@ -56,8 +61,8 @@ window.set_caption("LeapLearner")
 
 # alpha
 gl.glEnable(gl.GL_LINE_SMOOTH);
-# gl.glEnable(gl.GL_POLYGON_SMOOTH);
+gl.glEnable(gl.GL_POLYGON_SMOOTH);
 gl.glEnable(gl.GL_BLEND);
 gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE_MINUS_SRC_ALPHA);
 gl.glHint(gl.GL_LINE_SMOOTH_HINT, gl.GL_DONT_CARE);
-# gl.glHint(gl.GL_POLYGON_SMOOTH_HINT, gl.GL_DONT_CARE);
+gl.glHint(gl.GL_POLYGON_SMOOTH_HINT, gl.GL_DONT_CARE);

@@ -1,6 +1,7 @@
 import pyglet
 from pyleap.window import window
-from pyleap.util import color_to_tuple
+from pyleap.color import color_to_tuple
+from pyleap.util import all_shapes
 
 from pyleap.shape.shape import Shape
 from pyleap.collision import CollisionMixin
@@ -15,6 +16,7 @@ class Text(pyglet.text.Label, CollisionMixin):
         color = color_to_tuple(color)
         super().__init__(text=text, x=x, y=y, font_size=font_size, color=color)
         self.transform = Transform()
+        self.press_events = []
 
     def update_points(self):
         min_x = self.x
@@ -34,4 +36,6 @@ class Text(pyglet.text.Label, CollisionMixin):
 
         pyglet.gl.glLoadIdentity()
         self.transform.update_gl()
+        all_shapes.discard(self)
+        all_shapes.add(self)
         super().draw()

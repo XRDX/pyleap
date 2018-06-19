@@ -3,7 +3,8 @@ from pyglet import gl
 
 from pyleap.transform import Transform
 from pyleap.collision import CollisionMixin
-from pyleap.util import color_to_tuple
+from pyleap.color import color_to_tuple
+from pyleap.util import all_shapes
 
 
 class Shape(CollisionMixin):
@@ -20,12 +21,15 @@ class Shape(CollisionMixin):
         self.point_size = point_size # only for point
         self.points = ()
         self.screen_points = ()
+        self.press_events = []
 
     def draw(self):
         self.update_points()
         self.update_vertex_list()
         self.update_anchor()
         self.update_gl()
+        all_shapes.discard(self)
+        all_shapes.add(self)
         self.vertex_list.draw(self.gl)
 
     def stroke(self):
@@ -33,6 +37,8 @@ class Shape(CollisionMixin):
         self.update_vertex_list()
         self.update_anchor()
         self.update_gl()
+        all_shapes.discard(self)
+        all_shapes.add(self)
         self.vertex_list.draw(gl.GL_LINE_LOOP)
 
     def update_gl(self):
@@ -59,8 +65,4 @@ class Shape(CollisionMixin):
         if t.anchor_x_r and t.anchor_y_r:
             t.anchor_x = self.min_x + (self.max_x - self.min_x) * t.anchor_x_r
             t.anchor_y = self.min_y + (self.max_y - self.min_y) * t.anchor_y_r
-
-
-
-
 

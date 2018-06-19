@@ -4,6 +4,12 @@ collide(shape1, shape2)
 Detect if shape1 hit shape2
 
 """
+from pyleap.mouse import mouse
+
+def shape_clicked(shape):
+    shape.transform.update_points(shape.points)
+    return point_in_points((mouse.x, mouse.y), shape.transform)
+
 def point_in_points(p, s2):
     x = p[0]
     y = p[1]
@@ -120,6 +126,11 @@ class CollisionMixin():
                points_in_points(t2, t1) or \
                lines_cross(t1, t2)
 
+    def on_press(self, func):
+        self.press_events.append(func)
 
+    def click(self):
+        for func in self.press_events:
+            func()
 
 

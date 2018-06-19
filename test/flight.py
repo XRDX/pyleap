@@ -1,6 +1,10 @@
 from pyleap import *
 import random
 
+# fps_display = pyglet.clock.ClockDisplay()
+    
+
+
 bg = Sprite("https://rss.leaplearner.com/Image/Bgs/BG.png")
 hero = Sprite("https://rss.leaplearner.com/Image/Role/Fighter15.png")
 enemy = Sprite("https://rss.leaplearner.com/Image/Role/Fighter10.png")
@@ -37,6 +41,7 @@ def draw(dt):
     hero.draw()
     enemy.draw()
     bullet.draw()
+    # fps_display.draw()
 
 
 def move():
