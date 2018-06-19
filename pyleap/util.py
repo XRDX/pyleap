@@ -3,30 +3,22 @@ import pyglet
 from pyleap.constant_colors import color_dict
 
 
-class SimplePoint:
-
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
-
-
 def color_to_tuple(color):
     """ convert any color to standard ()
     "red"       ->  'c3B', (255, 125, 0)
     "#ffffff"   ->  'c3B', (255, 255, 255)
     "#ffffffff" ->  'c4B', (255, 255, 255, 255)
     """
-    if(type(color) == tuple):
-        return color
-
-    elif(type(color) == str and color[0] == "#"):
-        return hex_color_to_tuple(color)
+    if(type(color) == str and color[0] == "#"):
+        color = hex_color_to_tuple(color)
 
     elif(type(color) == str and color in color_dict):
-        return color_dict[color.lower()]
+        color = color_dict[color.lower()]
 
-    else:
-        return (255, 125, 0)
+    while len(color) < 4:
+        color += (255,)
+
+    return color
 
 def hex_color_to_tuple(hex):
     """ convent hex color to tuple
@@ -52,3 +44,6 @@ def schedule_once(func, dt=1/60):
 
 def run():
     pyglet.app.run()
+
+
+slice = lambda s, step : [s[i:i+step] for i in range(0, len(s), step)]

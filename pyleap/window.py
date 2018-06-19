@@ -1,5 +1,5 @@
 import pyglet
-
+from pyglet import gl
 
 class Window(pyglet.window.Window):
     """ self define window """
@@ -40,14 +40,24 @@ class Window(pyglet.window.Window):
         super().set_caption("{}  x: {}, y: {}".format(self.title, mouse.x, mouse.y))
 
 
-# alpha
+platform = pyglet.window.get_platform()
+display = platform.get_default_display()
+screen = display.get_default_screen()
 
-# pyglet.gl.glEnable(pyglet.gl.GL_BLEND)
-# pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA)
+template = gl.Config(alpha_size=8)
+config = screen.get_best_config(template)
+context = config.create_context(None)
+window = Window(context=context)
 
 # config = pyglet.gl.Config(alpha_size=8)
-
-
 # window = Window(config=config)
-window = Window()
+# window = Window()
 window.set_caption("LeapLearner")
+
+# alpha
+gl.glEnable(gl.GL_LINE_SMOOTH);
+# gl.glEnable(gl.GL_POLYGON_SMOOTH);
+gl.glEnable(gl.GL_BLEND);
+gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE_MINUS_SRC_ALPHA);
+gl.glHint(gl.GL_LINE_SMOOTH_HINT, gl.GL_DONT_CARE);
+# gl.glHint(gl.GL_POLYGON_SMOOTH_HINT, gl.GL_DONT_CARE);

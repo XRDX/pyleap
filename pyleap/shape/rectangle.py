@@ -1,5 +1,5 @@
 from pyglet import gl
-from pyleap.shape.circle import Shape
+from pyleap.shape.shape import Shape
 
 
 class Rectangle(Shape):
@@ -7,32 +7,12 @@ class Rectangle(Shape):
 
     def __init__(self, x=100, y=100, w=100, h=50, color="orange"):
         super().__init__(x, y, color, gl=gl.GL_QUADS)
-        self._w = w
-        self._h = h
-        self.update_vertex_list()
+        self.w = w
+        self.h = h
 
-    @property
-    def w(self):
-        return self._w
-
-    @w.setter
-    def w(self, w):
-        self._w = w
-        self.update_vertex_list()
-
-    @property
-    def h(self):
-        return self._h
-
-    @h.setter
-    def h(self, h):
-        self._h = h
-        self.update_vertex_list()
-
-    @property
-    def points(self):
-        x = self._x
-        y = self._y
-        w = self._w
-        h = self._h
-        return (x, y, x + w, y, x + w, y + h, x, y + h)
+    def update_points(self):
+        x = self.x
+        y = self.y
+        w = self.w
+        h = self.h
+        self.points = (x, y, x + w, y, x + w, y + h, x, y + h)
