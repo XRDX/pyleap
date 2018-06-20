@@ -32,6 +32,11 @@ def draw(dt):
         p.y = c[1]
         p.draw()
 
+    c = rect2.collide(circle)
+    if(c):
+        p.x = c[0]
+        p.y = c[1]
+        p.draw()
 
 def move():
     circle.x = mouse.x

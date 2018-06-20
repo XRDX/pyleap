@@ -14,23 +14,7 @@ class Sprite(Rectangle):
 
         self.sprite = pyglet.sprite.Sprite(img=self.img, x=x, y=y)
         # self.collision_scale = 0.8
-        super().__init__(x, y)
-
-    @property
-    def x(self):
-        return self.sprite.x
-
-    @x.setter
-    def x(self, x):
-        self.sprite.x = x
-
-    @property
-    def y(self):
-        return self.sprite.y
-
-    @y.setter
-    def y(self, y):
-        self.sprite.y = y        
+        super().__init__(x, y)      
 
 
     def center_image(self, img):
@@ -50,4 +34,6 @@ class Sprite(Rectangle):
 
     def draw(self):
         self.update_all()
+        self.sprite.x = self.x
+        self.sprite.y = self.y
         self.sprite.draw()
