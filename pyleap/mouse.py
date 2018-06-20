@@ -1,4 +1,4 @@
-import pyglet
+from pyglet.window import mouse as default_mouse
 
 class Mouse():
     """ Mouse """
@@ -6,34 +6,30 @@ class Mouse():
     def __init__(self):
         self.x = 0
         self.y = 0
-        self.events = {
-            "move": [],
-            "press": [],
-            "release": []
-        }
+        self._move = None
+        self._press = None
+        self._release = None
+        self.LEFT = False
+        self.RIGHT = False
 
     def on_move(self, func):
         """ f() when mouse moving """
-        self.events["move"].append(func)
+        self.move = func
 
     def on_press(self, func):
         """ f() when mouse press """
-        self.events["press"].append(func)
+        self.press = func
 
     def on_release(self, func):
-        self.events["release"].append(func)
+        self.release = func
 
     def move(self):
-        for func in self.events["move"]:
-            func()
+        if(self._move): self._move()
 
     def press(self):
-        for func in self.events["press"]:
-            func()
+        if(self._press): self._press()
 
     def release(self):
-        for func in self.events["release"]:
-            func()
-            
+        if(self._release): self._release()    
 
 mouse = Mouse()
