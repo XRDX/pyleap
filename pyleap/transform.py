@@ -62,7 +62,47 @@ class Transform(CollisionMixin):
     def update_gl(self):
         gl.glTranslatef(self.anchor_x, self.anchor_y, 0)
         gl.glRotatef(self.rotation, 0.0, 0.0, 1.0)
-        gl.glScalef(self.scale_x, self.scale_y, 1.0)
+        gl.glScalef(self.scale_x*self.scale, self.scale_y*self.scale, 1.0)
         gl.glTranslatef(-self.anchor_x, -self.anchor_y, 0)
 
 
+class TransformMixin():
+
+    # Transform methods
+    @property
+    def rotation(self):
+        return self.transform.rotation
+
+    @rotation.setter
+    def rotation(self, rotation):
+        self.transform.rotation = rotation
+
+    @property
+    def scale(self):
+        return self.transform.scale
+
+    @scale.setter
+    def scale(self, scale):
+        self.transform.scale = scale
+
+    @property
+    def scale_x(self):
+        return self.transform.scale_x
+
+    @scale_x.setter
+    def scale_x(self, scale_x):
+        self.transform.scale_x = scale_x   
+           
+    @property
+    def scale_y(self):
+        return self.transform.scale_y
+
+    @scale_y.setter
+    def scale_y(self, scale_y):
+        self.transform.scale_y = scale_y  
+
+    def set_anchor(self, x, y):
+        self.transform.set_anchor(x, y)
+
+    def set_anchor_rate(self, x_r, y_r):
+        self.transform.set_anchor_rate(x_r, y_r) 

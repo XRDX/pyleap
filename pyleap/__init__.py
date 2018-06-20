@@ -7,3 +7,4 @@ from pyleap.event import *
 from pyleap.audio import *
 
 from pyleap.color import *
+from pyleap.key import *

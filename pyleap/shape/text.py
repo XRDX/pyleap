@@ -5,10 +5,10 @@ from pyleap.util import all_shapes
 
 from pyleap.shape.shape import Shape
 from pyleap.collision import CollisionMixin
-from pyleap.transform import Transform
+from pyleap.transform import Transform, TransformMixin
 
 
-class Text(pyglet.text.Label, CollisionMixin):
+class Text(pyglet.text.Label, CollisionMixin, TransformMixin):
     """ Text """
 
     def __init__(self, text, x=window.center_x, y=window.center_y,

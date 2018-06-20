@@ -14,8 +14,8 @@ circle.transform.scale_x = 2
 def draw(dt):
     window.clear()
     
-    rect.transform.rotation += 1
-    circle.transform.rotation -= 1
+    rect.rotation += 1
+    circle.rotation -= 1
     rect.stroke()
     rect2.stroke()
     circle.stroke()
