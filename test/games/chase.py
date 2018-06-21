@@ -1,6 +1,15 @@
 from pyleap import *
 import random
 
+
+def chase(self, hero):
+    r = ((hero.x - self.x)**2 + (hero.y-self.y)**2)**0.5
+    self.x += self.speed * (hero.x - self.x) / r
+    self.y += self.speed * (hero.y - self.y) / r
+
+
+Sprite.chase = chase
+
 class Monster(Sprite):
 
     def __init__(self, x=0, y=0):
@@ -9,11 +18,6 @@ class Monster(Sprite):
         self.scale = 0.15
         self.speed = 0.5 + random.random() * 0.5
 
-def chase(self, hero):
-    r = ((hero.x - self.x)**2 + (hero.y-self.y)**2)**0.5
-    self.x += self.speed * (hero.x - self.x) / r
-    self.y += self.speed * (hero.y - self.y) / r
-
 
 monsters = []
 
@@ -21,6 +25,7 @@ bg = Sprite("https://rss.leaplearner.com/Image/Bgs/BG.png")
 hero = Sprite("https://rss.leaplearner.com/Image/Role/Alien2.png")
 hero.scale = 0.3
 hero.speed = 5
+
 t = Text("RETRY!", font_size=30)
 
 def add_monster(dt):
@@ -29,13 +34,13 @@ def add_monster(dt):
 
 def game(dt):
     window.clear()
-    chase(hero, mouse)
+    hero.chase(mouse)
 
     bg.draw()
     hero.draw()
 
     for m in monsters:
-        chase(m, hero)
+        m.chase(hero)
         m.draw()
 
     for m in monsters:
