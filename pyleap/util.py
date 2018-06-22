@@ -2,7 +2,7 @@ import pyglet
 
 
 unschedule = pyglet.clock.unschedule
-
+stop = unschedule
 
 def schedule_interval(func, dt=1/60):
     unschedule(func)
@@ -15,6 +15,7 @@ def schedule_once(func, dt=1/60):
 
 def run():
     pyglet.app.run()
+
 
 
 """all_shapes, use for track all the shapes draw on the windows
