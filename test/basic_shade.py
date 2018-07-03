@@ -33,15 +33,15 @@ def draw(dt):
 
 
 def start_move():
-    schedule_interval(update)
+    repeat(update)
 
 def stop_move():
-    unschedule(update)
+    stop(update)
 
 
 mouse.on_press(start_move)
 mouse.on_release(stop_move)
 
 
-schedule_interval(draw)
+repeat(draw)
 run()

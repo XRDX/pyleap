@@ -6,10 +6,10 @@ c.transform.scale_y = 0.5
 
 
 def update(dt):
-    if key.LEFT:
+    if mouse.LEFT:
         c.x -= 1
         c.transform.rotation += 1
-    elif key.RIGHT:
+    elif mouse.RIGHT:
         c.x += 1
 
 def draw(dt):
@@ -19,7 +19,7 @@ def draw(dt):
     c.draw()
 
 
-schedule_interval(draw)
-schedule_interval(update)
+repeat(draw)
+repeat(update)
 
 run()

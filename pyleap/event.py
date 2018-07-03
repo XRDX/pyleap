@@ -19,10 +19,28 @@ def on_mouse_drag(x, y, dx, dy, buttons, modifiers):
     mouse.move()
 
 
+class MouseKeyCode:
+    """
+    button
+    1 - 左键
+    2 - 滚轮
+    4 - 右键
+    """
+    LEFT = 1
+    MIDDLE = 2
+    RIGHT = 4
+
 @window.event
 def on_mouse_press(x, y, button, modifiers):
-    """ 按下鼠标时 """ 
-    mouse.press()
+    """ 按下鼠标时 
+
+    """ 
+    if button == MouseKeyCode.LEFT:
+        mouse.press()
+    elif button == MouseKeyCode.RIGHT:
+        mouse.right_press()
+
+    # 判断是否有图形的点击事件被触发了
     shapes = list(all_shapes)
     while shapes:
         shape = shapes.pop()
@@ -33,4 +51,7 @@ def on_mouse_press(x, y, button, modifiers):
 @window.event
 def on_mouse_release(x, y, button, modifiers):
     """ 松开鼠标时 """ 
-    mouse.release()
+    if button == MouseKeyCode.LEFT:
+        mouse.release()
+    elif button == MouseKeyCode.RIGHT:
+        mouse.right_release()

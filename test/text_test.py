@@ -11,5 +11,5 @@ def draw(dt):
     r.stroke()
     t.draw()
 
-schedule_interval(draw)
+repeat(draw)
 run()

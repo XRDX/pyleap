@@ -51,7 +51,7 @@ def move():
 mouse.on_move(move)
 mouse.on_press(msc.play)
 
-schedule_interval(update)
-schedule_interval(draw)
+repeat(update)
+repeat(draw)
 
 run()

@@ -17,7 +17,7 @@
 """
 
 import pyglet
-from pyleap.resource import rss
+from pyleap.util import rss
 
 
 class Audio(pyglet.media.StaticSource):

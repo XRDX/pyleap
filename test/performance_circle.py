@@ -17,5 +17,5 @@ def new_circle():
 
 mouse.on_move(new_circle)
 
-schedule_interval(draw)
+repeat(draw)
 run()

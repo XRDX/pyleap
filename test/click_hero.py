@@ -9,7 +9,7 @@ def draw(dt):
     bg.draw()
     c.draw()
     if(c.y < 0):
-        unschedule(update)
+        stop(update)
         retry.draw()
 
 def update(dt):
@@ -24,12 +24,12 @@ new_c()
 
 def start():
     new_c()
-    schedule_interval(update)
+    repeat(update)
 
 c.on_press(new_c)
 retry.on_press(start)
 
-schedule_interval(draw)
-start()
+repeat(draw)
 
+start()
 run()

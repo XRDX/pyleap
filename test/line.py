@@ -8,5 +8,5 @@ def draw(dt):
     Line(100, 300, 300, 400, 4, '#00ff00').draw()
     Line(100, 400, 300, 100, 10, 'black').draw()
 
-schedule_interval(draw)
+repeat(draw)
 run()

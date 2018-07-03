@@ -7,7 +7,7 @@ c.transform.scale_y = 0.5
 
 def update(dt):
     c.x += 1
-    c.transform.rotation -= 1
+    c.rotation -= 1
 
 def draw(dt):
     # update()
@@ -16,7 +16,7 @@ def draw(dt):
     c.draw()
 
 
-schedule_interval(draw)
-schedule_interval(update)
+repeat(draw)
+repeat(update)
 
 run()

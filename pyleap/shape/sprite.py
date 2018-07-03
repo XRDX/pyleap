@@ -1,6 +1,6 @@
 import pyglet
 
-from pyleap.resource import rss
+from pyleap.util import rss
 from pyleap.window import window
 from pyleap.shape.rectangle import Rectangle
 

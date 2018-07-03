@@ -44,6 +44,6 @@ def move():
 
 mouse.on_move(move)
 
-schedule_interval(draw)
+repeat(draw)
 
 run()

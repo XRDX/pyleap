@@ -1,13 +1,18 @@
+""" 资源加载扩展
+当资源是一个链接时，将先下载资源保存到本地，再进入游戏
+
+"""
+
 import os
 import hashlib
 import urllib.request
-import pyglet
 import re
 
 
 class Resource():
 
     def __init__(self, path="download"):
+        """ 设置保存路径 """
         self.path = path
 
     def get(self, url):
@@ -23,6 +28,7 @@ class Resource():
         return fullname
 
     def md5_8_name(self, url):
+        """ 把下载的文件重命名为地址的md5前8位 """
         m = hashlib.md5()
         m.update(url.encode('utf-8'))
         return m.hexdigest()[:8] + os.path.splitext(url)[1]
@@ -34,6 +40,7 @@ class Resource():
         print("Downloading: " + url)
         urllib.request.urlretrieve(url, filename=fullname)
 
+
     def is_url(self, url):
         regex = re.compile(
                 r'^(?:http|ftp)s?://' # http:// or https://
@@ -43,5 +50,3 @@ class Resource():
                 r'(?::\d+)?' # optional port
                 r'(?:/?|[/?]\S+)$', re.IGNORECASE)
         return re.match(regex, url) is not None
-
-rss = Resource()

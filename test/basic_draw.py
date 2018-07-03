@@ -8,5 +8,5 @@ def draw(dt):
     Circle(200, 200, 50, "#ff4444aa").draw()
     Text('Hello, world', 350, 100).draw()
 
-schedule_interval(draw)
+repeat(draw)
 run()

@@ -6,5 +6,5 @@ def draw(dt):
     if key.space:
         window.show_axis()
 
-schedule_interval(draw)
+repeat(draw)
 run()

@@ -19,6 +19,6 @@ def draw(dt):
     c.draw()
 
 c.on_press(update)
-schedule_interval(draw)
+repeat(draw)
 
 run()

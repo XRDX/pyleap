@@ -46,16 +46,16 @@ def game(dt):
     for m in monsters:
         if(m.collide(hero)):
             t.draw()
-            unschedule(game)
+            stop(game)
             break
 
 def retry():
     global monsters
     monsters = []
-    schedule_interval(game)
+    repeat(game)
     
 t.on_press(retry)
 
-schedule_interval(game)
-schedule_interval(add_monster, 1)
+repeat(game)
+repeat(add_monster, 1)
 run()
