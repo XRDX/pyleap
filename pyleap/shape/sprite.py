@@ -8,7 +8,10 @@ from pyleap.shape.rectangle import Rectangle
 class Sprite(Rectangle):
     """ Sprite """
 
-    def __init__(self, src, x=window.center_x, y=window.center_y):
+    def __init__(self, src, x=300, y=200):
+        """
+        默认位置： 300, 200
+        """
         self.img = pyglet.image.load(rss.get(src))
         self.center_image(self.img)
 

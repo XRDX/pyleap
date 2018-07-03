@@ -19,7 +19,7 @@ class Shape(CollisionMixin, TransformMixin):
     """ base shape class """
 
     def __init__(self, x, y, color="orange", gl=gl.GL_LINE_LOOP,
-                 line_width=1, point_size=1):
+                 line_width=1):
         """ 默认参数
         颜色 color: "orange"
         线条粗细 line_width： 1
@@ -29,11 +29,18 @@ class Shape(CollisionMixin, TransformMixin):
         self.color = color
         self.gl = gl
         self.transform = Transform()
+
+        # 图形的线条宽度，默认为1
         self.line_width = line_width
-        self.point_size = point_size # only for point
+
+        # 图形的近似多边形 (x1, y1, x2, y2, ...)
         self.points = ()
-        self.screen_points = ()
-        self.press_events = []
+
+        # 用于记录press事件函数
+        self._press = None
+
+        # 仅Point类point_size属性有效
+        self.point_size = 1
 
     def draw(self):
         """ 使用draw方法将图形绘制在窗口里 """
@@ -72,7 +79,7 @@ class Shape(CollisionMixin, TransformMixin):
         self.vertex_list = pyglet.graphics.vertex_list(
             length,
             ('v2f', self.points),
-            ('c4B'.format(len(color)), color * length))
+            ('c4B', color * length))
 
     def update_anchor(self):
         """ 如果是使用set_anchor_rate来设定锚点，那么就需要不停的更新锚点的位置 """

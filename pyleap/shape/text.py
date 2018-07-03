@@ -7,17 +7,39 @@ from pyleap.shape.rectangle import Rectangle
 
 
 class Text(Rectangle):
-    """ Text """
+    """ Text
+    src: 文本内容
+    font_size: 文字高度
+    """
 
-    def __init__(self, text, x=window.center_x, y=window.center_y,
+    def __init__(self, src, x=window.center_x, y=window.center_y,
                  font_size=16, color="orange"):
+        """ """
 
-        self.text = pyglet.text.Label(text=text, font_size=font_size)
-        super().__init__(x=x, y=y, w=font_size*len(text)*0.6, h=font_size, color=color)
+        self.text = pyglet.text.Label(text=src, font_size=font_size)
+        super().__init__(x=x, y=y, w=font_size*len(src)*0.6, h=font_size, color=color)
 
     def draw(self):
         self.update_all()
         self.text.x = self.x
         self.text.y = self.y
+        self.text.font_size = self.h
         self.text.color = color_to_tuple(self.color)
         self.text.draw()
+
+    @property
+    def src(self):
+        return self.text.text
+
+    @src.setter
+    def src(self, src):
+        self.text.text = src
+
+    @property
+    def font_size(self):
+        return self.h
+
+    @font_size.setter
+    def font_size(self, font_size):
+        self.h = font_size
+    

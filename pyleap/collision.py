@@ -1,10 +1,15 @@
 """
-collide(shape1, shape2)
+判断2个基本图形是否发生碰撞，
 
-Detect if shape1 hit shape2
+如果没有碰撞，则返回False
+如果碰撞，则返回其中一个碰撞的坐标点，如 {'x': 100, 'y': 200}
 
 """
 from pyleap.mouse import mouse
+
+
+__all__ = ['shape_clicked', 'CollisionMixin' ]
+
 
 def shape_clicked(shape):
     shape.transform.update_points(shape.points)
@@ -62,7 +67,7 @@ def lines_cross(s1, s2):
     return False
 
 def line_cross(x1, y1, x2, y2, x3, y3, x4, y4):
-
+    """ 判断两条线段是否交叉 """
     # out of the rect
     if min(x1, x2) > max(x3, x4) or max(x1, x2) < min(x3, x4) or \
        min(y1, y2) > max(y3, y4) or max(y1, y2) < min(y3, y4):
@@ -87,7 +92,7 @@ def line_cross(x1, y1, x2, y2, x3, y3, x4, y4):
 
 
 def cross_product (x1, y1, x2, y2, x3, y3):
-    """ 
+    """ 叉乘
     vector 1: x1, y1, x2, y2
     vector 2: x1, y1, x3, y3
     """
@@ -95,15 +100,26 @@ def cross_product (x1, y1, x2, y2, x3, y3):
 
 
 class CollisionMixin():
+    """ 碰撞图形
+    将任意图形转换为多边形进行判断，图形需要拥有points属性
 
+    按照以下步骤进行判断
+    1. 如果图形的外接矩形没有碰撞，返回False
+    2. 如果图形的点在目标图形内，返回这个点
+    3. 如果图形的边和目标图形的边相交，返回相交点
+    4. 返回False
+
+    """
 
     def update_collision_rect(self):
+        """ 获取外接矩形 """
         self.min_x = min(self.points[::2])
         self.max_x = max(self.points[::2])
         self.min_y = min(self.points[1::2])
         self.max_y = max(self.points[1::2])
 
     def collide(self, s2):
+        """ 判断图形是否碰到了另外一个图形 """
         s1 = self
         if not (s1.points and s2.points):
             return False
@@ -114,6 +130,7 @@ class CollisionMixin():
         t1.update_points(s1.points)
         t2.update_points(s2.points)
 
+        # 更新外接矩形
         t1.update_collision_rect()
         t2.update_collision_rect()
 
@@ -127,10 +144,6 @@ class CollisionMixin():
                lines_cross(t1, t2)
 
     def on_press(self, func):
-        self.press_events.append(func)
-
-    def click(self):
-        for func in self.press_events:
-            func()
-
+        """ 当图形被点击时，触发func函数 """
+        self._press = func
 
