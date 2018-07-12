@@ -11,7 +11,7 @@ enemy = Sprite("https://rss.leaplearner.com/Image/Role/Fighter10.png")
 bullet = Sprite("https://rss.leaplearner.com/Image/Role/Fish6.png")
 msc = Audio("https://rss.leaplearner.com/Audio/BallGame/buySuccess.mp3")
 
-bg.scale = 0.4
+bg.scale = 0.5
 hero.scale = 0.8
 enemy.scale = 0.5
 bullet.scale = 0.1
