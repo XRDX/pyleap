@@ -20,14 +20,17 @@ import pyglet
 from pyleap.util import rss
 
 
-class Audio(pyglet.media.StaticSource):
+class Audio(pyglet.media.Player):
     """ 音效对象
    
+    Audio(url, loop=False)
+
     属性
 
     time    ： 当前的播放时间（秒），只读属性，通过seek()方法更改时间
     playing  : bool值，当前是否在播放，只读属性
     volume  ： float值，音量大小，从0到1，
+    loop     : bool值，是否重复播放
 
     方法
 
@@ -37,6 +40,21 @@ class Audio(pyglet.media.StaticSource):
 
     """
 
-    def __init__(self, src):
+    def __init__(self, src, loop=False):
         """ Decoding sounds can be processor-intensive and may introduce latency, particularly for short sounds that must be played quickly, such as bullets or explosions. You can force such sounds to be decoded and retained in memory rather than streamed from disk by wrapping the source in a StaticSource:"""
-        super().__init__(pyglet.media.load(rss.get(src)))
+        super().__init__()
+        _source = pyglet.media.load(rss.get(src))
+        self._source_group = pyglet.media.SourceGroup(_source.audio_format, None)
+        self._source_group.loop = loop
+        self._source_group.queue(_source)
+        self.queue(self._source_group)
+
+    @property
+    def loop(self):
+        return self._source_group.loop
+    
+    @loop.setter
+    def loop(self, loop):
+        self._source_group.loop = loop
+    
+
