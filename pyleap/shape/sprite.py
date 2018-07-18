@@ -5,6 +5,8 @@ from pyleap.window import window
 from pyleap.shape.rectangle import Rectangle
 
 
+cache_images = {}
+
 class Sprite(Rectangle):
     """ Sprite """
 
@@ -12,9 +14,12 @@ class Sprite(Rectangle):
         """
         默认位置： 300, 200
         """
-        self.img = pyglet.image.load(rss.get(src))
-        self.center_image(self.img)
-
+        if src not in cache_images:
+              img = pyglet.image.load(rss.get(src))
+              self.center_image(img)
+              cache_images[src] = img
+        
+        self.img = cache_images[src]
         self.sprite = pyglet.sprite.Sprite(img=self.img, x=x, y=y)
         # self.collision_scale = 0.8
         super().__init__(x, y)      
