@@ -3,18 +3,11 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-LeapJS 教程
+项目列表
 =======================================
 
 .. toctree::
    :maxdepth: 2
 
-   introduction/index
-   basic_shapes/index
-   shapes/index
-   styles/index
-   audio/index
-   events/index
-   transform/index
-   physical/index
-   projects/index
+   ClickerHero
+   ClickerHero_en

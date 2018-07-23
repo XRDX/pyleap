@@ -24,7 +24,7 @@ source_parsers = {
 
 # -- Project information -----------------------------------------------------
 
-project = 'LeapJS 教程'
+project = 'pyleap 教程'
 copyright = '2018, Vic Wang'
 author = 'Vic Wang'
 
@@ -106,7 +106,7 @@ html_static_path = ['_static']
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'JSTutorialdoc'
+htmlhelp_basename = 'Pyleap_help'
 
 
 # -- Options for LaTeX output ------------------------------------------------
@@ -133,7 +133,7 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'JSTutorial.tex', 'JS Tutorial Documentation',
+    (master_doc, 'Pyleap.tex', 'Pyleap',
      'Vic Wang', 'manual'),
 ]
 
@@ -143,7 +143,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'jstutorial', 'JS Tutorial Documentation',
+    (master_doc, 'Pyleap', 'Pyleap',
      [author], 1)
 ]
 
@@ -154,8 +154,8 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'JSTutorial', 'JS Tutorial Documentation',
-     author, 'JSTutorial', 'One line description of project.',
+    (master_doc, 'Pyleap', 'Pyleap',
+     author, 'Pyleap', 'One line description of project.',
      'Miscellaneous'),
 ]
 
