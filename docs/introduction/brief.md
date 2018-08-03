@@ -1,6 +1,6 @@
 # 简介
 
-LeapJS是由LeapLeaner开发的基于浏览器的一个插件，有了LeapJS，我们就可以在浏览器上使用简单的一些命令进行动画的创作，开发各种小游戏等。利用LeapJS学习JS，可以让你在学习JS的过程中充满乐趣。
+Pyleap是由LeapLeaner开发的基于python的一个插件，有了Pyleap，我们就可以使用简单的一些Python命令进行动画的创作，开发各种小游戏等。利用Pyleap学习python，可以让你在学习python的过程中充满乐趣。
 
 # 运行环境
 
