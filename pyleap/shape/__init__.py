@@ -6,3 +6,4 @@ from pyleap.shape.shape import Shape
 from pyleap.shape.sprite import Sprite, Batch
 from pyleap.shape.text import Text
 from pyleap.shape.triangle import Triangle
+from pyleap.shape.polygon import Polygon
