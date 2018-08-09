@@ -30,7 +30,27 @@ class Key():
     def __getattr__(self, key_name):
         return keys[default_key.__dict__[key_name.upper()]]
 
+
 key = Key(keys)
 
 
-__all__ = ['key']
+def null():
+    pass
+
+class SingleKey():
+
+    def __init__(self):
+        self.on_press = null
+        self.on_release = null
+        self.pressed = false
+
+class KeyEvent():
+
+    def __init__(self):
+        self.a = SingleKey()
+
+
+key_event = KeyEvent()
+
+
+__all__ = ['key', 'key_event']
