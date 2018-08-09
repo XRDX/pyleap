@@ -7,7 +7,12 @@ def press():
 def release():
     print("a release")
 
-key_event.a.on_press = press
-key_event.a.on_release = release
+key.a.on_press(press)
+key.A.on_release(release)
+
+def a_value(dt):
+    print(key.a.pressed)
+
+repeat(a_value, 1)
 
 run();

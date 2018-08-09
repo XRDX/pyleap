@@ -2,9 +2,8 @@ from pyleap.window import window
 from pyleap.mouse import mouse
 from pyleap.collision import shape_clicked
 from pyleap.util import all_shapes
-from pyleap.key import key, key_event
+from pyleap.key import key
 
-from pyglet.window import key as defaul_key
 
 @window.event
 def on_mouse_motion(x, y, dx, dy):
@@ -62,10 +61,16 @@ def on_mouse_release(x, y, button, modifiers):
 @window.event
 def on_key_press(symbol, modifiers):
     """ 当键盘按键按下时触发 """
-    key_event.a.on_press()
+    try:
+        key[symbol].press()
+    except:
+        pass
 
 
 @window.event
 def on_key_release(symbol, modifiers):
     """ 当键盘按键松开时触发 """
-    key_event.a.on_release()
+    try:
+        key[symbol].release()
+    except:
+        pass

@@ -1,11 +1,31 @@
 from pyleap.window import window
 from pyglet.window import key as default_key
 
+from pyleap import null
 
-keys = default_key.KeyStateHandler()
-window.push_handlers(keys)
+class SingleKey():
 
-class Key():
+    def __init__(self):
+        self._press = null
+        self._release = null
+        self.pressed = False
+    
+    def on_press(self, f):
+        self._press = f
+
+    def press(self):
+        self.pressed = True;
+        self._press()
+
+    def on_release(self, f):
+        self._release = f
+
+    def release(self):
+        self.pressed = False;
+        self._release()
+
+
+class Key(dict):
     """ 
     当按下A键时，key.A 为True，否则为False
 
@@ -24,33 +44,20 @@ class Key():
 
     """
 
-    def __init__(self, keys):
-        self.keys = keys
+    def __init__(self, **kw):
+        super().__init__(**kw)
 
-    def __getattr__(self, key_name):
-        return keys[default_key.__dict__[key_name.upper()]]
+        for symbol, name in default_key.__dict__['_key_names'].items():
+             s_k = SingleKey()
+             self[symbol] = s_k
+             self[name] = s_k
 
-
-key = Key(keys)
-
-
-def null():
-    pass
-
-class SingleKey():
-
-    def __init__(self):
-        self.on_press = null
-        self.on_release = null
-        self.pressed = false
-
-class KeyEvent():
-
-    def __init__(self):
-        self.a = SingleKey()
+    def __getattr__(self, key):
+        return self[key.upper()]
 
 
-key_event = KeyEvent()
+
+key = Key()
 
 
-__all__ = ['key', 'key_event']
+__all__ = ['key']
