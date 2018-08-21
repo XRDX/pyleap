@@ -23,7 +23,7 @@ PORT = 56978
 
 TEMP = tempfile.mkdtemp(prefix='LeapLearner_')
 
-def main():
+def start():
     httpd = make_server('127.0.0.1', PORT, application)
     print('Ready for Python code on port %d...' % PORT)
     httpd.serve_forever()
@@ -82,5 +82,4 @@ def application(environ, start_response):
 
     return [json.dumps(r).encode('utf-8')]
 
-if __name__ == '__main__':
-    main()
+start()
