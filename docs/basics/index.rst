@@ -1,8 +1,12 @@
-pyleap 教程
+可用方法
 =======================================
 
 .. toctree::
    :maxdepth: 2
 
-   introduction/index
-   basics/index
+   shapes
+   window
+   mouse
+   key
+   collision
+   audio
