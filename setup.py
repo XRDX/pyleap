@@ -1,20 +1,18 @@
 import setuptools
 
-with open("README.md", "r") as fh:
-    long_description = fh.read()
-
 setuptools.setup(
     name="pyleap",
-    version="0.1.2",
+    version="0.1.3",
     author="Vic Wang",
     author_email="305880887@qq.com",
     description='A simple 2D game engine base on pyglet',
-    long_description=long_description,
+    long_description='A simple 2D game engine base on pyglet',
     long_description_content_type="text/markdown",
     url='http://github.com/XRDX/pyleap',
     packages=setuptools.find_packages(),
     install_requires=[
         'pyglet',
+        'leapserver'
     ],
     classifiers=(
         "Programming Language :: Python :: 3",

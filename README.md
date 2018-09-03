@@ -1,21 +1,30 @@
-# pyleap: A simple 2D game engine base on pyglet
+# pyleap使用手册
 
-install
+### 安装 Install
 
 ```shell
 pip install pyleap
-pip install leap-server
 ```
 
-usage
+如果要配合code.leaplearner使用，还需要安装leapserver模块。
 
 ```shell
-python -m leap_server
+pip install leapserver
 ```
 
-注意，安装包使用的是`-`，运行本地服务器使用的是下划线`_`。
+### 使用 Usage
 
+在项目中引入pyleap即可使用pyleap相关的功能
 
+```python
+from pyleap import *
+```
+
+在每次使用code环境钱，启动leapserver模块。
+
+```shell
+python -m leapserver
+```
 
 
 

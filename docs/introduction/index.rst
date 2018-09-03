@@ -1,4 +1,4 @@
-LeapJS 简介
+pyleap 简介
 =======================================
 
 .. toctree::
@@ -6,3 +6,4 @@ LeapJS 简介
 
    introduction
    brief
+   firstProgram

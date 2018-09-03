@@ -10,25 +10,31 @@ pyleap是由LeapLeaner开发的基于python的一个插件，有了pyleap，我�
 
 ### pyleap运行环境
 
+#### 安装pyleap
+
 首先，确保你已经安装了python3.x版本，然后使用命令行安装pyleap模块以及网页pyleap运行环境的，命令为
 
 ```shell
 pip install pyleap
 ```
 
-前置库：
+安装过程中会前置库pyglet、leapserver。
 
-pyglet
+#### 使用pyleap
 
-leapserver
+在代码中引入pyleap即可使用pyleap所带的功能
+
+```python
+from pyleap import *
+```
+
+#### 配合code.leaplearner.com使用
 
 在开始之前，在命令行中输入以下命令开启立乐python服务，允许我们在网页环境中使用我们的python。每次在立乐编辑环境中使用时，都要提前开启leapserver服务。
 
 ```shell
 python -m leapserver
 ```
-
-
 
 
 
