@@ -6,12 +6,6 @@
 pip install pyleap
 ```
 
-如果要配合code.leaplearner使用，还需要安装leapserver模块。
-
-```shell
-pip install leapserver
-```
-
 ### 使用 Usage
 
 在项目中引入pyleap即可使用pyleap相关的功能
@@ -20,11 +14,37 @@ pip install leapserver
 from pyleap import *
 ```
 
-在每次使用code环境钱，启动leapserver模块。
+在每次使用code环境前，启动leapserver模块。
 
 ```shell
 python -m leapserver
 ```
+
+
+
+### 更新
+
+```shell
+pip install pyleap --upgrade
+```
+
+
+
+### 打包
+
+如果要将程序打包，可以安装pyinstaller
+
+```shell
+pip install pyinstaller
+```
+
+打包命令可以参照pyinstaller文档，如果要打成一个文件，按照以下指令，将my_file替换为自己的文件名。
+
+```shell
+$ pyinstaller -F my_file.py --windowed
+```
+
+
 
 
 
@@ -34,12 +54,3 @@ upload to pypi
 $ python setup.py sdist bdist_wheel
 $ twine upload dist/* -u VicWang -p PYPI******
 ```
-
-pyinstaller
-
-```shell
-$ pyinstaller -F leap_server.py -i pyleap.ico
-```
-
-
-
