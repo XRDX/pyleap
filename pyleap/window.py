@@ -2,6 +2,9 @@ import pyglet
 from pyglet import gl
 from pyleap.util import all_shapes
 
+# disable debug gl option 
+pyglet.options['debug_gl'] = False
+
 class Window(pyglet.window.Window):
     """ 
     属性 Attributes
@@ -30,15 +33,14 @@ class Window(pyglet.window.Window):
 
     def __init__(self, **kwargs):
         """ TODO """
-        platform = pyglet.window.get_platform()
-        display = platform.get_default_display()
-        screen = display.get_default_screen()
+        # platform = pyglet.window.get_platform()
+        # display = platform.get_default_display()
+        # screen = display.get_default_screen()
 
-        template = gl.Config(alpha_size=8)
-        config = screen.get_best_config(template)
-        context = config.create_context(None)
-
-        super().__init__(context=context, **kwargs)
+        # template = gl.Config(alpha_size=8)
+        # config = screen.get_best_config(template)
+        # context = config.create_context(None)
+        super().__init__(**kwargs)
 
         # config = pyglet.gl.Config(alpha_size=8)
         # window = Window(config=config)

@@ -43,14 +43,3 @@ pip install pyinstaller
 ```shell
 $ pyinstaller -F my_file.py --windowed
 ```
-
-
-
-
-
-upload to pypi
-
-```shell
-$ python setup.py sdist bdist_wheel
-$ twine upload dist/* -u VicWang -p PYPI******
-```
