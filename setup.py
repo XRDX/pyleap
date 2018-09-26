@@ -1,8 +1,11 @@
 import setuptools
 
+# -$ python setup.py sdist bdist_wheel
+# -$ twine upload dist/* -u VicWang -p PYPI******
+
 setuptools.setup(
     name="pyleap",
-    version="0.1.3",
+    version="0.1.5",
     author="Vic Wang",
     author_email="305880887@qq.com",
     description='A simple 2D game engine base on pyglet',

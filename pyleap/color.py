@@ -10,8 +10,11 @@ def color_to_tuple(color):
     if(type(color) == str and color[0] == "#"):
         color = hex_color_to_tuple(color)
 
-    elif(type(color) == str and color in color_dict):
-        color = color_dict[color.lower()]
+    elif type(color) == str:
+        if color in color_dict:
+            color = color_dict[color.lower()]
+        else:
+            color = (255, 125, 0, 255) 
 
     while len(color) < 4:
         color += (255,)
