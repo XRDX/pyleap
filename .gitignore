@@ -105,3 +105,4 @@ venv.bak/
 *.mp3
 test/download/
 server/download/
+tasks/leaptask/download/

@@ -4,20 +4,15 @@ import setuptools
 # -$ twine upload dist/* -u VicWang -p PYPI******
 
 setuptools.setup(
-    name="pyleap",
-    version="0.1.6",
+    name="leaptask",
+    version="0.0.2",
     author="Vic Wang",
     author_email="305880887@qq.com",
-    description='A simple 2D game engine base on pyglet',
-    long_description='A simple 2D game engine base on pyglet',
+    description='leap task',
+    long_description="leap tasks",
     long_description_content_type="text/markdown",
     url='http://github.com/XRDX/pyleap',
     packages=setuptools.find_packages(),
-    install_requires=[
-        'pyglet',
-        'leapserver',
-        'leaptask'
-    ],
     classifiers=(
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: BSD License",
