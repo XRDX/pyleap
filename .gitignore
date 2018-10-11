@@ -106,3 +106,4 @@ venv.bak/
 test/download/
 server/download/
 tasks/leaptask/download/
+test/tasks/download/
