@@ -16,6 +16,8 @@ hero.scale = 0.8
 enemy.scale = 0.5
 bullet.scale = 0.1
 
+hero.opacity = 0.1
+
 
 def new_enemy():
     enemy.x = random.randint(0, window.w)
