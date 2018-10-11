@@ -50,7 +50,7 @@ class Sprite(Rectangle):
 
     @opacity.setter
     def opacity(self, opacity):
-        self._sprite.opacity = opacity * 255
+        self._sprite.opacity = int(opacity * 255)
 
     def center_image(self, img):
         """Sets an image's anchor point to its center"""
