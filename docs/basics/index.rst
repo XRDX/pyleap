@@ -7,6 +7,7 @@
    shapes
    window
    mouse
-   key
+   keys
    collision
+   transform
    audio
