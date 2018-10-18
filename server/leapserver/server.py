@@ -22,6 +22,19 @@ from wsgiref.simple_server import make_server
 EXEC = "python"
 PORT = 56978
 
+import platform
+
+sysstr = platform.system()
+if(sysstr =="Windows"):
+    # print ("Call Windows tasks")
+    EXEC = "python"
+elif(sysstr == "Linux"):
+    # print ("Call Linux tasks")
+    EXEC = "python3"
+else:
+    # print ("Other System tasks")
+    EXEC = "python3"
+
 TEMP = tempfile.mkdtemp(prefix='LeapLearner_')
 
 def start():

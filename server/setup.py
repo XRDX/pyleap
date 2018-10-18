@@ -5,7 +5,7 @@ import setuptools
 
 setuptools.setup(
     name="leapserver",
-    version="0.0.5",
+    version="0.0.6",
     author="Vic Wang",
     author_email="305880887@qq.com",
     description='a server for run python on web',
