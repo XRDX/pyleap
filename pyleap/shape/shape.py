@@ -68,7 +68,8 @@ class Shape(CollisionMixin, TransformMixin):
 
         # handle shapes click envets
         all_shapes.discard(self)
-        all_shapes.add(self)     
+        if(self._press != None):
+            all_shapes.add(self)     
 
 
     def update_points(self):

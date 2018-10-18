@@ -74,3 +74,4 @@ def on_key_release(symbol, modifiers):
         key[symbol].release()
     except:
         pass
+        

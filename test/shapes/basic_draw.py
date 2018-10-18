@@ -1,6 +1,8 @@
 from pyleap import *
 
 def draw(dt):
+    # window.clear()
+    window.show_axis()
     Rectangle(0, 0, window.width, window.height, "lightblue").draw()
     Rectangle(100, 200, 300, 400, "green").draw()
     Line(100, 100, 500, 100, 5, 'pink').draw()

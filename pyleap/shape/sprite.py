@@ -26,7 +26,22 @@ class Sprite(Rectangle):
 
         super().__init__(x, y)
         # self.collision_scale = 0.8
+        self._src = src
 
+    @property
+    def src(self):
+        return self._src
+    
+    @src.setter
+    def src(self, src):
+        if src not in cache_images:
+              img = pyglet.image.load(rss.get(src))
+              self.center_image(img)
+              cache_images[src] = img
+
+        self._src = src
+        self.img = cache_images[src]
+        self._sprite = pyglet.sprite.Sprite(img=self.img)
 
     @property
     def x(self):
