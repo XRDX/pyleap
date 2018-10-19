@@ -5,8 +5,14 @@
 
 import os
 import hashlib
-import urllib.request
 import re
+
+import ssl
+import urllib.request
+
+ctx = ssl.create_default_context()
+ctx.check_hostname = False
+ctx.verify_mode = ssl.CERT_NONE
 
 
 class Resource():
@@ -38,8 +44,10 @@ class Resource():
             os.makedirs(self.path)
 
         print("Downloading: " + url)
-        urllib.request.urlretrieve(url, filename=fullname)
-
+        # urllib.request.urlretrieve(url, filename=fullname)
+        with urllib.request.urlopen(url, context=ctx) as u, \
+            open(fullname, 'wb') as f:
+            f.write(u.read())
 
     def is_url(self, url):
         regex = re.compile(

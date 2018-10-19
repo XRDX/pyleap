@@ -26,24 +26,10 @@ def run_after(f, dt=1/60):
 def run():
     """ 在程序的最后运行，进入循环阻塞 """
     pyglet.app.run()
-
-
-def unschedule(*args):
-    print("unschedule is deprecated, Please use `stop` instead.")
-    raise Exception
-
-def schedule_interval(*args):
-    print("schedule_interval is deprecated, Please use `repeat` instead.")
-    raise Exception
-
-def schedule_once(*args):
-    print("schedule_once is deprecated, Please use `run_after` instead.")
-    raise Exception
+    
 
 """all_shapes, use for track all the shapes draw on the windows
 """
 all_shapes = set()
 
-__all__ = ['null', 'schedule_once', 'schedule_interval', 'run', 
-           'unschedule', 'stop', 'repeat', 'run_after', 'all_shapes',
-           'rss']
+__all__ = ['null', 'run', 'stop', 'repeat', 'run_after', 'all_shapes', 'rss']
