@@ -1,4 +1,5 @@
 from pyleap import *
+from pyglet import gl
 import math, random
 targets = []
 # Lesson 1
@@ -115,7 +116,6 @@ def space2():
 				arrow.rotation = math.degrees(math.atan(-dx/dy)) + random.randint(-5,6)
 				arrow.draw()
 	txt.draw()
-
 def sky():
 	_star = Sprite("https://r.leaplearner.com/ud/production/687283/BwjM.jpg", 250, 250)
 	window.set_size(500, 500)
@@ -132,7 +132,63 @@ def star(x, y):
     _star = Circle(x, y, 5)
     _star.draw()
 
+
+
 # Lesson 2
+lines = []
+ps = [[66, 88, 96, 134], [129, 169, 213, 196], [275, 204, 355, 187], [410, 171, 487, 132], [546, 139, 610, 195], [655, 237, 698, 293]]
+class Line(Shape):
+	def __init__(self, x1=100, y1=100, x2=200, y2=200, line_width=1, color="orange"):
+		""" 线段
+		线段宽度： line_width， 默认为1
+		颜色： color, 默认为"orange"
+		"""
+		x = (x1 + x2) / 2
+		y = (y1 + y2) / 2
+		super().__init__(x, y, color, gl=gl.GL_LINES, line_width=line_width)
+		self.x1 = x1
+		self.y1 = y1
+		self.x2 = x2
+		self.y2 = y2
+		lines.append(self)
+
+	def update_points(self):
+		self.points = (self.x1, self.y1, self.x2, self.y2)	
+
+def check(self, x1, y1, x2, y2, ds):
+	dx1 = self.x1 - x1
+	dy1 = self.y1 - y1
+	dx2 = self.x2 - x2
+	dy2 = self.y2 - y2
+	ds1 = math.sqrt(dx1*dx1+dy1*dy1)
+	ds2 = math.sqrt(dx2*dx2+dy2*dy2)
+	if (ds1<=ds and ds2<= ds):
+		return True
+	else:
+		return False
+
+	
+Line.check = check
+def space3():
+	global spaceship, targets, lines
+	window.set_size(800, 400)
+	window.clear()
+	txt = Text("为地球上的人们搭建星际廊桥吧！", 100, 350, 15, "white")
+	space = Sprite("https://r.leaplearner.com/ud/production/A01T0008/nUuI.jpg", 400, 200)
+	space.draw()
+	window.show_axis()
+	bridge_amt = 0
+	for i in range(len(lines)):
+		if (lines[i].check(ps[i][0], ps[i][1], ps[i][2], ps[i][3], 5) or lines[i].check(ps[i][2], ps[i][3], ps[i][0], ps[i][1], 5)):
+			bridge_amt = bridge_amt + 1
+			txt.src = "已经搭建完成" + str(bridge_amt) + "条星际廊桥"
+		else:
+			lines[i].x1 += random.randint(-1, 1)
+			lines[i].y1 += random.randint(0, 2)
+			lines[i].x2 += random.randint(-1, 1)
+			lines[i].y2 += random.randint(0, 2)
+	txt.draw()
+
 def shape_q1():
 	window.set_size(700, 800)
 	bg = Rectangle(0, 0, 700, 800, "white")
