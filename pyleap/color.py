@@ -1,7 +1,7 @@
 from pyleap.constant_colors import color_dict
 
 
-def color_to_tuple(color):
+def color_to_tuple(color, opacity=1):
     """ convert any color to standard ()
     "red"       ->  'c3B', (255, 125, 0)
     "#ffffff"   ->  'c3B', (255, 255, 255)
@@ -14,10 +14,10 @@ def color_to_tuple(color):
         if color in color_dict:
             color = color_dict[color.lower()]
         else:
-            color = (255, 125, 0, 255) 
+            color = (255, 125, 0, int(255*opacity)) 
 
     while len(color) < 4:
-        color += (255,)
+        color += (int(255*opacity),)
 
     return color
 

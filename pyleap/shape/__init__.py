@@ -7,3 +7,4 @@ from pyleap.shape.sprite import Sprite
 from pyleap.shape.text import Text
 from pyleap.shape.triangle import Triangle
 from pyleap.shape.polygon import Polygon
+from pyleap.shape.ellipse import Ellipse

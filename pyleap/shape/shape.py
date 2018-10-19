@@ -42,6 +42,9 @@ class Shape(CollisionMixin, TransformMixin):
         # 仅Point类point_size属性有效
         self.point_size = 1
 
+        # 透明度 opacity
+        self.opacity = 1
+
     def draw(self):
         """ 使用draw方法将图形绘制在窗口里 """
         self.update_all()
@@ -65,7 +68,8 @@ class Shape(CollisionMixin, TransformMixin):
 
         # handle shapes click envets
         all_shapes.discard(self)
-        all_shapes.add(self)     
+        if(self._press != None):
+            all_shapes.add(self)     
 
 
     def update_points(self):
@@ -74,7 +78,7 @@ class Shape(CollisionMixin, TransformMixin):
 
     def update_vertex_list(self):
         """ 使用pyglet来绘制基本图形之前，转为pyglet识别的属性 """
-        color = color_to_tuple(self.color)
+        color = color_to_tuple(self.color, self.opacity)
         length = len(self.points) // 2
         self.vertex_list = pyglet.graphics.vertex_list(
             length,

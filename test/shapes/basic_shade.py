@@ -9,6 +9,7 @@ c = Circle(200, 200, 100, "red")
 txt = Text('Hello, world')
 c.transform.scale_y = 0.5
 
+c2.opacity = 0.5
 
 def update(dt):
     r.x += 1

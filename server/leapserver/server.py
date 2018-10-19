@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import sys
+import re
 
 def check_version():
     v = sys.version_info
@@ -74,9 +75,18 @@ def application(environ, start_response):
         print('Running')
         r['output'] = decode(subprocess.check_output([EXEC, fpath], stderr=subprocess.STDOUT))
     except subprocess.CalledProcessError as e:
-        r = dict(error='Exception', output=decode(e.output))
-    except subprocess.CalledProcessError as e:
-        r = dict(error='Error', output='执行错误')
+        try:
+            es = decode(e.output).split("\r\n")
+            # r = dict(error='Exception', output=decode(e.output))
+
+            p1 = r"line\s\d+"
+            pattern1 = re.compile(p1)
+            matcher1 = re.search(pattern1, es[1])
+
+            line = matcher1.group(0)
+            r = dict(error='Exception', output=es[-2] + " (" + line + ")")
+        except:
+            r = dict(error='Exception', output=decode(e.output))
 
     print('Execute done.')
 
