@@ -50,6 +50,10 @@ class Mouse():
         """ 注册鼠标右键点击事件 """
         self._right_press = f
 
+    def on_right_release(self, f):
+        """ 注册鼠标右键点击事件 """
+        self._right_release = f
+        
     def move(self):
         """ 触发鼠标移动事件 """
         self._move()
