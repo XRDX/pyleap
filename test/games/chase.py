@@ -29,7 +29,12 @@ hero.speed = 5
 t = Text("RETRY!", font_size=30)
 
 def add_monster(dt):
-    m = Monster()
+    if(random.random() > 0.5):
+        y = 0
+    else:
+        y = window.h
+    
+    m = Monster(random.randint(0, window.w), y)
     monsters.append(m)
 
 def game(dt):

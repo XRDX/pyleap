@@ -22,20 +22,20 @@ def draw(dt):
 
     c = rect.collide(circle)
     if(c):
-        p.x = c[0]
-        p.y = c[1]
+        p.x = c.x
+        p.y = c.y
         p.draw()
 
     c = rect2.collide(rect)
     if(c):
-        p.x = c[0]
-        p.y = c[1]
+        p.x = c.x
+        p.y = c.y
         p.draw()
 
     c = rect2.collide(circle)
     if(c):
-        p.x = c[0]
-        p.y = c[1]
+        p.x = c.x
+        p.y = c.y
         p.draw()
 
 def move():

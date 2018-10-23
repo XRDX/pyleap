@@ -10,6 +10,10 @@ from pyleap.mouse import mouse
 
 __all__ = ['shape_clicked', 'CollisionMixin' ]
 
+class P:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
 
 def shape_clicked(shape):
     shape.transform.update_points(shape.points)
@@ -46,7 +50,7 @@ def points_in_points(s1, s2):
             continue
 
         if(point_in_points((x, y), s2)):
-            return (x, y)
+            return P(x, y)
 
     return False
 
@@ -88,7 +92,7 @@ def line_cross(x1, y1, x2, y2, x3, y3, x4, y4):
     D1 = b2 * (x2 - x1) - b1 * (x4 - x3)
     D2 = b2 * (y2 - y1) - b1 * (y4 - y3)
 
-    return (D1 / D, D2 / D)
+    return P(D1 / D, D2 / D)
 
 
 def cross_product (x1, y1, x2, y2, x3, y3):

@@ -20,8 +20,8 @@ def draw(dt):
     hero.draw()
     enemy.draw()
     if(c):
-        p.x = c[0]
-        p.y = c[1]
+        p.x = c.x
+        p.y = c.y
         p.draw()
 
 
