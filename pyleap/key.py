@@ -27,7 +27,7 @@ class SingleKey():
 
 class Key(dict):
     """ 
-    当按下A键时，key.A 为True，否则为False
+    当按下A键时，key.A.pressed 为True，否则为False
 
     键名
 
