@@ -11,22 +11,32 @@ cache_images = {}
 class Sprite(Rectangle):
     """ Sprite """
 
-    def __init__(self, src, x=300, y=200):
+    def __init__(self, src, x=300, y=200, w=None, h=None):
         """
         默认位置： 300, 200
         """
-
-        if src not in cache_images:
-              img = pyglet.image.load(rss.get(src))
-              self.center_image(img)
-              cache_images[src] = img
-        
-        self.img = cache_images[src]
-        self._sprite = pyglet.sprite.Sprite(img=self.img)
-
-        super().__init__(x, y)
+        self.src = src
+        w = w or self._sprite.width
+        h = h or self._sprite.height
+        super().__init__(x, y, w, h)
         # self.collision_scale = 0.8
-        self._src = src
+
+
+    @property
+    def w(self):
+        return self._sprite.width
+    
+    @w.setter
+    def w(self, w):
+        self._sprite.scale_x =  w / self.img.width
+
+    @property
+    def h(self):
+        return self._sprite.height
+    
+    @h.setter
+    def h(self, h):
+        self._sprite.scale_y =  h / self.img.height
 
     @property
     def src(self):
