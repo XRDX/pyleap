@@ -167,7 +167,6 @@ def check(self, x1, y1, x2, y2, ds):
 	else:
 		return False
 
-	
 Line.check = check
 def space3():
 	global spaceship, targets, lines
@@ -354,3 +353,143 @@ def emoji3():
 	right_eye1 = Circle(260, 220, 10, "gray")
 	right_eye1.stroke()
 	
+def mars_rover1():
+    window.set_size(800, 600)
+    a = [];
+    a.append(Rectangle(0, 0, 800, 600, "#FFF8DC"))
+    n = Sprite("https://r.leaplearner.com/ud/production/A01T0008/vOmW.png", 400, 300)
+    n.scale = 0.6
+    a.append(n)
+    a.append(Rectangle(458, 280, 24, 132, "black"))
+    a.append(Rectangle(460, 280, 20, 130, "#DDDDDD"))
+    a.append(Rectangle(298, 198, 204, 104, "black"))
+    a.append(Rectangle(220, 305, 20, 20, "orange"))
+    a.append(Rectangle(222, 325, 16, 70, "black"))
+    a.append(Rectangle(224, 325, 12, 68, "red"))
+    a.append(Rectangle(300, 200, 200, 100, "#DDDDDD"))
+    a.append(Rectangle(198, 298, 304, 14, "black"))
+    a.append(Rectangle(200, 300, 300, 10, "#DDDDDD"))
+    a.append(Rectangle(428, 398, 84, 34, "black"))
+    a.append(Rectangle(430, 400, 80, 30, "#DDDDDD"))
+    a.append(Polygon(290, 340, 280, 310, 300, 310, "black"))
+    a.append(Circle(290, 340, 10, "orange"))
+    a.append(Polygon(268, 425, 275, 360, 310, 325, 375, 313, "#DDDDDD"))
+    n = Ellipse(325, 370, 18, 78, "orange")
+    n.set_anchor(325, 370)
+    n.rotation = 45
+    a.append(n)
+    n = Ellipse(320, 370, 10, 55, "white")
+    n.set_anchor(325, 370)
+    n.rotation = 45
+    a.append(n)
+    n = Rectangle(310, 365, 15, 10, "black")
+    n.set_anchor(325, 370)
+    n.rotation = 45
+    a.append(n)
+    a.append(Line(500, 300, 550, 400, 20, "orange"))
+    a.append(Line(550, 400, 665, 380, 20, "orange"))
+    a.append(Polygon(660, 370, 680, 350, 730, 350, 730, 355, 685, 365, 675, 385, "black"))
+    a.append(Polygon(690, 402, 730, 410, 729, 416, 680, 415, 655, 385, 675, 385, "black"))
+    a.append(Circle(550, 400, 12, "black"))
+    a.append(Circle(550, 400, 10, "white"))
+    a.append(Circle(550, 400, 5, "black"))
+    a.append(Circle(665, 380, 12, "black"))
+    a.append(Circle(665, 380, 10, "white"))
+    a.append(Circle(665, 380, 5, "black"))
+    a.append(Circle(500, 300, 12, "black"))
+    a.append(Circle(500, 300, 10, "white"))
+    a.append(Circle(500, 300, 5, "black"))
+    a.append(Circle(450, 425, 17, "black"))
+    a.append(Circle(450, 425, 15, "orange"))
+    a.append(Circle(450, 425, 12, "white"))
+    a.append(Circle(490, 425, 17, "black"))
+    a.append(Circle(490, 425, 15, "orange"))
+    a.append(Circle(490, 425, 12, "white"))
+    a.append(Circle(490, 425, 11, "blue"))
+    a.append(Circle(150, 140, 50, "black"))
+    a.append(Circle(150, 140, 40, "gray"))
+    a.append(Circle(150, 140, 10, "orange"))
+    a.append(Circle(390, 140, 50, "black"))
+    a.append(Circle(390, 140, 40, "gray"))
+    a.append(Circle(390, 140, 10, "orange"))
+    a.append(Circle(660, 140, 50, "white"))
+    a.append(Line(310, 280, 560, 280, 20, "orange"))
+    a.append(Line(310, 280, 260, 210, 20, "orange"))
+    a.append(Circle(310, 280, 10, "orange"))
+    a.append(Line(200, 210, 340, 210, 20, "orange"))
+    a.append(Line(200, 210, 150, 140, 20, "orange"))
+    a.append(Line(340, 210, 390, 140, 20, "orange"))
+    a.append(Circle(200, 210, 10, "orange"))
+    a.append(Circle(340, 210, 10, "orange"))
+    a.append(Circle(400, 280, 17, "black"))
+    a.append(Circle(400, 280, 15, "white"))
+    a.append(Circle(400, 280, 7, "black"))
+    a.append(Circle(260, 210, 17, "white"))
+    a.append(Circle(150, 140, 6, "black"))
+    a.append(Circle(390, 140, 6, "black"))
+    for shape in a:
+        shape.draw()
+        
+def mars_rover2():  
+    a = [];
+    a.append(Line(560, 280, 660, 140, 20, "orange"))
+    a.append(Circle(560, 280, 10, "orange"))
+    a.append(Circle(660, 140, 10, "orange"))
+    a.append(Circle(660, 140, 6, "black"))
+    for shape in a:
+        shape.draw()
+    window.show_axis()
+
+sate = Sprite("https://r.leaplearner.com/ud/production/A01T0008/bOGM.png", 300, 850)
+sate.scale = 0.3
+sate.set_anchor(300, 300)
+angle = 0;
+red_s = Sprite("https://r.leaplearner.com/ud/production/A01T0008/6kC3.png", 300, 300)
+red_s.show = True
+blue_s = Sprite("https://r.leaplearner.com/ud/production/A01T0008/X2ky.png", 300, 300)
+blue_s.show = True
+green_s = Sprite("https://r.leaplearner.com/ud/production/A01T0008/Rsi1.png", 300, 300)
+green_s.show = True
+
+def satellite():
+    global angle
+    window.set_size(600, 600)
+    window.clear()
+    bg = Sprite("https://r.leaplearner.com/ud/production/A01T0008/ezTx.jpg", 300, 300)
+    bg.draw()
+    window.show_axis()
+    if (red_s.show):
+        red_s.draw()
+    if (blue_s.show):
+        blue_s.draw()
+    if (green_s.show):
+        green_s.draw()
+    angle -= 0.3
+
+def launch(track):
+    if (isinstance (track, Circle)):
+        if (track.x == 300 and track.y == 300 and track.r > 160 and track.r < 180 and track.color == "red"):
+            sate.x = 300
+            sate.y = 850
+            sate.rotation = angle
+            sate.draw()
+            red_s.show = False
+        elif (track.x == 300 and track.y == 300 and track.r > 205 and track.r < 225 and track.color == "blue"):
+            sate.x = 300
+            sate.y = 1000
+            sate.rotation = angle - 120
+            sate.draw()
+            blue_s.show = False
+        elif (track.x == 300 and track.y == 300 and track.r > 246 and track.r < 266 and track.color == "green"):
+            sate.x = 300
+            sate.y = 1150
+            sate.rotation = angle - 240
+            sate.draw()
+            green_s.show = False
+            
+def solar():
+    window.set_size(800, 500)
+    window.clear()
+    bg = Sprite("https://r.leaplearner.com/ud/production/A01T0008/heEu.jpg", 400, 250)
+    bg.draw()
+    window.show_axis()
