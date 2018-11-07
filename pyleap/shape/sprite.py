@@ -83,13 +83,10 @@ class Sprite(Rectangle):
         img.anchor_y = img.height // 2 # int
 
     def update_points(self):
-        w = self.img.width
-        h = self.img.height
-
-        min_x = self.x - w/2
-        min_y = self.y - h/2
-        max_x = self.x + w/2
-        max_y = self.y + h/2
+        min_x = self.x - self.w/2
+        min_y = self.y - self.h/2
+        max_x = self.x + self.w/2
+        max_y = self.y + self.h/2
         self.points = (min_x, min_y, max_x, min_y, max_x, max_y, min_x, max_y)
 
     def draw(self):

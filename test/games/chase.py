@@ -22,7 +22,7 @@ class Monster(Sprite):
 monsters = []
 
 bg = Sprite("https://rss.leaplearner.com/Image/Bgs/BG.png")
-hero = Sprite("https://rss.leaplearner.com/Image/Role/Alien2.png", w=80, h=80)
+hero = Sprite("https://rss.leaplearner.com/Image/Role/Alien2.png", w=40, h=40)
 
 hero.speed = 5
 
