@@ -17,7 +17,8 @@ class Text(Rectangle):
         """ """
 
         self.text = pyglet.text.Label(text=src, font_size=font_size)
-        super().__init__(x=x, y=y, w=font_size*len(src)*0.6, h=font_size, color=color)
+        super().__init__(x=x, y=y, h=font_size, color=color)
+        self.update_width()
 
     def draw(self):
         self.update_all()
@@ -34,6 +35,7 @@ class Text(Rectangle):
     @src.setter
     def src(self, src):
         self.text.text = src
+        self.update_width()
 
     @property
     def font_size(self):
@@ -42,4 +44,8 @@ class Text(Rectangle):
     @font_size.setter
     def font_size(self, font_size):
         self.h = font_size
+        self.update_width()
+
+    def update_width(self):
+        self.w = self.h * len(self.src) * 0.618
     
