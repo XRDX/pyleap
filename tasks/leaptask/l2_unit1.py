@@ -10,6 +10,37 @@ rain = []
 for i in range(0, 50):
 	rain.append(Sprite("https://r.leaplearner.com/ud/production/A01T0008/EpZi.png", random.randint(0, 800), random.randint(500, 1000)))
 
+# Pyleap确认
+def confirm():
+    window.set_size(400, 400)
+    window.clear()
+    bg = Sprite("https://r.leaplearner.com/i/background.png", 200, 200, 400, 400)
+    bg.draw()
+    txt = Text("恭喜您！")
+    txt.color = "black"
+    txt.x = 120
+    txt.y = 320
+    txt.font_size = 30
+    txt.draw()
+    txt.src = "如果您能看到这个项目"
+    txt.color = "black"
+    txt.x = 55
+    txt.y = 250
+    txt.font_size = 20
+    txt.draw()
+    txt.src = "说明您已经成功安装Python"
+    txt.color = "black"
+    txt.x = 25
+    txt.y = 200
+    txt.font_size = 20
+    txt.draw()
+    txt.src = "可以正常运行程序"
+    txt.color = "black"
+    txt.x = 85
+    txt.y = 150
+    txt.font_size = 20
+    txt.draw()
+
 def detect(x, y):
 	global target
 	target['x'] = x
@@ -486,10 +517,88 @@ def launch(track):
             sate.rotation = angle - 240
             sate.draw()
             green_s.show = False
-            
+
+# Lesson 4        
 def solar():
     window.set_size(800, 500)
     window.clear()
     bg = Sprite("https://r.leaplearner.com/ud/production/A01T0008/heEu.jpg", 400, 250)
     bg.draw()
     window.show_axis()
+
+#Lesson 5
+e_icon = Sprite("https://r.leaplearner.com/i/Fighter7.png", 20, 20, 30, 30)
+def on_fire(self):
+    self.bullet = Sprite("https://r.leaplearner.com/ud/production/A01T0008/rfSi.png", self.x, self.y, 30, 55)
+    self.bullet.speed = -3
+    self.fire = True
+def move_shoot(self):
+    self.y += self.speed
+    if (self.fire):
+        self.bullet.y += self.bullet.speed
+        self.bullet.draw()
+        if (self.bullet.collide(hero)):
+            self.bullet.scale_y = -1
+            self.bullet.speed = 5 
+        if (self.bullet.scale_y == -1 and self.bullet.collide(self)):
+            enemies.remove(self)
+        if (self.bullet.y < 0):
+            hero.state = 2
+    if (self.y < window.height and self.fire == False):
+        self.on_fire()
+    self.draw() 
+    
+Sprite.on_fire = on_fire
+Sprite.move_shoot = move_shoot
+bg = Sprite("https://r.leaplearner.com/i/circuitrybg1.png", 300, 300, 600, 600)
+planet = Sprite("https://r.leaplearner.com/i/bg2.png", 300, -25, 600, 150)
+hero = Sprite("https://r.leaplearner.com/ud/production/A01T0008/6mMS.png", 300, 100, 100, 90)
+txt = Text("", 150, 300, 20, "white")
+enemies = []
+e_x = 0
+e_y = window.height
+hero.state = 0 # 0：游戏中 1：胜利 2：失败
+for i in range(0, 20):
+    e_x = random.randint(50, window.width - 50)
+    e_y += random.randint(30, 150)
+    new_enemy = Sprite("https://r.leaplearner.com/i/Fighter7.png", e_x, e_y, 100, 80)
+    new_enemy.speed = -1
+    new_enemy.fire = False
+    enemies.append(new_enemy)
+def win():
+    window.clear()
+    txt.src = "你成功地保卫了整个星球！"
+    bg.draw()
+    planet.draw()
+    hero.draw()
+    txt.draw()
+def lose():
+    window.clear()
+    txt.src = "战斗失败，星球毁灭……"
+    bg.draw()
+    planet.draw()
+    hero.draw()
+    txt.draw()
+def defend():
+    global enemies
+    window.clear()
+    bg.draw()
+    planet.draw()
+    hero.draw()
+    for enemy in enemies:
+        enemy.move_shoot()
+    if (len(enemies) <= 0):
+        hero.state = 1
+    else:
+        for i in range(0, len(enemies)):
+            e_icon.x = 20 + 40 * (i % 10)
+            e_icon.y = window.height - 20 - (i - i % 10) / 10 * 40
+            e_icon.draw()
+def planet_defender():
+    window.set_size(600, 600)
+    if (hero.state == 0):
+        defend()
+    elif (hero.state == 1):
+        win()
+    elif (hero.state == 2):
+        lose()
