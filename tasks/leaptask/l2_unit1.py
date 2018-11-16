@@ -602,3 +602,147 @@ def planet_defender():
         win()
     elif (hero.state == 2):
         lose()
+
+stones = []
+signal = Sprite("https://r.leaplearner.com/ud/production/A01T0008/qpDU.png", random.randint(0, 560), 540, 40, 40)
+signal.ys = random.uniform(0.5, 2.5)
+decode_rect = Rectangle()
+rect = Rectangle(10, 450, 50, 40, "red")
+game_txt = Text("截获情报", 220, 460, 15, "white")
+frame = Sprite("https://r.leaplearner.com/ud/production/A01T0008/3Puv.png", 300, 250, 500, 380)
+boss = Sprite("https://r.leaplearner.com/i/Fighter11.png", 172, 250, 150, 100)
+boss_txt = Text("首领：小丑战机", 90, 155)
+boss_intro = Text("", font_size = 10, color = "white")
+decode_txt = Text("情报分析中……", 230, 275, 15, "white")
+fail_txt = Text("你被陨石击中，按下空格键重启机器人", 110, 240, 15, "white")
+def information():
+	hero.x = 300
+	hero.y = 250
+	hero.w = 50
+	hero.h = 50
+	hero.state = "alive"
+	hero.score = 0
+	hero.decoding = 0
+	
+def add_stone():
+    stone = Sprite("https://r.leaplearner.com/ud/production/A01T0008/lD1S.png")
+    stone.w = 30
+    stone.h = 30
+    stone.xs = random.uniform(0.5, 2.5) * random.randrange(-1, 2, 2)
+    stone.ys = random.uniform(0.5, 2.5) * random.randrange(-1, 2, 2)
+    stone.x = random.uniform(0, 200) + random.randint(0, 1) * 700
+    stone.y = random.uniform(0, 200) + random.randint(0, 1) * 800
+    stones.append(stone)
+for i in range(0, 6):
+    add_stone()
+def reconnoitre():
+    global stones
+    window.set_size(600, 500)
+    window.clear()
+    bg.draw()
+    if (hero.state == "alive"):
+        signal.y -= signal.ys
+        if (signal.y < 0):
+            signal.y = 540
+            signal.x = random.randint(0, 560)
+        if (signal.collide(hero)):
+            signal.y = 540
+            signal.x = random.randint(0, 560)
+            hero.score += 1
+        signal.draw()
+        hero.draw()
+        for s in stones:
+            s.x += s.xs
+            s.y += s.ys
+            if (s.x < 0):
+                s.xs = random.uniform(0.5, 2.5)
+            if (s.x > 570):
+                s.xs = -random.uniform(0.5, 2.5)
+            if (s.y < 0):
+                s.ys = random.uniform(0.5, 2.5)
+            if (s.y > 470):
+                s.ys = -random.uniform(0.5, 2.5)
+            s.draw()
+            if (s.collide(hero)):
+                hero.state = "dead"
+        rect.color = "red"
+        rect.w = hero.score * 58
+        rect.draw()
+        rect.w = 580
+        rect.line_width = 2
+        rect.color = "white"
+        rect.stroke()
+        game_txt.src = "情报截获：" + str(hero.score * 10) + "%"
+        game_txt.draw()
+        if (hero.score >= 10):
+            hero.state = "decode"
+    elif (hero.state == "dead"):
+        fail_txt.draw()
+    elif (hero.state == "win"):
+        frame.draw()
+        boss.draw()
+        boss_txt.color = "white"
+        boss_txt.draw()
+        boss_intro.src = "来自哈哈星球的杀手型飞船"
+        boss_intro.x = 280
+        boss_intro.y = 290
+        boss_intro.draw()
+        boss_intro.src = "嗜血、冷酷、毫不留情"
+        boss_intro.y -= 20
+        boss_intro.draw()
+        boss_intro.src = "它具有强大的武器和超强的防御"
+        boss_intro.y -= 20
+        boss_intro.draw()
+        boss_intro.src = "机头和两翼配备了三个护盾生成系统"
+        boss_intro.y -= 20
+        boss_intro.draw()
+        boss_intro.src = "当其中一个受到攻击时"
+        boss_intro.y -= 20
+        boss_intro.draw()
+        boss_intro.src = "其余两个可以实现联动防护"
+        boss_intro.y -= 20
+        boss_intro.draw()
+        boss_intro.src = "因此，必须同时攻击它的机头和双翼"
+        boss_intro.y -= 20
+        boss_intro.draw()
+        boss_intro.src = "才能对它造成真正的伤害"
+        boss_intro.y -= 20
+        boss_intro.draw()
+    elif (hero.state == "decode"):
+        hero.decoding += 1
+        decode_rect.x = 100
+        decode_rect.y = 235
+        decode_rect.w = hero.decoding
+        decode_rect.h = 30
+        decode_rect.color = "red"
+        decode_rect.draw()
+        decode_rect.w = 400
+        decode_rect.color = "white"
+        decode_rect.stroke()
+        decode_txt.draw()
+        if (hero.decoding >= 400):
+            hero.state = "win"
+
+def go_left():
+    hero.x -= 30
+def go_right():
+    hero.x += 30
+def go_up():
+    hero.y += 30
+def go_down():
+    hero.y -= 30
+def restart():
+    global stones
+    if (hero.state == "dead"):
+        signal.y = 540
+        signal.x = random.randint(0, 560)
+        for s in stones:
+            s.xs = random.uniform(0.5, 2.5) * random.randrange(-1, 2, 2)
+            s.ys = random.uniform(0.5, 2.5) * random.randrange(-1, 2, 2)
+            s.x = random.uniform(0, 200) + random.randint(0, 1) * 700
+            s.y = random.uniform(0, 200) + random.randint(0, 1) * 800
+        hero.x = 300
+        hero.y = 250
+        hero.score = 0
+        hero.decoding = 0
+        hero.state = "alive"
