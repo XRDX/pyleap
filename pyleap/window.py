@@ -1,6 +1,7 @@
 import pyglet
 from pyglet import gl
 from pyleap.util import all_shapes
+import platform
 
 # disable debug gl option 
 pyglet.options['debug_gl'] = False
@@ -33,13 +34,6 @@ class Window(pyglet.window.Window):
 
     def __init__(self, **kwargs):
         """ TODO """
-        # platform = pyglet.window.get_platform()
-        # display = platform.get_default_display()
-        # screen = display.get_default_screen()
-
-        # template = gl.Config(alpha_size=8)
-        # config = screen.get_best_config(template)
-        # context = config.create_context(None)
         super().__init__(**kwargs)
 
         # config = pyglet.gl.Config(alpha_size=8)
@@ -90,7 +84,21 @@ class Window(pyglet.window.Window):
             Line(0, y, window.w, y, 1, '#eeaa00').draw()
             Text(str(y), 2, y+2, 10).draw()
 
-window = Window()
+
+
+
+sysstr = platform.system()
+if(sysstr =="Windows"):
+    platform = pyglet.window.get_platform()
+    display = platform.get_default_display()
+    screen = display.get_default_screen()
+
+    template = gl.Config(alpha_size=8)
+    config = screen.get_best_config(template)
+    window = Window(config=config)
+else:
+    window = Window()
+
 
 # alpha
 gl.glEnable(gl.GL_LINE_SMOOTH);
