@@ -4,6 +4,8 @@ import random
 
 def chase(self, hero):
     r = ((hero.x - self.x)**2 + (hero.y-self.y)**2)**0.5
+    if(r<5):
+        r = 5
     self.x += self.speed * (hero.x - self.x) / r
     self.y += self.speed * (hero.y - self.y) / r
 

@@ -93,9 +93,15 @@ if(sysstr =="Windows"):
     display = platform.get_default_display()
     screen = display.get_default_screen()
 
-    template = gl.Config(alpha_size=8)
+    template = pyglet.gl.Config(alpha_size=8)
     config = screen.get_best_config(template)
-    window = Window(config=config)
+    context = config.create_context(None)
+
+    try:
+        window = Window(config=config, context=context) 
+    except pyglet.gl.ContextException:
+        window = Window()
+    
 else:
     window = Window()
 
