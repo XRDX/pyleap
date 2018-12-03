@@ -104,5 +104,6 @@ html_static_path = ['_static']
 # html_sidebars = {}
 
 def setup(app):
-    app.add_javascript("GA.js")
-    app.add_javascript("googleAnalysis.js")
+    app.add_js_file("GA.js")
+    app.add_js_file("googleAnalysis.js")
+    app.add_css_file("my_style.css")
