@@ -6,6 +6,14 @@ import platform
 # disable debug gl option 
 pyglet.options['debug_gl'] = False
 
+# alpha
+gl.glEnable(gl.GL_LINE_SMOOTH);
+gl.glEnable(gl.GL_POLYGON_SMOOTH);
+gl.glEnable(gl.GL_BLEND);
+gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE_MINUS_SRC_ALPHA);
+gl.glHint(gl.GL_LINE_SMOOTH_HINT, gl.GL_DONT_CARE);
+gl.glHint(gl.GL_POLYGON_SMOOTH_HINT, gl.GL_DONT_CARE);
+
 class Window(pyglet.window.Window):
     """ 
     属性 Attributes
@@ -104,13 +112,3 @@ if(sysstr =="Windows"):
     
 else:
     window = Window()
-
-
-# alpha
-gl.glEnable(gl.GL_LINE_SMOOTH);
-gl.glEnable(gl.GL_POLYGON_SMOOTH);
-gl.glEnable(gl.GL_BLEND);
-gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE_MINUS_SRC_ALPHA);
-gl.glHint(gl.GL_LINE_SMOOTH_HINT, gl.GL_DONT_CARE);
-gl.glHint(gl.GL_POLYGON_SMOOTH_HINT, gl.GL_DONT_CARE);
-
