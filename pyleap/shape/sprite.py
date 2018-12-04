@@ -51,7 +51,11 @@ class Sprite(Rectangle):
 
         self._src = src
         self.img = cache_images[src]
-        self._sprite = pyglet.sprite.Sprite(img=self.img)
+        
+        try:
+            self._sprite.image = self.img
+        except Exception as e:
+            self._sprite = pyglet.sprite.Sprite(img=self.img)
 
     @property
     def x(self):

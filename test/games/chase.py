@@ -25,7 +25,7 @@ monsters = []
 
 bg = Sprite("https://rss.leaplearner.com/Image/Bgs/BG.png")
 hero = Sprite("https://rss.leaplearner.com/Image/Role/Alien2.png", w=40, h=40)
-
+hero.src = "https://rss.leaplearner.com/Image/Role/CircleFace.png"
 hero.speed = 5
 
 t = Text("RETRY!", font_size=30)

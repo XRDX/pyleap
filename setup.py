@@ -5,7 +5,7 @@ import setuptools
 
 setuptools.setup(
     name="pyleap",
-    version="0.1.16",
+    version="0.1.17",
     author="Vic Wang",
     author_email="305880887@qq.com",
     description='A simple 2D game engine base on pyglet',
