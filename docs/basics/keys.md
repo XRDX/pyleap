@@ -2,7 +2,10 @@
 ```python
 class Key(dict):
     """ 
-    当按下A键时，key.A 为True，否则为False
+    当按下A键时，key.A.pressed 为True，否则为False
+
+    按键事件：key.A.on_press(func)
+    按键松开事件：key.A.on_release(func)
 
     键名
     
@@ -15,13 +18,29 @@ class Key(dict):
     切换键：LSHIFT, RSHIFT, LCTRL, RCTRL，CAPSLOCK，LMETA，RMETA，LALT，RALT
         LWINDOWS， RWINDOWS，LCOMMAND，RCOMMAND，LOPTION，ROPTION
     数字区：NUM_0，NUM_1，NUM_2...
+
     """
     
 key = Key()
 ```
-
-使用：
+例子：A键事件和状态
 ```python
-if key._1:
-    print("key 1 is pressed")
+from pyleap import *
+
+
+def press():
+    print("a press")
+
+def release():
+    print("a release")
+
+key.a.on_press(press)
+key.A.on_release(release)
+
+def a_value(dt):
+    print(key.a.pressed)
+
+repeat(a_value, 1)
+
+run()
 ```
