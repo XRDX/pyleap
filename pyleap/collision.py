@@ -34,10 +34,8 @@ def point_in_points(p, s2):
         if(cross_x >= x):
             cross_count += 1
 
-    if cross_count %2 == 1:
-        return True
-    else:
-        return False
+    return cross_count % 2
+
 
 
 def points_in_points(s1, s2):

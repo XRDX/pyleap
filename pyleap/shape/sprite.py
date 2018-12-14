@@ -19,12 +19,12 @@ class Sprite(Rectangle):
         w = w or self._sprite.width
         h = h or self._sprite.height
         super().__init__(x, y, w, h)
-        # self.collision_scale = 0.8
+        self.collision_scale = 0.8
 
 
     @property
     def w(self):
-        return self._sprite.width
+        return self.img.width * self._sprite.scale_x
     
     @w.setter
     def w(self, w):
@@ -32,7 +32,7 @@ class Sprite(Rectangle):
 
     @property
     def h(self):
-        return self._sprite.height
+        return self.img.height * self._sprite.scale_y
     
     @h.setter
     def h(self, h):
@@ -87,10 +87,10 @@ class Sprite(Rectangle):
         img.anchor_y = img.height // 2 # int
 
     def update_points(self):
-        min_x = self.x - self.w/2
-        min_y = self.y - self.h/2
-        max_x = self.x + self.w/2
-        max_y = self.y + self.h/2
+        min_x = self.x - self.w/2 * self.collision_scale
+        min_y = self.y - self.h/2 * self.collision_scale
+        max_x = self.x + self.w/2 * self.collision_scale
+        max_y = self.y + self.h/2 * self.collision_scale
         self.points = (min_x, min_y, max_x, min_y, max_x, max_y, min_x, max_y)
 
     def draw(self):
