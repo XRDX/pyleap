@@ -17,16 +17,17 @@ class Monster(Sprite):
     def __init__(self, x=0, y=0):
         src = "https://rss.leaplearner.com/Image/Role/CircleFace.png"
         super().__init__(src, x, y)
-        self.scale = 0.15
+        self.scale = 0.2
         self.speed = 0.5 + random.random() * 0.5
 
 
 monsters = []
 
 bg = Sprite("https://rss.leaplearner.com/Image/Bgs/BG.png")
-hero = Sprite("https://rss.leaplearner.com/Image/Role/Alien2.png", w=40, h=40)
+hero = Sprite("https://rss.leaplearner.com/Image/Role/Alien2.png", w=100, h=100)
 hero.src = "https://rss.leaplearner.com/Image/Role/CircleFace.png"
 hero.speed = 5
+hero.opacity = 0.5
 
 t = Text("RETRY!", font_size=30)
 

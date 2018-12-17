@@ -6,14 +6,6 @@ import platform
 # disable debug gl option 
 pyglet.options['debug_gl'] = False
 
-# alpha
-gl.glEnable(gl.GL_LINE_SMOOTH);
-gl.glEnable(gl.GL_POLYGON_SMOOTH);
-gl.glEnable(gl.GL_BLEND);
-gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE_MINUS_SRC_ALPHA);
-gl.glHint(gl.GL_LINE_SMOOTH_HINT, gl.GL_DONT_CARE);
-gl.glHint(gl.GL_POLYGON_SMOOTH_HINT, gl.GL_DONT_CARE);
-
 class Window(pyglet.window.Window):
     """ 
     属性 Attributes
@@ -40,13 +32,37 @@ class Window(pyglet.window.Window):
     设置窗口大小
     """
 
-    def __init__(self, **kwargs):
+    def __init__(self):
         """ TODO """
-        super().__init__(**kwargs)
+        try:
+            sysstr = platform.system()
+            plat = pyglet.window.get_platform()
+            display = plat.get_default_display()
+            screen = display.get_default_screen()
 
-        # config = pyglet.gl.Config(alpha_size=8)
-        # window = Window(config=config)
-        # window = Window()
+            template = gl.Config(
+                alpha_size=8,
+                sample_buffers=1,       # 抗锯齿设置
+                samples=4
+                )
+            
+            # if(sysstr =="Windows"):
+            #     try:
+            #         config = screen.get_best_config(template=config_template)
+            #         super().__init__(config=config)
+            #     except pyglet.gl.ContextException:
+            #         super().__init__()
+            # else: # Mac
+            #     super().__init__()
+            configs = screen.get_matching_configs(template)
+            if not configs:
+                raise("Error")
+            else:
+                super().__init__(config=configs[0])
+        except:
+            print("你的显卡不支持高级特性，部分功能将无法使用")
+            super().__init__()
+        
         self.set_caption("LeapLearner")
 
     @property
@@ -85,29 +101,29 @@ class Window(pyglet.window.Window):
 
     def show_axis(self):
         from pyleap import Line, Text
-        for x in range(0, window.w, 100):
-            Line(x, 0, x, window.h, 1, '#eeaa00').draw()
+        for x in range(0, self.w, 100):
+            Line(x, 0, x, self.h, 1, '#eeaa00').draw()
             Text(str(x), x+2, 2, 10).draw()
-        for y in range(0, window.h, 100):
-            Line(0, y, window.w, y, 1, '#eeaa00').draw()
+        for y in range(0, self.h, 100):
+            Line(0, y, self.w, y, 1, '#eeaa00').draw()
             Text(str(y), 2, y+2, 10).draw()
 
 
+window = Window()
 
+# 必须放在window后面
 
-sysstr = platform.system()
-if(sysstr =="Windows"):
-    platform = pyglet.window.get_platform()
-    display = platform.get_default_display()
-    screen = display.get_default_screen()
+# 抗锯齿
+gl.glEnable(gl.GL_LINE_SMOOTH);
+gl.glHint(gl.GL_LINE_SMOOTH_HINT, gl.GL_DONT_CARE);
 
-    template = pyglet.gl.Config(alpha_size=8)
-    config = screen.get_best_config(template)
+gl.glEnable(gl.GL_POLYGON_SMOOTH);
+gl.glHint(gl.GL_POLYGON_SMOOTH_HINT, gl.GL_DONT_CARE);
 
-    try:
-        window = Window(config=config) 
-    except pyglet.gl.ContextException:
-        window = Window()
-    
-else:
-    window = Window()
+# 抗锯齿-多样本缓冲(Multisample Buffer)
+gl.glEnable(gl.GL_MULTISAMPLE);
+
+# 支持透明
+gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE_MINUS_SRC_ALPHA);
+gl.glEnable(gl.GL_BLEND);
+
