@@ -9,52 +9,66 @@
 * WMA
 
 在项目中使用音效，除wav格式的音效外，其他的音效资源需要安装Avbin才能播放。 Avbin下载地址：http://avbin.github.io/AVbin/Download.html
-
 可以使用网络地址链接，如果使用的是网络地址链接，则会下载该资源到本地，下次运行时将直接读取本地资源
-
-
-
 """
 
 import pyglet
 from pyleap.util import rss
 
 
-class Audio(pyglet.media.Player):
+class StaticSource(pyglet.media.StaticSource):
     """ 音效对象
    
-    Audio(url, loop=False)
-
-    属性
-
-    time    ： 当前的播放时间（秒），只读属性，通过seek()方法更改时间
-    playing  : bool值，当前是否在播放，只读属性
-    volume  ： float值，音量大小，从0到1，
-    loop     : bool值，是否重复播放
+    Audio(url)
 
     方法
+    play() : 播放
+    pause() ： 暂停
+    """
+    def __init__(self, src): 
+        source = pyglet.media.load(rss.get(src))
+        super().__init__(source)
 
-    play() : 开始或者继续播放当前音效
-    pause() : 暂停播放当前音效
-    seek()  : 设置播放的时间
 
+def Audio(src, loop=False):
+    if loop:
+        return BGM(src)
+    else:
+        return StaticSource(src)
+        
+
+class BGM(pyglet.media.Player):
+    """ 循环播放的音乐
+
+    方法
+    play() : 播放
+    pause() ： 暂停
     """
 
-    def __init__(self, src, loop=False):
-        """ Decoding sounds can be processor-intensive and may introduce latency, particularly for short sounds that must be played quickly, such as bullets or explosions. You can force such sounds to be decoded and retained in memory rather than streamed from disk by wrapping the source in a StaticSource:"""
+    def __init__(self, src, loop=True):
         super().__init__()
-        _source = pyglet.media.load(rss.get(src))
-        self._source_group = pyglet.media.SourceGroup(_source.audio_format, None)
-        self._source_group.loop = loop
-        self._source_group.queue(_source)
-        self.queue(self._source_group)
+        source = pyglet.media.load(rss.get(src))
+        source_group = pyglet.media.SourceGroup(source.audio_format, None)
+        source_group.loop = loop
+        source_group.queue(source)
+        self.queue(source_group)
 
-    @property
-    def loop(self):
-        return self._source_group.loop
-    
-    @loop.setter
-    def loop(self, loop):
-        self._source_group.loop = loop
-    
+
+cache_musics = {}
+
+def play(url, loop=False):
+    if url not in cache_musics:
+        if loop:
+            cache_musics[url] = BGM(url)
+        else:
+            cache_musics[url] = Audio(url)
+
+    cache_musics[url].play()
+
+def pause(url):
+    """ 暂停播放音效 """
+    cache_musics[url].pause()
+
+
+__all__ = ['Audio', 'play', 'pause']
 

@@ -33,34 +33,30 @@ class Window(pyglet.window.Window):
     """
 
     def __init__(self):
-        """ TODO """
-        try:
-            sysstr = platform.system()
-            plat = pyglet.window.get_platform()
-            display = plat.get_default_display()
-            screen = display.get_default_screen()
+        """ 初始化，创建一个窗口 """
 
-            template = gl.Config(
-                alpha_size=8,
-                sample_buffers=1,       # 抗锯齿设置
-                samples=4
-                )
+        sysstr = platform.system()
+        plat = pyglet.window.get_platform()
+        display = plat.get_default_display()
+        screen = display.get_default_screen()
+
+        template = gl.Config(
+            alpha_size=8,
+            sample_buffers=1,       # 抗锯齿设置
+            samples=4
+            )
             
-            # if(sysstr =="Windows"):
-            #     try:
-            #         config = screen.get_best_config(template=config_template)
-            #         super().__init__(config=config)
-            #     except pyglet.gl.ContextException:
-            #         super().__init__()
-            # else: # Mac
-            #     super().__init__()
-            configs = screen.get_matching_configs(template)
-            if not configs:
-                raise("Error")
-            else:
-                super().__init__(config=configs[0])
-        except:
-            print("你的显卡不支持高级特性，部分功能将无法使用")
+        if(sysstr =="Windows"):
+            try:
+                configs = screen.get_matching_configs(template)
+                if not configs:
+                    raise("Error")
+                else:
+                    super().__init__(config=configs[0])
+            except:
+                print("你的显卡不支持高级特性，部分功能将无法使用")
+                super().__init__()
+        else: # Mac or Linux
             super().__init__()
         
         self.set_caption("LeapLearner")
