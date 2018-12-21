@@ -39,23 +39,16 @@ class Window(pyglet.window.Window):
         plat = pyglet.window.get_platform()
         display = plat.get_default_display()
         screen = display.get_default_screen()
-
-        template = gl.Config(
-            alpha_size=8,
-            sample_buffers=1,       # 抗锯齿设置
-            samples=4
-            )
             
         if(sysstr =="Windows"):
-            try:
-                configs = screen.get_matching_configs(template)
-                if not configs:
-                    raise("Error")
-                else:
-                    super().__init__(config=configs[0])
-            except:
-                print("你的显卡不支持高级特性，部分功能将无法使用")
+            template = gl.Config(alpha_size=8, sample_buffers=1, samples=4)
+            configs = screen.get_matching_configs(template)
+
+            if not configs:
                 super().__init__()
+            else:
+                super().__init__(config=configs[0])
+
         else: # Mac or Linux
             super().__init__()
         
