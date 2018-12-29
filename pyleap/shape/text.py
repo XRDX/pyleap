@@ -13,8 +13,7 @@ class Text(Rectangle):
     """
 
     def __init__(self, src, x=window.center_x, y=window.center_y,
-                font_name=None,
-                font_size=16, color="orange"):
+                font_size=16, color="orange", font_name=None):
         """ """
         self.text = pyglet.text.Label(text=src, font_size=font_size, font_name=font_name)
         super().__init__(x=x, y=y, h=font_size, color=color)
