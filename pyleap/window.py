@@ -47,8 +47,10 @@ class Window(pyglet.window.Window):
             if not configs:
                 super().__init__()
             else:
-                super().__init__(config=configs[0])
-
+                try:
+                    super().__init__(config=configs[0])
+                except Exception: 
+                    super().__init__()
         else: # Mac or Linux
             super().__init__()
         
