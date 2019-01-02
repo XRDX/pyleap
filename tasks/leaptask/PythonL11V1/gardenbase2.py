@@ -1,7 +1,8 @@
 from pyleap import *
-from garden import *
+#from garden import *
 import random
-window.set_size(650, 500)
+import math
+
 #云
 def draw_cloud(cloud_number=0):
     #从左到右
@@ -77,6 +78,7 @@ def draw_flower(flower_number=0):
         flower2.draw()
         flower3.draw()
         flower4.draw()
+
 #树n
 t1 = Ellipse(345, 300, 20, 30, "black")
 t2 = Ellipse(380, 290, 15, 35, "black")
@@ -90,6 +92,7 @@ t9 = Ellipse(590, 275, 15, 30, "black")
 t10 = Ellipse(610, 320, 15, 45, "black")
 #飞机
 plane = Sprite("https://r.leaplearner.com/ud/production/615020/zes9.png", 500, 400)
+
 #鱼
 fish1 = Sprite("https://r.leaplearner.com/ud/production/615020/FnX7.png", 156, 127)
 fish2 = Sprite("https://r.leaplearner.com/ud/production/615020/jeu6.png", 16, 129)
@@ -99,9 +102,10 @@ skys = Rectangle(0, 0, 650, 500, "blue")
 #太阳和月亮
 suns = Circle(100, 420, 50, "orange")
 def draw_all(dt):
+    window.set_size(650, 500)
     #背景天空
     skys.draw()
-    
+        
     #太阳    
     suns.draw()
 
@@ -113,14 +117,14 @@ def draw_all(dt):
     Rectangle(0, 0, 32, 148, river).draw()
     Rectangle(32, 116, 150, 32, river).draw()
     Rectangle(130, 136, 400, 32, river).draw()
-    if start == 2:
+    if showfish == True:
         #鱼
         fish2.scale = 0.09
         fish1.scale = 0.08
         fish3.scale = 0.08
         fish1.draw()
         fish2.draw()
-        fish3.draw()
+        fish3.draw() 
  
     #山丘
     Triangle(460, 300, 360, 170, 650, 170, '#CCCC99').draw()
@@ -167,7 +171,7 @@ def draw_all(dt):
     #树10
     t10.draw()
     Line(610, 260, 610, 320,  2, '#663300').draw()
-        
+               
     #云
     draw_cloud(cloud_number)
 
@@ -177,27 +181,14 @@ def draw_all(dt):
     #飞机
     plane.scale = 0.5
     plane.draw()
-
-if start == 1:
-    flower_number = flower
-    cloud_number = cloud
-    t1.color = tree1
-    t2.color = tree2
-    t3.color = tree3
-    t4.color = tree4
-    t5.color = tree5
-    t6.color = tree6
-    t7.color = tree7
-    t8.color = tree8
-    t9.color = tree9
-    t10.color = tree10    
-    speed = speed
-    def fly(dt):
-        plane.x -= speed
-    repeat(draw_all)
-    repeat(fly)    
-    run()
-if start == 2:
+    window.show_axis()
+    
+def s(x=500, y=400, flower=0, cloud=0, tree1="black", tree2="black", tree3="black", tree4="black", tree5="black", tree6="black",
+      tree7="black", tree8="black", tree9="black", tree10="black", speed1=0, speed2=0, speed3=0):
+    global showfish,flower_number,cloud_number,planex,planey
+    planex = x
+    planey = y
+    showfish = True
     flower_number = flower
     cloud_number = cloud
     t1.color = tree1
@@ -210,7 +201,7 @@ if start == 2:
     t8.color = tree8
     t9.color = tree9
     t10.color = tree10
-    speed = speed
+    #speed = speed
     speed1 = speed1
     speed2 = speed2
     speed3 = speed3
@@ -219,37 +210,20 @@ if start == 2:
         fish2.y -= speed2
         fish3.x += speed3
     def fly(dt):
-        plane.x -= speed
+        dx = planex - plane.x
+        dy = planey - plane.y
+        ds = math.sqrt(dx**2 + dy**2)
+        if planex > plane.x and dx > 0: 
+            plane.x = plane.x + dx / ds
+        elif planex < plane.x and dx < 0:
+            plane.x = plane.x + dx / ds
+        if planey > plane.y and dy > 0: 
+            plane.y = plane.y + dy / ds
+        elif planey < plane.y and dy < 0: 
+            plane.y = plane.y + dy / ds
+        
     repeat(draw_all)
     repeat(fly)
     repeat(swiming)
     run()
-if start == 3:
-    flower_number = flower
-    cloud_number = cloud
-    t1.color = tree1
-    t2.color = tree2
-    t3.color = tree3
-    t4.color = tree4
-    t5.color = tree5
-    t6.color = tree6
-    t7.color = tree7
-    t8.color = tree8
-    t9.color = tree9
-    t10.color = tree10
-    skys.color = sky
-    suns.color = sun
-    speed = speed
-    speed1 = speed1
-    speed2 = speed2
-    speed3 = speed3
-    def swiming(dt):
-        fish1.x -= speed1
-        fish2.y -= speed2
-        fish3.x += speed3
-    def fly(dt):
-        plane.x -= speed
-    repeat(draw_all)
-    repeat(fly)
-    repeat(swiming)
-    run()
+    
