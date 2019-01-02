@@ -26,6 +26,8 @@ python -m leapserver
 
 ```shell
 pip install pyleap --upgrade
+或
+pip install pyleap -U
 ```
 
 
