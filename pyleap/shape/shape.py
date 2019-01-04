@@ -7,6 +7,7 @@
 """
 
 import pyglet
+import math
 from pyglet import gl
 
 from pyleap.transform import Transform, TransformMixin
@@ -53,7 +54,78 @@ class Shape(CollisionMixin, TransformMixin):
     def stroke(self):
         """ 使用stroke方法将图形绘制在窗口里，仅对基本的几何图形有效 """
         self.update_all()
-        self.vertex_list.draw(gl.GL_LINE_LOOP)
+        length = len(self.points)
+
+        if self.line_width <= 3 and length > 4:
+                self.vertex_list.draw(gl.GL_LINE_LOOP)
+
+        elif self.line_width > 3 and length == 4:
+            x = self.points[0]
+            y = self.points[1]
+            x1 = self.points[2]
+            y1 = self.points[3]
+            l = max(1, math.sqrt((x1-x)*(x1-x)+(y1-y)*(y1-y)))
+            ly = (x1-x) / l * self.line_width / 2
+            lx = - (y1-y) / l * self.line_width / 2
+
+            points = [x-lx, y-ly, x+lx, y+ly, x1+lx, y1+ly, x1-lx, y1-ly]
+            color = color_to_tuple(self.color, self.opacity)
+            length = len(points) // 2
+            pyglet.graphics.vertex_list(length,
+                                        ('v2f', points),
+                                        ('c4B', color * length)).draw(gl.GL_QUADS)
+
+        elif self.line_width > 3 and length > 4:
+            color = color_to_tuple(self.color, self.opacity)
+            points = []
+            for i in range(0, length, 2):
+                x1 = self.points[i-2]
+                y1 = self.points[i-1]
+                x = self.points[i]
+                y = self.points[i+1]
+                x2 = self.points[(i+2) % length]
+                y2 = self.points[(i+3) % length]
+                l1 = max(1, math.sqrt((x1-x)*(x1-x)+(y1-y)*(y1-y)))
+                l2 = max(1, math.sqrt((x2-x)*(x2-x)+(y2-y)*(y2-y)))
+                nx1 = (x - x1) / l1
+                ny1 = (y - y1) / l1
+                vy = nx1
+                vx = -ny1
+
+                nx2 = (x - x2) / l2
+                ny2 = (y - y2) / l2
+                nx = nx1 + nx2
+                ny = ny1 + ny2
+
+                t = nx1*nx2 + ny1*ny2
+                if t > 0.99:
+                    lx = vx * self.line_width / 2
+                    ly = vy * self.line_width / 2
+                    points += [x-lx, y-ly, x+lx, y+ly, x+lx, y+ly, x-lx, y-ly]
+                elif t < -0.99:
+                    lx = vx * self.line_width / 2
+                    ly = vy * self.line_width / 2
+                    points += [x+lx, y+ly, x-lx, y-ly]
+                else:
+                    radio = 1/(vx*nx + vy*ny)
+                    if radio < 0: 
+                        radio = -radio
+
+                    lx = (nx1+nx2) * self.line_width / 2 * radio
+                    ly = (ny1+ny2) * self.line_width / 2 * radio
+                    points += [x+lx, y+ly, x-lx, y-ly]
+
+            for i in range(0, len(points), 4):
+
+                points4 = [points[i-4], points[i-3], points[i-2], points[i-1],
+                           points[i+2], points[i+3], points[i], points[i+1]]
+                length = len(points4) // 2
+                pyglet.graphics.vertex_list(length,
+                                            ('v2f', points4),
+                                            ('c4B', color * length)).draw(gl.GL_QUADS)
+
+        else:
+            self.vertex_list.draw(gl.GL_LINE)
 
     def update_all(self):
         """ 在绘制之前，针对形变进行计算，通过设置openGL的属性来达到绘制出变形的图形 """
@@ -61,7 +133,7 @@ class Shape(CollisionMixin, TransformMixin):
         self.update_vertex_list()
         self.update_anchor()
 
-        gl.glLoadIdentity() # reset gl
+        gl.glLoadIdentity()  # reset gl
         gl.glLineWidth(self.line_width)
         gl.glPointSize(self.point_size)
         self.transform.update_gl()
@@ -69,8 +141,7 @@ class Shape(CollisionMixin, TransformMixin):
         # handle shapes click envets
         all_shapes.discard(self)
         if(self._press != None):
-            all_shapes.add(self)     
-
+            all_shapes.add(self)
 
     def update_points(self):
         """ translate shapes to points，在子类中实现 """
@@ -92,5 +163,3 @@ class Shape(CollisionMixin, TransformMixin):
         if t.anchor_x_r and t.anchor_y_r:
             t.anchor_x = self.min_x + (self.max_x - self.min_x) * t.anchor_x_r
             t.anchor_y = self.min_y + (self.max_y - self.min_y) * t.anchor_y_r
-
-    
