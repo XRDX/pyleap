@@ -22,34 +22,6 @@ class Shape(CollisionMixin, TransformMixin):
         """ 使用stroke方法将图形绘制在窗口里，仅对基本的几何图形有效 """
 ```
 
-## 圆
-
-```python
-class Circle(Shape):
-    """ 基本图形：圆 Circle """
-
-    def __init__(self, x=100, y=100, r=30, color="orange"):
-        """
-        圆心： x、y,    默认为100, 100
-        半径： r，     默认为30
-        颜色： color,  默认为 "orange"
-        """
-```
-
-实例：
-绘制一个圆，圆心位置为（100，100），半径为50，颜色为红色
-
-```python
-from pyleap import *
-
-ball = Circle(x=100, y=100, r=50, color="red")
-
-def draw(dt):
-    ball.draw()
-
-repeat(draw)
-run()
-```
 
 ## 矩形
 
@@ -96,6 +68,8 @@ class Text(Rectangle):
 能够使用的字体是和系统相关的，在不同系统下常见字体如下：
 
 ### 字体名称速查
+
+以下字体能否可用，要看系统上是否安装了该字体，不同的系统上支持不一样的字体。
 
 **Windows** 系统上可用的字体
 
