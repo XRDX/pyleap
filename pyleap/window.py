@@ -2,12 +2,26 @@ import pyglet
 from pyglet import gl
 from pyleap.util import all_shapes
 import platform
+import configparser
 
 sysstr = platform.system()
+plat = pyglet.window.get_platform()
+display = plat.get_default_display()
+screen = display.get_default_screen()
 
 # disable debug gl option 
 pyglet.options['debug_gl'] = False
 
+# user configs
+config = configparser.ConfigParser()
+config.read('download/config.ini')
+
+if 'location' in config:
+    location_x = int(config['location']['x'])
+    location_y = int(config['location']['y'])
+else:
+    location_x = screen.width // 2
+    location_y = screen.height // 2
 
 class Window(pyglet.window.Window):
     """ 
@@ -37,10 +51,6 @@ class Window(pyglet.window.Window):
 
     def __init__(self):
         """ 初始化，创建一个窗口 """
-
-        plat = pyglet.window.get_platform()
-        display = plat.get_default_display()
-        screen = display.get_default_screen()
             
         if(sysstr =="Windows"):
             template = gl.Config(alpha_size=8, sample_buffers=1, samples=4)
@@ -57,6 +67,7 @@ class Window(pyglet.window.Window):
             super().__init__()
         
         self.set_caption("LeapLearner")
+        self.set_location(location_x, location_y)
 
     @property
     def w(self):

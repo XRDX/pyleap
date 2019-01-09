@@ -74,4 +74,13 @@ def on_key_release(symbol, modifiers):
         key[symbol].release()
     except:
         pass
-        
+
+@window.event
+def on_move(x, y):
+    import configparser
+    config = configparser.ConfigParser()
+    config['location'] = {
+        'x': str(x),
+        'y': str(y)}
+    with open('download/config.ini', 'w') as configfile:
+        config.write(configfile)
