@@ -3,8 +3,11 @@ from pyglet import gl
 from pyleap.util import all_shapes
 import platform
 
+sysstr = platform.system()
+
 # disable debug gl option 
 pyglet.options['debug_gl'] = False
+
 
 class Window(pyglet.window.Window):
     """ 
@@ -35,7 +38,6 @@ class Window(pyglet.window.Window):
     def __init__(self):
         """ 初始化，创建一个窗口 """
 
-        sysstr = platform.system()
         plat = pyglet.window.get_platform()
         display = plat.get_default_display()
         screen = display.get_default_screen()
@@ -117,4 +119,14 @@ gl.glEnable(gl.GL_MULTISAMPLE);
 # 支持透明
 gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE_MINUS_SRC_ALPHA);
 gl.glEnable(gl.GL_BLEND);
+
+# keep window on top
+if sysstr=="Windows":
+    try:
+        import win32gui
+        import win32con
+        win32gui.SetWindowPos(window._hwnd, win32con.HWND_TOPMOST, 0,0,0,0,
+        win32con.SWP_NOMOVE | win32con.SWP_NOSIZE)
+    except:
+        pass
 

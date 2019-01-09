@@ -7,3 +7,5 @@ pyleap 教程
    introduction/index
    basics/index
    qa
+
+   pyglet/index
