@@ -16,10 +16,14 @@ pyglet.options['debug_gl'] = False
 config = configparser.ConfigParser()
 config.read('download/config.ini')
 
+location_x = -1
+location_y = -1
+
 if 'location' in config:
     location_x = int(config['location']['x'])
     location_y = int(config['location']['y'])
-else:
+
+if location_x < 0 or location_y < 0 or screen.width < location_x or screen.height < location_y:
     location_x = screen.width // 2
     location_y = screen.height // 2
 
