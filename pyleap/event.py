@@ -82,5 +82,8 @@ def on_move(x, y):
     config['location'] = {
         'x': str(x),
         'y': str(y)}
-    with open('download/config.ini', 'w') as configfile:
-        config.write(configfile)
+    try:
+        with open('download/config.ini', 'w') as configfile:
+            config.write(configfile)
+    except:
+        pass
