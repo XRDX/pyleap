@@ -1,10 +1,8 @@
 import pyglet
 import sys
 
-from pyleap.resource import Resource
+__all__ = ['null', 'run', 'stop', 'repeat', 'run_after', 'all_shapes', 'P', 'get_fps', 'Batch']
 
-# 用于管理资源
-rss = Resource()
 
 def null():
     """ 空函数 """
@@ -28,8 +26,16 @@ def run():
     pyglet.app.run()
     
 
-"""all_shapes, use for track all the shapes draw on the windows
-"""
+# all_shapes, use for track all the shapes draw on the windows
 all_shapes = set()
 
-__all__ = ['null', 'run', 'stop', 'repeat', 'run_after', 'all_shapes', 'rss']
+
+class P:
+    """ P for point """
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+get_fps = pyglet.clock.get_fps
+gl = pyglet.gl
+Batch = pyglet.graphics.Batch

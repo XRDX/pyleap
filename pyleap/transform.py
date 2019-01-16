@@ -1,5 +1,5 @@
 import math
-from pyglet import gl
+import pyglet
 from pyleap.collision import CollisionMixin
 
 #     # x, y, z
@@ -21,6 +21,9 @@ class Transform(CollisionMixin):
         self.scale = 1
         self.scale_x = 1
         self.scale_y = 1
+    
+    def is_transformed(self):
+        return self.rotation != 0 or self.scale*self.scale_x!=1 or self.scale*self.scale_y!=1
 
     def set_anchor(self, x, y):
         self.anchor_x = x
@@ -55,15 +58,22 @@ class Transform(CollisionMixin):
         return (x, y)
 
     def update_points(self, ps):
+        if not self.is_transformed():
+            self.points = ps
+            return
+    
         self.points = ()
         for i in range(0, len(ps), 2):
             self.points += self.get_point(ps[i], ps[i+1])
 
     def update_gl(self):
-        gl.glTranslatef(self.anchor_x, self.anchor_y, 0)
-        gl.glRotatef(self.rotation, 0.0, 0.0, 1.0)
-        gl.glScalef(self.scale_x*self.scale, self.scale_y*self.scale, 1.0)
-        gl.glTranslatef(-self.anchor_x, -self.anchor_y, 0)
+        if not self.is_transformed(): 
+            return
+
+        pyglet.gl.glTranslatef(self.anchor_x, self.anchor_y, 0)
+        pyglet.gl.glRotatef(self.rotation, 0.0, 0.0, 1.0)
+        pyglet.gl.glScalef(self.scale_x*self.scale, self.scale_y*self.scale, 1.0)
+        pyglet.gl.glTranslatef(-self.anchor_x, -self.anchor_y, 0)
 
 
 class TransformMixin():

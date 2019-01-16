@@ -17,6 +17,7 @@ def draw(dt):
     window.clear()
     bg.draw()
     c.draw()
+    window.show_fps()
 
 
 repeat(draw)

@@ -8,25 +8,23 @@
 
 import pyglet
 import math
-from pyglet import gl
 
 from pyleap.transform import Transform, TransformMixin
 from pyleap.collision import CollisionMixin
 from pyleap.color import color_to_tuple
-from pyleap.util import all_shapes
+from pyleap.util import all_shapes, null
 
 
 class Shape(CollisionMixin, TransformMixin):
     """ base shape class """
 
-    def __init__(self, x, y, color="orange", gl=gl.GL_LINE_LOOP,
+
+    def __init__(self, color="orange", gl=pyglet.gl.GL_LINE_LOOP,
                  line_width=1):
         """ 默认参数
         颜色 color: "orange"
         线条粗细 line_width： 1
         """
-        self.x = x
-        self.y = y
         self.color = color
         self.gl = gl
         self.transform = Transform()
@@ -34,11 +32,11 @@ class Shape(CollisionMixin, TransformMixin):
         # 图形的线条宽度，默认为1
         self.line_width = line_width
 
-        # 图形的近似多边形 (x1, y1, x2, y2, ...)
+        # 图形的顶点 (Point1, Point2, ...)
         self.points = ()
 
         # 用于记录press事件函数
-        self._press = None
+        self._press = null
 
         # 仅Point类point_size属性有效
         self.point_size = 1
@@ -50,52 +48,51 @@ class Shape(CollisionMixin, TransformMixin):
         """ 使用draw方法将图形绘制在窗口里 """
         self.update_all()
         self.vertex_list.draw(self.gl)
+        pyglet.gl.glLoadIdentity()  # reset gl
 
     def stroke(self):
         """ 使用stroke方法将图形绘制在窗口里，仅对基本的几何图形有效 """
         self.update_all()
         length = len(self.points)
+        
+        # thick lines
+        if self.line_width <= 3:
+            if length==4:
+                self.vertex_list.draw(pyglet.gl.GL_LINES)
+            elif length > 4:
+                self.vertex_list.draw(pyglet.gl.GL_LINE_LOOP)
+            return
 
-        if self.line_width <= 3 and length > 4:
-                self.vertex_list.draw(gl.GL_LINE_LOOP)
-
-        elif self.line_width > 3 and length == 4:
-            x = self.points[0]
-            y = self.points[1]
-            x1 = self.points[2]
-            y1 = self.points[3]
+        # 
+        color = color_to_tuple(self.color, self.opacity)
+        if length == 4:
+            x, y, x1, y1 = self.points[0:4]
             l = max(1, math.sqrt((x1-x)*(x1-x)+(y1-y)*(y1-y)))
             ly = (x1-x) / l * self.line_width / 2
             lx = - (y1-y) / l * self.line_width / 2
 
             points = [x-lx, y-ly, x+lx, y+ly, x1+lx, y1+ly, x1-lx, y1-ly]
-            color = color_to_tuple(self.color, self.opacity)
-            length = len(points) // 2
-            pyglet.graphics.vertex_list(length,
-                                        ('v2f', points),
-                                        ('c4B', color * length)).draw(gl.GL_QUADS)
 
-        elif self.line_width > 3 and length > 4:
-            color = color_to_tuple(self.color, self.opacity)
+            vertex_list = pyglet.graphics.vertex_list(
+                4,
+                ('v2f', points),
+                ('c4B', color * 4))
+            vertex_list.draw(pyglet.gl.GL_QUADS)
+
+        elif length > 4:
             points = []
             for i in range(0, length, 2):
-                x1 = self.points[i-2]
-                y1 = self.points[i-1]
-                x = self.points[i]
-                y = self.points[i+1]
-                x2 = self.points[(i+2) % length]
-                y2 = self.points[(i+3) % length]
+                x, y = self.points[i], self.points[i+1]
+                x1, y1 = self.points[i-2], self.points[i-1]
+                x2, y2 = self.points[(i+2) % length], self.points[(i+3) % length]
+
                 l1 = max(1, math.sqrt((x1-x)*(x1-x)+(y1-y)*(y1-y)))
                 l2 = max(1, math.sqrt((x2-x)*(x2-x)+(y2-y)*(y2-y)))
-                nx1 = (x - x1) / l1
-                ny1 = (y - y1) / l1
-                vy = nx1
-                vx = -ny1
 
-                nx2 = (x - x2) / l2
-                ny2 = (y - y2) / l2
-                nx = nx1 + nx2
-                ny = ny1 + ny2
+                nx1, ny1 = (x - x1) / l1, (y - y1) / l1
+                nx2, ny2 = (x - x2) / l2, (y - y2) / l2
+                nx, ny = nx1 + nx2, ny1 + ny2
+                vx, vy = -ny1, nx1
 
                 t = nx1*nx2 + ny1*ny2
                 if t > 0.99:
@@ -115,17 +112,17 @@ class Shape(CollisionMixin, TransformMixin):
                     ly = (ny1+ny2) * self.line_width / 2 * radio
                     points += [x+lx, y+ly, x-lx, y-ly]
 
+            batch = pyglet.graphics.Batch()
             for i in range(0, len(points), 4):
 
-                points4 = [points[i-4], points[i-3], points[i-2], points[i-1],
-                           points[i+2], points[i+3], points[i], points[i+1]]
-                length = len(points4) // 2
-                pyglet.graphics.vertex_list(length,
-                                            ('v2f', points4),
-                                            ('c4B', color * length)).draw(gl.GL_QUADS)
+                batch.add(4, pyglet.gl.GL_QUADS, None,
+                    ('v2f', (points[i-4], points[i-3], points[i-2], points[i-1],
+                        points[i+2], points[i+3], points[i], points[i+1])),
+                    ('c4B', color * 4))
 
-        else:
-            self.vertex_list.draw(gl.GL_LINE)
+            batch.draw()
+
+        pyglet.gl.glLoadIdentity()  # reset gl
 
     def update_all(self):
         """ 在绘制之前，针对形变进行计算，通过设置openGL的属性来达到绘制出变形的图形 """
@@ -133,9 +130,9 @@ class Shape(CollisionMixin, TransformMixin):
         self.update_vertex_list()
         self.update_anchor()
 
-        gl.glLoadIdentity()  # reset gl
-        gl.glLineWidth(self.line_width)
-        gl.glPointSize(self.point_size)
+        pyglet.gl.glLoadIdentity()  # reset gl
+        pyglet.gl.glLineWidth(self.line_width)
+        pyglet.gl.glPointSize(self.point_size)
         self.transform.update_gl()
 
         # handle shapes click envets
@@ -163,3 +160,5 @@ class Shape(CollisionMixin, TransformMixin):
         if t.anchor_x_r and t.anchor_y_r:
             t.anchor_x = self.min_x + (self.max_x - self.min_x) * t.anchor_x_r
             t.anchor_y = self.min_y + (self.max_y - self.min_y) * t.anchor_y_r
+
+__all__ = ["Shape"]

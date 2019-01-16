@@ -21,6 +21,8 @@ def Loop(dt):
     if p:
         Point(p.x, p.y, color="red", point_size=5).draw()
 
+    star.x += 1
+    star.y += 1
     star.draw()
 
 repeat(Loop)

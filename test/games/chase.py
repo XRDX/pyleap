@@ -11,17 +11,18 @@ def chase(self, hero):
 
 
 Sprite.chase = chase
+m_batch = Batch()
 
 class Monster(Sprite):
 
     def __init__(self, x=0, y=0):
         src = "https://rss.leaplearner.com/Image/Role/CircleFace.png"
-        super().__init__(src, x, y)
-        self.scale = 0.2
+        super().__init__(src, x, y, 30, 30, batch=m_batch)
         self.speed = 0.5 + random.random() * 0.5
 
 
 monsters = []
+
 
 bg = Sprite("https://rss.leaplearner.com/Image/Bgs/BG.png")
 hero = Sprite("https://rss.leaplearner.com/Image/Role/Alien2.png", w=100, h=100)
@@ -49,13 +50,16 @@ def game(dt):
 
     for m in monsters:
         m.chase(hero)
-        m.draw()
+        #m.draw()
+
+    m_batch.draw()
 
     for m in monsters:
         if(m.collide(hero)):
             t.draw()
             stop(game)
             break
+    window.show_fps()
 
 def retry():
     global monsters

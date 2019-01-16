@@ -10,6 +10,7 @@ def draw(dt):
     # update()
     window.clear()
     c.draw()
+    window.show_fps()
 
 
 def start_move():

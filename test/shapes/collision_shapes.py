@@ -1,9 +1,9 @@
 from pyleap import *
 
 
-rect = Rectangle(100, 100, 200, 50)
-rect2 = Rectangle(100, 100, 200, 50)
-circle = Circle(200, 200, 50)
+rect = Rectangle(100, 100, 200, 50, "green")
+rect2 = Rectangle(100, 100, 200, 50, "green")
+circle = Circle(200, 200, 50, "green")
 
 
 p = Point(point_size=10, color="red")
@@ -13,7 +13,8 @@ circle.transform.scale_x = 2
 
 def draw(dt):
     window.clear()
-    
+    window.show_axis()
+
     rect.rotation += 1
     circle.rotation -= 1
     rect.stroke()
@@ -37,6 +38,7 @@ def draw(dt):
         p.x = c.x
         p.y = c.y
         p.draw()
+    window.show_fps()
 
 def move():
     circle.x = mouse.x

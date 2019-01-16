@@ -2,7 +2,7 @@ from pyleap import *
 
 bg = Rectangle(0, 0, window.width, window.height, color="white")
 r = Rectangle(color=(125, 125, 0))
-line1 = Line(100, 200, 300, 400, 5, 'pink')
+line1 = Line(100, 200, 300, 400, 15, 'pink')
 tri = Triangle(200, 100, 300, 100, 250, 150, "green")
 c2 = Circle(200, 200, 50, "#ffff00")
 c = Circle(200, 200, 100, "red")
@@ -23,6 +23,7 @@ def draw(dt):
     # update()
     window.clear()
     bg.draw()
+    window.show_axis()
 
     Rectangle(100, 100, 50, 25, 'pink').draw()
     r.stroke()
@@ -31,7 +32,7 @@ def draw(dt):
     c.stroke()
     c2.draw()
     txt.draw()
-
+    window.show_fps()
 
 def start_move():
     repeat(update)

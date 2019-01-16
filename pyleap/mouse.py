@@ -1,6 +1,7 @@
-from pyglet.window import mouse as default_mouse
-from pyleap import null
+from pyleap.util import null
 
+
+__all__ = ['mouse']
 
 class Mouse():
     """ 鼠标类
@@ -34,17 +35,17 @@ class Mouse():
         self.LEFT = False
         self.RIGHT = False
 
-    def on_move(self, func):
+    def on_move(self, f):
         """ 注册鼠标移动事件 """
-        self._move = func
+        self._move = f
 
-    def on_press(self, func):
+    def on_press(self, f):
         """ 注册鼠标点击事件 """
-        self._press = func
+        self._press = f
 
-    def on_release(self, func):
+    def on_release(self, f):
         """ 注册鼠标点击事件 """
-        self._release = func
+        self._release = f
 
     def on_right_press(self, f):
         """ 注册鼠标右键点击事件 """

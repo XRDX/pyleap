@@ -13,7 +13,7 @@
 """
 
 import pyglet
-from pyleap.util import rss
+from pyleap.resource import rss
 
 
 class StaticSource(pyglet.media.StaticSource):

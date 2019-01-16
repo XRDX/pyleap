@@ -14,6 +14,7 @@ def draw(dt):
     if(c.y < 0):
         stop(update)
         retry.draw()
+    window.show_fps()
 
 def update(dt):
     c.y -= score

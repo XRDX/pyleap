@@ -6,14 +6,11 @@
 
 """
 from pyleap.mouse import mouse
+from pyleap.util import P
 
 
 __all__ = ['shape_clicked', 'CollisionMixin' ]
 
-class P:
-    def __init__(self, x, y):
-        self.x = x
-        self.y = y
 
 def shape_clicked(shape):
     shape.transform.update_points(shape.points)
@@ -35,8 +32,6 @@ def point_in_points(p, s2):
             cross_count += 1
 
     return cross_count % 2
-
-
 
 def points_in_points(s1, s2):
     for i in range(0, len(s1.points), 2):
@@ -123,6 +118,10 @@ class CollisionMixin():
     def collide(self, s2):
         """ 判断图形是否碰到了另外一个图形 """
         s1 = self
+        
+        s1.update_points()
+        s2.update_points()
+
         if not (s1.points and s2.points):
             return False
 
@@ -145,7 +144,7 @@ class CollisionMixin():
                points_in_points(t2, t1) or \
                lines_cross(t1, t2)
 
-    def on_press(self, func):
-        """ 当图形被点击时，触发func函数 """
-        self._press = func
+    def on_press(self, f):
+        """ 注册on_press函数，当图形被点击时，触发func函数 """
+        self._press = f
 

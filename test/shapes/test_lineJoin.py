@@ -23,6 +23,7 @@ def draw(dt):
     c.stroke()
     l.stroke()
     r.stroke()
+    window.show_fps()
     
 
 run()

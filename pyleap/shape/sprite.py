@@ -1,6 +1,6 @@
 import pyglet
 
-from pyleap.util import rss
+from pyleap.resource import rss
 from pyleap.window import window
 from pyleap.shape.rectangle import Rectangle
 
@@ -11,16 +11,16 @@ cache_images = {}
 class Sprite(Rectangle):
     """ Sprite """
 
-    def __init__(self, src, x=300, y=200, w=None, h=None):
+    def __init__(self, src, x=300, y=200, w=None, h=None, batch=None):
         """
         默认位置： 300, 200
         """
+        self.batch = batch
         self.src = src
         w = w or self._sprite.width
         h = h or self._sprite.height
         super().__init__(x, y, w, h)
         self.collision_scale = 0.8
-
 
     @property
     def w(self):
@@ -54,8 +54,8 @@ class Sprite(Rectangle):
         
         try:
             self._sprite.image = self.img
-        except Exception as e:
-            self._sprite = pyglet.sprite.Sprite(img=self.img)
+        except Exception:
+            self._sprite = pyglet.sprite.Sprite(img=self.img, batch=self.batch)
 
     @property
     def x(self):
@@ -96,6 +96,7 @@ class Sprite(Rectangle):
     def draw(self):
         self.update_all()
         self._sprite.draw()
+        pyglet.gl.glLoadIdentity()  # reset gl
 
     def delete(self):
         self._sprite.delete()

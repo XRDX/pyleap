@@ -10,9 +10,7 @@ import re
 import ssl
 import urllib.request
 
-ctx = ssl.create_default_context()
-ctx.check_hostname = False
-ctx.verify_mode = ssl.CERT_NONE
+__all__ = ['rss']
 
 
 class Resource():
@@ -20,6 +18,9 @@ class Resource():
     def __init__(self, path="download"):
         """ 设置保存路径 """
         self.path = path
+        self.ctx = ssl.create_default_context()
+        self.ctx.check_hostname = False
+        self.ctx.verify_mode = ssl.CERT_NONE
 
     def get(self, url):
         if not self.is_url(url):
@@ -45,7 +46,7 @@ class Resource():
 
         print("Downloading: " + url)
         # urllib.request.urlretrieve(url, filename=fullname)
-        with urllib.request.urlopen(url, context=ctx) as u, \
+        with urllib.request.urlopen(url, context=self.ctx) as u, \
             open(fullname, 'wb') as f:
             f.write(u.read())
 
@@ -58,3 +59,5 @@ class Resource():
                 r'(?::\d+)?' # optional port
                 r'(?:/?|[/?]\S+)$', re.IGNORECASE)
         return re.match(regex, url) is not None
+
+rss = Resource()

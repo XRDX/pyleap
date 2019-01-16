@@ -1,7 +1,7 @@
-from pyleap.window import window
-from pyglet.window import key as default_key
+import pyglet
+from pyleap.util import null
 
-from pyleap import null
+__all__ = ['key']
 
 class SingleKey():
 
@@ -40,14 +40,12 @@ class Key(dict):
     切换键：LSHIFT, RSHIFT, LCTRL, RCTRL，CAPSLOCK，LMETA，RMETA，LALT，RALT
         LWINDOWS， RWINDOWS，LCOMMAND，RCOMMAND，LOPTION，ROPTION
     数字区：NUM_0，NUM_1，NUM_2...
-
-
     """
 
     def __init__(self, **kw):
         super().__init__(**kw)
 
-        for symbol, name in default_key.__dict__['_key_names'].items():
+        for symbol, name in pyglet.window.key.__dict__['_key_names'].items():
              s_k = SingleKey()
              self[symbol] = s_k
              self[name] = s_k
@@ -55,9 +53,4 @@ class Key(dict):
     def __getattr__(self, key):
         return self[key.upper()]
 
-
-
 key = Key()
-
-
-__all__ = ['key']

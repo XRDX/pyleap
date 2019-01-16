@@ -1,10 +1,9 @@
 import pyglet
-from pyglet import gl
-from pyleap.util import all_shapes
 import platform
 import configparser
 
-sysstr = platform.system()
+from pyleap.util import all_shapes, get_fps
+
 plat = pyglet.window.get_platform()
 display = plat.get_default_display()
 screen = display.get_default_screen()
@@ -59,8 +58,8 @@ class Window(pyglet.window.Window):
     def __init__(self):
         """ 初始化，创建一个窗口 """
             
-        if(sysstr =="Windows"):
-            template = gl.Config(alpha_size=8, sample_buffers=1, samples=4)
+        if platform.system() =="Windows":
+            template = pyglet.gl.Config(alpha_size=8, sample_buffers=1, samples=4)
             configs = screen.get_matching_configs(template)
 
             if not configs:
@@ -75,6 +74,7 @@ class Window(pyglet.window.Window):
         
         self.set_caption("LeapLearner")
         self.set_location(location_x, location_y)
+        self.axis_batch = None
 
     @property
     def w(self):
@@ -111,13 +111,55 @@ class Window(pyglet.window.Window):
         super().clear()
 
     def show_axis(self):
-        from pyleap import Line, Text
+        if self.axis_batch is None:
+            self.create_axis_batch()
+
+        self.axis_batch.draw()
+
+    def create_axis_batch(self):
+        self.axis_batch = pyglet.graphics.Batch()
         for x in range(0, self.w, 100):
-            Line(x, 0, x, self.h, 1, '#eeaa00').draw()
-            Text(str(x), x+2, 2, 10).draw()
+            self.axis_batch.add(
+                2, pyglet.gl.GL_LINES, None,
+                ('v2i', (x, 0, x, self.h)),
+                ('c3B', (240, 160, 0) * 2))
+
+            pyglet.text.Label(str(x), x=x+2, y=2, color=(240, 160, 0, 255), batch=self.axis_batch)
+
         for y in range(0, self.h, 100):
-            Line(0, y, self.w, y, 1, '#eeaa00').draw()
-            Text(str(y), 2, y+2, 10).draw()
+            self.axis_batch.add(
+                2, pyglet.gl.GL_LINES, None,
+                ('v2i', (0, y, self.w, y)),
+                ('c3B', (240, 160, 0) * 2))
+            pyglet.text.Label(str(y), x=2, y=y+2, color=(240, 160, 0, 255), batch=self.axis_batch)
+
+    def show_fps(self):
+        fps = int(get_fps())
+
+        if fps>100:
+            s = "fps: >100"
+        else:
+            s = "fps: {}".format(fps)
+        pyglet.text.Label(s, x=2, y=window.h-15, color=(240, 160, 0, 255)).draw()
+
+    def keep_on_top(self):
+        # keep window on top
+        if platform.system()=="Windows":
+            try:
+                import win32gui
+                import win32con
+                win32gui.SetWindowPos(self._hwnd, win32con.HWND_TOPMOST, 0,0,0,0,
+                win32con.SWP_NOMOVE | win32con.SWP_NOSIZE)
+            except:
+                print("Please install pywin32 first to use keep_on_top()")
+        # Mac
+        elif "Darwin" in platform.system():
+            import os
+            script = 'tell application "System Events" \
+              to set frontmost of the first process whose unix id is {pid} to true'.format(pid=os.getpid())
+            os.system("/usr/bin/osascript -e '{script}'".format(script=script))
+        else:
+            print("keep on top only support on windows")
 
 
 window = Window()
@@ -125,26 +167,15 @@ window = Window()
 # 必须放在window后面
 
 # 抗锯齿
-gl.glEnable(gl.GL_LINE_SMOOTH);
-gl.glHint(gl.GL_LINE_SMOOTH_HINT, gl.GL_DONT_CARE);
+pyglet.gl.glEnable(pyglet.gl.GL_LINE_SMOOTH);
+pyglet.gl.glHint(pyglet.gl.GL_LINE_SMOOTH_HINT, pyglet.gl.GL_DONT_CARE);
 
-gl.glEnable(gl.GL_POLYGON_SMOOTH);
-gl.glHint(gl.GL_POLYGON_SMOOTH_HINT, gl.GL_DONT_CARE);
+pyglet.gl.glEnable(pyglet.gl.GL_POLYGON_SMOOTH);
+pyglet.gl.glHint(pyglet.gl.GL_POLYGON_SMOOTH_HINT, pyglet.gl.GL_DONT_CARE);
 
 # 抗锯齿-多样本缓冲(Multisample Buffer)
-gl.glEnable(gl.GL_MULTISAMPLE);
+pyglet.gl.glEnable(pyglet.gl.GL_MULTISAMPLE);
 
 # 支持透明
-gl.glBlendFunc(gl.GL_SRC_ALPHA, gl.GL_ONE_MINUS_SRC_ALPHA);
-gl.glEnable(gl.GL_BLEND);
-
-# keep window on top
-if sysstr=="Windows":
-    try:
-        import win32gui
-        import win32con
-        win32gui.SetWindowPos(window._hwnd, win32con.HWND_TOPMOST, 0,0,0,0,
-        win32con.SWP_NOMOVE | win32con.SWP_NOSIZE)
-    except:
-        pass
-
+pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA);
+pyglet.gl.glEnable(pyglet.gl.GL_BLEND);

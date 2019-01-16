@@ -5,7 +5,7 @@
 
 
 from pyglet import gl
-from math import sin, cos, pi
+from math import sin, cos, pi, sqrt
 from pyleap.shape.shape import Shape
 
 
@@ -19,13 +19,12 @@ class Ellipse(Shape):
         半径： r_x, r_y    默认为50, 30
         颜色： color,      默认为 "orange"
         """
-        super().__init__(x, y, color, gl=gl.GL_POLYGON)
-        self.r_x = r_x
-        self.r_y = r_y
+        super().__init__(color, gl=gl.GL_POLYGON)
+        self.x, self.y, self.r_x, self.r_y = x, y, r_x, r_y
 
     def update_points(self):
         """ 椭圆的近似图形：72边形 """
-        n = 72
+        n = max(8, min(72, int(2*sqrt(self.r_x+self.r_y))))
         d = pi * 2 / n
         x, y, r_x, r_y = self.x, self.y, self.r_x, self.r_y
 

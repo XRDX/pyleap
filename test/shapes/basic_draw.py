@@ -1,14 +1,21 @@
-from pyleap import *
+from pyleap import Rectangle, window, Line, Polygon, Circle, Text, repeat, run
+
+
+bg = Rectangle(0, 0, window.w, window.h, "white")
 
 def draw(dt):
     window.clear()
-    Rectangle(0, 0, 200, 300, "blue").draw()
+    
+    bg.draw()
     window.show_axis()
-    Rectangle(100, 200, 300, 200, "#00ff0080").draw()
+
+    Rectangle(10, 10, 300, 200, "#00ff0080").stroke()
+
     Line(100, 100, 600, 100, 100, 'pink').draw()
-    Triangle(200, 50, 300, 50, 250, 150, "green").stroke()
-    Circle(200, 200, 50, "#ff000080").draw()
+    Polygon(200, 50, 300, 50, 250, 150, "green").draw()
+    Circle(200, 200, 120, "#ff000080").draw()
     Text('Hello, world', 350, 100).draw()
+    window.show_fps()
 
 repeat(draw)
 run()

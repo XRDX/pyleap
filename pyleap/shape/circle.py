@@ -3,9 +3,8 @@
 圆是以圆心为中心的正多边形（正72边形）的形式进行拟合
 """
 
-
-from pyglet import gl
-from math import sin, cos, pi
+import pyglet
+from math import sin, cos, pi, sqrt
 from pyleap.shape.shape import Shape
 
 
@@ -19,12 +18,13 @@ class Circle(Shape):
         半径： r，     默认为30
         颜色： color,  默认为 "orange"
         """
-        super().__init__(x, y, color, gl=gl.GL_POLYGON)
-        self.r = r
+        super().__init__(color, gl=pyglet.gl.GL_POLYGON)
+        self.x, self.y, self.r = x, y, r
 
     def update_points(self):
-        """ 圆的近似图形：正72边形 """
-        n = 72
+        """ 圆的近似图形：正多边形 """
+        n = max(8, min(72, int(4*sqrt(self.r))))
+
         d = pi * 2 / n
         x, y, r = self.x, self.y, self.r
 

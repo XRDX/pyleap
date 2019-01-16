@@ -25,7 +25,7 @@ def new_enemy():
 
 
 def update(dt):
-    bullet.y += 3
+    bullet.y += 10
     if bullet.y > window.h:
         bullet.x = hero.x
         bullet.y = hero.y
@@ -43,7 +43,7 @@ def draw(dt):
     hero.draw()
     enemy.draw()
     bullet.draw()
-    # fps_display.draw()
+    window.show_fps()
 
 
 def move():
