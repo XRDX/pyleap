@@ -6,6 +6,7 @@ pyleap 教程
 
    introduction/index
    basics/index
-   qa
+   window/index
+   other/qa
 
    pyglet/index

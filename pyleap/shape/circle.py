@@ -23,8 +23,7 @@ class Circle(Shape):
 
     def update_points(self):
         """ 圆的近似图形：正多边形 """
-        n = max(8, min(72, int(4*sqrt(self.r))))
-
+        n = 72
         d = pi * 2 / n
         x, y, r = self.x, self.y, self.r
 

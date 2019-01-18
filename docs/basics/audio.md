@@ -1,10 +1,8 @@
-### 音效对象 Audio
+# 音效对象 Audio
 
 pyleap支持的音效格式有（不限于以下列出的格式）：
 
 AU, MP2, MP3, OGG/Vorbis, WAV, WMA...
-
-
 
 使用网络地址链接，如果使用的是网络地址链接，则会下载该资源到本地，下次运行时将直接读取本地资源
 
@@ -24,9 +22,7 @@ def pause(url):
     """ 暂停音效 """
 ```
 
-
-
-### 例子 Examples
+## 例子 Examples
 
 键盘钢琴
 
@@ -86,13 +82,11 @@ repeat(Loop)
 run()
 ```
 
-
-
-### 常见问题 Q&A
+## 常见问题 Q&A
 
 Q：无法播放音效
 
 A1：如果是数字按键，确认是英文输入法
 A2：一般情况下无需安装插件即可播放音效，部分电脑无法播放音效，则需要安装Avbin才能播放，请选择正确的版本安装，然后重启电脑。
 
-[ Avbin下载地址](http://avbin.github.io/AVbin/Download.html)
+[Avbin下载地址](http://avbin.github.io/AVbin/Download.html)

@@ -6,9 +6,10 @@
 
    circle
    shapes
-   window
-   mouse
-   keys
+
    collision
    transform
    audio
+
+   mouse
+   keys

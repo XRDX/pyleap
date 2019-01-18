@@ -49,6 +49,7 @@ class Shape(CollisionMixin, TransformMixin):
         self.update_all()
         self.vertex_list.draw(self.gl)
         pyglet.gl.glLoadIdentity()  # reset gl
+        pyglet.gl.glLineWidth(1)
 
     def stroke(self):
         """ 使用stroke方法将图形绘制在窗口里，仅对基本的几何图形有效 """
@@ -56,12 +57,12 @@ class Shape(CollisionMixin, TransformMixin):
         length = len(self.points)
         
         # thick lines
-        if self.line_width <= 3:
-            if length==4:
-                self.vertex_list.draw(pyglet.gl.GL_LINES)
-            elif length > 4:
-                self.vertex_list.draw(pyglet.gl.GL_LINE_LOOP)
-            return
+        # if self.line_width == 1:
+        #     if length==4:
+        #         self.vertex_list.draw(pyglet.gl.GL_LINES)
+        #     elif length > 4:
+        #         self.vertex_list.draw(pyglet.gl.GL_LINE_LOOP)
+        #     return
 
         # 
         color = color_to_tuple(self.color, self.opacity)
@@ -114,7 +115,6 @@ class Shape(CollisionMixin, TransformMixin):
 
             batch = pyglet.graphics.Batch()
             for i in range(0, len(points), 4):
-
                 batch.add(4, pyglet.gl.GL_QUADS, None,
                     ('v2f', (points[i-4], points[i-3], points[i-2], points[i-1],
                         points[i+2], points[i+3], points[i], points[i+1])),
@@ -123,6 +123,7 @@ class Shape(CollisionMixin, TransformMixin):
             batch.draw()
 
         pyglet.gl.glLoadIdentity()  # reset gl
+        pyglet.gl.glLineWidth(1)
 
     def update_all(self):
         """ 在绘制之前，针对形变进行计算，通过设置openGL的属性来达到绘制出变形的图形 """

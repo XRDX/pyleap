@@ -108,9 +108,13 @@ class Window(pyglet.window.Window):
 
     def clear(self):
         all_shapes.clear()
-        super().clear()
+        # super().clear()
+        pyglet.graphics.vertex_list(4,
+            ('v2i', (0, 0, self.w, 0, self.w, self.h, 0, self.h)),
+            ('c3B', (255, 255, 255) * 4)
+        ).draw(pyglet.gl.GL_QUADS)
 
-    def show_axis(self):
+    def show_axis(self):       
         if self.axis_batch is None:
             self.create_axis_batch()
 
@@ -159,7 +163,7 @@ class Window(pyglet.window.Window):
               to set frontmost of the first process whose unix id is {pid} to true'.format(pid=os.getpid())
             os.system("/usr/bin/osascript -e '{script}'".format(script=script))
         else:
-            print("keep on top only support on windows")
+            print("window.keep_on_top() is only supported on windows")
 
 
 window = Window()
@@ -167,15 +171,15 @@ window = Window()
 # 必须放在window后面
 
 # 抗锯齿
-pyglet.gl.glEnable(pyglet.gl.GL_LINE_SMOOTH);
-pyglet.gl.glHint(pyglet.gl.GL_LINE_SMOOTH_HINT, pyglet.gl.GL_DONT_CARE);
+pyglet.gl.glEnable(pyglet.gl.GL_LINE_SMOOTH)
+pyglet.gl.glHint(pyglet.gl.GL_LINE_SMOOTH_HINT, pyglet.gl.GL_DONT_CARE)
 
-pyglet.gl.glEnable(pyglet.gl.GL_POLYGON_SMOOTH);
-pyglet.gl.glHint(pyglet.gl.GL_POLYGON_SMOOTH_HINT, pyglet.gl.GL_DONT_CARE);
+pyglet.gl.glEnable(pyglet.gl.GL_POLYGON_SMOOTH)
+pyglet.gl.glHint(pyglet.gl.GL_POLYGON_SMOOTH_HINT, pyglet.gl.GL_DONT_CARE)
 
 # 抗锯齿-多样本缓冲(Multisample Buffer)
-pyglet.gl.glEnable(pyglet.gl.GL_MULTISAMPLE);
+pyglet.gl.glEnable(pyglet.gl.GL_MULTISAMPLE)
 
 # 支持透明
-pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA);
-pyglet.gl.glEnable(pyglet.gl.GL_BLEND);
+pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA)
+pyglet.gl.glEnable(pyglet.gl.GL_BLEND)
