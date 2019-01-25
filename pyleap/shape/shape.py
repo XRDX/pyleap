@@ -46,14 +46,18 @@ class Shape(CollisionMixin, TransformMixin):
 
     def draw(self):
         """ 使用draw方法将图形绘制在窗口里 """
-        self.update_all()
+        self._before_draw()
         self.vertex_list.draw(self.gl)
+        self._after_draw()
+    
+    def _after_draw(self):
+        """ reset gl """
         pyglet.gl.glLoadIdentity()  # reset gl
         pyglet.gl.glLineWidth(1)
 
     def stroke(self):
         """ 使用stroke方法将图形绘制在窗口里，仅对基本的几何图形有效 """
-        self.update_all()
+        self._before_draw()
         length = len(self.points)
         
         # thick lines
@@ -122,10 +126,9 @@ class Shape(CollisionMixin, TransformMixin):
 
             batch.draw()
 
-        pyglet.gl.glLoadIdentity()  # reset gl
-        pyglet.gl.glLineWidth(1)
+        self._after_draw()
 
-    def update_all(self):
+    def _before_draw(self):
         """ 在绘制之前，针对形变进行计算，通过设置openGL的属性来达到绘制出变形的图形 """
         self.update_points()
         self.update_vertex_list()
@@ -139,7 +142,7 @@ class Shape(CollisionMixin, TransformMixin):
         # handle shapes click envets
         all_shapes.discard(self)
         if(self._press != None):
-            all_shapes.add(self)
+            all_shapes.add(self)     
 
     def update_points(self):
         """ translate shapes to points，在子类中实现 """

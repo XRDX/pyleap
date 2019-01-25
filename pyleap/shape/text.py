@@ -21,11 +21,12 @@ class Text(Rectangle):
         self.h = self.text.content_height
 
     def draw(self):
-        self.update_all()
+        self._before_draw()
         self.text.x = self.x
         self.text.y = self.y
         self.text.color = color_to_tuple(self.color)
         self.text.draw()
+        self._after_draw()
 
     @property
     def src(self):

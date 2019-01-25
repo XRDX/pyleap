@@ -94,9 +94,9 @@ class Sprite(Rectangle):
         self.points = (min_x, min_y, max_x, min_y, max_x, max_y, min_x, max_y)
 
     def draw(self):
-        self.update_all()
+        self._before_draw()
         self._sprite.draw()
-        pyglet.gl.glLoadIdentity()  # reset gl
+        self._after_draw()
 
     def delete(self):
         self._sprite.delete()
