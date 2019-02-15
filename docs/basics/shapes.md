@@ -39,17 +39,6 @@ class Rectangle(Shape):
         """
 ```
 
-## 线段
-
-```python
-class Line(Shape):
-    def __init__(self, x1=100, y1=100, x2=200, y2=200, line_width=1, color="orange"):
-        """ 线段
-        线段宽度： line_width， 默认为1
-        颜色： color, 默认为"orange"
-        """
-```
-
 ## 椭圆
 
 ```python

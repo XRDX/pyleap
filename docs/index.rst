@@ -6,6 +6,7 @@ pyleap 教程
 
    introduction/index
    basics/index
+   style/index
    window/index
    other/qa
 

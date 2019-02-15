@@ -5,6 +5,7 @@
    :maxdepth: 2
 
    circle
+   line
    text
    shapes
 
