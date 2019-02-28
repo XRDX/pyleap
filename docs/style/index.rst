@@ -4,6 +4,6 @@
 .. toctree::
    :maxdepth: 2
 
-   constant_color
+   color
    rgb
    hsl

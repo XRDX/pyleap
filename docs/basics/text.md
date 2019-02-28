@@ -19,8 +19,8 @@ Text(src, x=window.center_x, y=window.center_y,
 
 ### Text的其他属性
 
-* w: 宽度，文字的宽度
-* h: 高度，文字的高度
+* w: 宽度，文字的宽度，只读属性
+* h: 高度，文字的高度，只读属性
 
 ## Text的方法
 
