@@ -176,7 +176,7 @@ class Line(Shape):
 		"""
 		x = (x1 + x2) / 2
 		y = (y1 + y2) / 2
-		super().__init__(x, y, color, gl=gl.GL_LINES, line_width=line_width)
+		super().__init__(color, gl=gl.GL_LINES, line_width=line_width)
 		self.x1 = x1
 		self.y1 = y1
 		self.x2 = x2
