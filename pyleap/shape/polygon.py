@@ -12,7 +12,7 @@ class Polygon(Shape):
         """ 多边形
             颜色： color 默认为 "orange"
         """
-        if isinstance(args[-1], str):
+        if isinstance(args[-1], str) or isinstance(args[-1], tuple) :
             color = args[-1]
             points = list(args[:len(args)-1])
         else:
