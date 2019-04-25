@@ -57,19 +57,21 @@ class Window(pyglet.window.Window):
 
     def __init__(self):
         """ 初始化，创建一个窗口 """
-            
-        if platform.system() =="Windows":
-            template = pyglet.gl.Config(alpha_size=8, sample_buffers=1, samples=4)
-            configs = screen.get_matching_configs(template)
+        try:
+            if platform.system() =="Windows":
+                template = pyglet.gl.Config(alpha_size=8, sample_buffers=1, samples=4)
+                configs = screen.get_matching_configs(template)
 
-            if not configs:
-                super().__init__()
-            else:
-                try:
-                    super().__init__(config=configs[0])
-                except Exception: 
+                if not configs:
                     super().__init__()
-        else: # Mac or Linux
+                else:
+                    try:
+                        super().__init__(config=configs[0])
+                    except Exception: 
+                        super().__init__()
+            else: # Mac or Linux
+                super().__init__()
+        except:
             super().__init__()
         
         self.set_caption("LeapLearner")
@@ -170,16 +172,19 @@ window = Window()
 
 # 必须放在window后面
 
-# 抗锯齿
-pyglet.gl.glEnable(pyglet.gl.GL_LINE_SMOOTH)
-pyglet.gl.glHint(pyglet.gl.GL_LINE_SMOOTH_HINT, pyglet.gl.GL_DONT_CARE)
+try:
+    # 抗锯齿
+    pyglet.gl.glEnable(pyglet.gl.GL_LINE_SMOOTH)
+    pyglet.gl.glHint(pyglet.gl.GL_LINE_SMOOTH_HINT, pyglet.gl.GL_DONT_CARE)
 
-pyglet.gl.glEnable(pyglet.gl.GL_POLYGON_SMOOTH)
-pyglet.gl.glHint(pyglet.gl.GL_POLYGON_SMOOTH_HINT, pyglet.gl.GL_DONT_CARE)
+    pyglet.gl.glEnable(pyglet.gl.GL_POLYGON_SMOOTH)
+    pyglet.gl.glHint(pyglet.gl.GL_POLYGON_SMOOTH_HINT, pyglet.gl.GL_DONT_CARE)
 
-# 抗锯齿-多样本缓冲(Multisample Buffer)
-pyglet.gl.glEnable(pyglet.gl.GL_MULTISAMPLE)
+    # 抗锯齿-多样本缓冲(Multisample Buffer)
+    pyglet.gl.glEnable(pyglet.gl.GL_MULTISAMPLE)
 
-# 支持透明
-pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA)
-pyglet.gl.glEnable(pyglet.gl.GL_BLEND)
+    # 支持透明
+    pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA)
+    pyglet.gl.glEnable(pyglet.gl.GL_BLEND)
+except:
+    pass
