@@ -4,6 +4,8 @@ import configparser
 
 from pyleap.util import all_shapes, get_fps
 
+__all__ = ['window', "Window"]
+
 plat = pyglet.window.get_platform()
 display = plat.get_default_display()
 screen = display.get_default_screen()
@@ -74,22 +76,22 @@ class Window(pyglet.window.Window):
     设置窗口大小
     """
 
-    def __init__(self):
+    def __init__(self, type=None):
         """ 初始化，创建一个窗口 """
 
+        # error
+        if type=="low":
+            super().__init__()
         # Mac or Linux
-        if platform.system() != "Windows": 
+        elif platform.system() != "Windows": 
             super().__init__()
             enable_smooth_multisample_blend()
         
         elif platform.system() == "Windows":
-            try:
-                template = pyglet.gl.Config(alpha_size=8, sample_buffers=1, samples=4)
-                configs = screen.get_matching_configs(template)
-                super().__init__(config=configs[0])
-                enable_smooth_multisample_blend()
-            except:
-                super().__init__()
+            template = pyglet.gl.Config(alpha_size=8, sample_buffers=1, samples=4)
+            configs = screen.get_matching_configs(template)
+            super().__init__(config=configs[0])
+            enable_smooth_multisample_blend()
     
         self.set_caption("LeapLearner")
         self.set_location(location_x, location_y)
@@ -184,5 +186,7 @@ class Window(pyglet.window.Window):
         else:
             print("window.keep_on_top() is only supported on windows")
 
-
-window = Window()
+try:
+    window = Window()
+except:
+    window = Window("low")

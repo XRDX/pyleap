@@ -15,6 +15,7 @@
 import pyglet
 from pyleap.resource import rss
 
+__all__ = ['Audio', 'play', 'pause']
 
 class StaticSource(pyglet.media.StaticSource):
     """ 音效对象
@@ -70,5 +71,5 @@ def pause(url):
     cache_musics[url].pause()
 
 
-__all__ = ['Audio', 'play', 'pause']
+
 

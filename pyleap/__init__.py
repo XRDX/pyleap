@@ -32,7 +32,7 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # ----------------------------------------------------------------------------
 
-from pyleap.window import window
+from pyleap.window import *
 
 from pyleap.util import *
 from pyleap.shape import *
