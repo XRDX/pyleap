@@ -11,23 +11,42 @@ screen = display.get_default_screen()
 # disable debug gl option 
 pyglet.options['debug_gl'] = False
 
-location_x = -1
-location_y = -1
+def read_window_position():
+    location_x = -1
+    location_y = -1
 
-try:
-    # user configs
-    config = configparser.ConfigParser()
-    config.read('download/config.ini')
+    try:
+        # user configs
+        config = configparser.ConfigParser()
+        config.read('download/config.ini')
 
-    if 'location' in config:
-        location_x = int(config['location']['x'])
-        location_y = int(config['location']['y'])
-except:
-    pass
+        if 'location' in config:
+            location_x = int(config['location']['x'])
+            location_y = int(config['location']['y'])
+    except:
+        pass
 
-if location_x < 0 or location_y < 0 or screen.width < location_x or screen.height < location_y:
-    location_x = screen.width // 2
-    location_y = screen.height // 2
+    if location_x < 0 or location_y < 0 or screen.width < location_x or screen.height < location_y:
+        location_x = screen.width // 2
+        location_y = screen.height // 2
+    return [location_x, location_y]
+
+location_x, location_y = read_window_position()
+
+def enable_smooth_multisample_blend():
+    # 抗锯齿
+    pyglet.gl.glEnable(pyglet.gl.GL_LINE_SMOOTH)
+    pyglet.gl.glHint(pyglet.gl.GL_LINE_SMOOTH_HINT, pyglet.gl.GL_DONT_CARE)
+
+    pyglet.gl.glEnable(pyglet.gl.GL_POLYGON_SMOOTH)
+    pyglet.gl.glHint(pyglet.gl.GL_POLYGON_SMOOTH_HINT, pyglet.gl.GL_DONT_CARE)
+
+    # 抗锯齿-多样本缓冲(Multisample Buffer)
+    pyglet.gl.glEnable(pyglet.gl.GL_MULTISAMPLE)
+
+    # 支持透明
+    pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA)
+    pyglet.gl.glEnable(pyglet.gl.GL_BLEND)
 
 class Window(pyglet.window.Window):
     """ 
@@ -57,23 +76,21 @@ class Window(pyglet.window.Window):
 
     def __init__(self):
         """ 初始化，创建一个窗口 """
-        try:
-            if platform.system() =="Windows":
+
+        # Mac or Linux
+        if platform.system() != "Windows": 
+            super().__init__()
+            enable_smooth_multisample_blend()
+        
+        elif platform.system() == "Windows":
+            try:
                 template = pyglet.gl.Config(alpha_size=8, sample_buffers=1, samples=4)
                 configs = screen.get_matching_configs(template)
-
-                if not configs:
-                    super().__init__()
-                else:
-                    try:
-                        super().__init__(config=configs[0])
-                    except Exception: 
-                        super().__init__()
-            else: # Mac or Linux
+                super().__init__(config=configs[0])
+                enable_smooth_multisample_blend()
+            except:
                 super().__init__()
-        except:
-            super().__init__()
-        
+    
         self.set_caption("LeapLearner")
         self.set_location(location_x, location_y)
         self.axis_batch = None
@@ -169,22 +186,3 @@ class Window(pyglet.window.Window):
 
 
 window = Window()
-
-# 必须放在window后面
-
-try:
-    # 抗锯齿
-    pyglet.gl.glEnable(pyglet.gl.GL_LINE_SMOOTH)
-    pyglet.gl.glHint(pyglet.gl.GL_LINE_SMOOTH_HINT, pyglet.gl.GL_DONT_CARE)
-
-    pyglet.gl.glEnable(pyglet.gl.GL_POLYGON_SMOOTH)
-    pyglet.gl.glHint(pyglet.gl.GL_POLYGON_SMOOTH_HINT, pyglet.gl.GL_DONT_CARE)
-
-    # 抗锯齿-多样本缓冲(Multisample Buffer)
-    pyglet.gl.glEnable(pyglet.gl.GL_MULTISAMPLE)
-
-    # 支持透明
-    pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA)
-    pyglet.gl.glEnable(pyglet.gl.GL_BLEND)
-except:
-    pass
