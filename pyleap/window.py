@@ -1,39 +1,16 @@
 import pyglet
 import platform
-import configparser
 
-from pyleap.util import all_shapes, get_fps
+from pyleap.mouse import mouse
+from pyleap.collision import shape_clicked
+from pyleap.util import all_shapes, config, get_fps, screen
+from pyleap.key import key
 
 __all__ = ['window', "Window"]
-
-plat = pyglet.window.get_platform()
-display = plat.get_default_display()
-screen = display.get_default_screen()
 
 # disable debug gl option 
 pyglet.options['debug_gl'] = False
 
-def read_window_position():
-    location_x = -1
-    location_y = -1
-
-    try:
-        # user configs
-        config = configparser.ConfigParser()
-        config.read('download/config.ini')
-
-        if 'location' in config:
-            location_x = int(config['location']['x'])
-            location_y = int(config['location']['y'])
-    except:
-        pass
-
-    if location_x < 0 or location_y < 0 or screen.width < location_x or screen.height < location_y:
-        location_x = screen.width // 2
-        location_y = screen.height // 2
-    return [location_x, location_y]
-
-location_x, location_y = read_window_position()
 
 def enable_smooth_multisample_blend():
     # 抗锯齿
@@ -76,11 +53,10 @@ class Window(pyglet.window.Window):
     设置窗口大小
     """
 
-    def __init__(self, type=None):
+    def __init__(self):
         """ 初始化，创建一个窗口 """
-
-        # error
-        if type=="low":
+        # low quality window
+        if config.get_window_quality() == 'low':
             super().__init__()
         # Mac or Linux
         elif platform.system() != "Windows": 
@@ -94,8 +70,11 @@ class Window(pyglet.window.Window):
             enable_smooth_multisample_blend()
     
         self.set_caption("LeapLearner")
+
+        location_x, location_y = config.get_window_position()
         self.set_location(location_x, location_y)
         self.axis_batch = None
+        init_event(self)
 
     @property
     def w(self):
@@ -186,7 +165,72 @@ class Window(pyglet.window.Window):
         else:
             print("window.keep_on_top() is only supported on windows")
 
-try:
-    window = Window()
-except:
-    window = Window("low")
+    def set_quality(self, quality='low'):
+        config.set_window_quality(quality)
+
+
+def init_event(window):
+    @window.event
+    def on_mouse_motion(x, y, dx, dy):
+        """ 当鼠标没有按下时移动的时候触发 """
+        mouse.x, mouse.y = x, y
+        mouse.move()
+        window.update_caption(mouse)
+
+
+    @window.event
+    def on_mouse_drag(x, y, dx, dy, buttons, modifiers):
+        """ 当鼠标按下并且移动的时候触发 """
+        mouse.x, mouse.y = x, y
+        mouse.move()
+
+    @window.event
+    def on_mouse_press(x, y, button, modifiers):
+        """ 按下鼠标时 
+
+        """ 
+        if button == 1: #MouseKeyCode.LEFT:
+            mouse.press()
+        elif button == 4: #MouseKeyCode.RIGHT:
+            mouse.right_press()
+
+        # 判断是否有图形的点击事件被触发了
+        shapes = list(all_shapes)
+        while shapes:
+            shape = shapes.pop()
+            if(shape._press and shape_clicked(shape)):
+                shape._press()
+
+
+    @window.event
+    def on_mouse_release(x, y, button, modifiers):
+        """ 松开鼠标时 """ 
+        if button == 1: #MouseKeyCode.LEFT:
+            mouse.release()
+        elif button == 4: #MouseKeyCode.RIGHT:
+            mouse.right_release()
+
+
+    @window.event
+    def on_key_press(symbol, modifiers):
+        """ 当键盘按键按下时触发 """
+        try:
+            key[symbol].press()
+        except:
+            pass
+
+
+    @window.event
+    def on_key_release(symbol, modifiers):
+        """ 当键盘按键松开时触发 """
+        try:
+            key[symbol].release()
+        except:
+            pass
+
+    @window.event
+    def on_move(x, y):
+        config.set_window_position(x, y)
+
+
+window = Window()

@@ -32,13 +32,11 @@
 # POSSIBILITY OF SUCH DAMAGE.
 # ----------------------------------------------------------------------------
 
-from pyleap.window import *
-
 from pyleap.util import *
+from pyleap.mouse import *
 from pyleap.shape import *
-
-from pyleap.event import *
 from pyleap.audio import *
-
 from pyleap.color import *
 from pyleap.key import *
+
+from pyleap.window import *
