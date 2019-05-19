@@ -66,8 +66,11 @@ class Window(pyglet.window.Window):
         elif platform.system() == "Windows":
             template = pyglet.gl.Config(alpha_size=8, sample_buffers=1, samples=4)
             configs = screen.get_matching_configs(template)
-            super().__init__(config=configs[0])
-            enable_smooth_multisample_blend()
+            if configs:
+                super().__init__(config=configs[0])
+                enable_smooth_multisample_blend()
+            else:
+                super().__init__()
     
         self.set_caption("LeapLearner")
 
