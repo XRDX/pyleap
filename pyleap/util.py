@@ -1,5 +1,6 @@
 import pyglet
 import sys
+import os
 import configparser
 
 __all__ = ['null', 'run', 'stop', 'repeat', 'run_after', 'all_shapes',
@@ -52,6 +53,8 @@ class Config:
             # user configs
             self.config = configparser.ConfigParser()
             self.config.read(self.src)
+            if not os.path.exists("download"):
+                os.makedirs("download")
         except:
             self.config = {}
 

@@ -235,5 +235,9 @@ def init_event(window):
     def on_move(x, y):
         config.set_window_position(x, y)
 
+try:
+    window = Window()
+except Exception as e:
+    config.set_window_quality("low")
+    window = Window()
 
-window = Window()
