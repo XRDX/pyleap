@@ -1,0 +1,91 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../basics/circle.md:1
+msgid "圆 Circle"
+msgstr "Circle"
+
+#: ../../basics/circle.md:5
+msgid "圆是非常优美的图形，没有棱角。从远处看，太阳、月亮都是一个圆。"
+msgstr "Circle is a beautiful shape without angles, both sun and moon are circles"
+
+#: ../../basics/circle.md:7
+msgid "从一个特定的点出发，距离相同的点的集合便构成了一个圆。如果在3维空间中，这个相同的定义便成为了球的定义，球的任意一个横切面又都是一个圆，非常迷人的特性。"
+msgstr "From a certain point, the points with same distance build a circle"
+
+#: ../../basics/circle.md:9
+msgid "圆的定义 Definition"
+msgstr "Definition"
+
+#: ../../basics/circle.md:11
+msgid "在pyleap中，圆是一个基本图形，圆的基本属性有"
+msgstr "In pyleap, Circle is a basic shape, it have those attributes"
+
+#: ../../basics/circle.md:45
+msgid "圆类的的定义 Class Circle"
+msgstr "Class Circle"
+
+#: ../../basics/circle.md:59
+msgid "注意的是，Circle第一个字母是大写，在python中，我们往往将类的第一个字母大写，用来区分变量和函数。"
+msgstr "Be careful, first letter of Circle should be capital, it is a convention that use a word with first capital letter to represent a class"
+
+#: ../../basics/circle.md:61
+msgid "基于上面的定义，和Python语言的特性，我们可以选取特定的属性，来定义我们的圆，下面的定义都是合法的"
+msgstr "Based on the above definition, and the characteristics of the language in Python, we can select specific properties to define our circle. The following definitions are legal."
+
+#: ../../basics/circle.md:80
+msgid "从左到右依次是c1、c2、c3"
+msgstr "From left to right: c1、c2、c3"
+
+#: ../../basics/circle.md:84
+msgid "空心圆和实心圆"
+msgstr "Hollow circle and solid circle"
+
+#: ../../basics/circle.md:86
+msgid "下面2个圆，他们的半径和颜色一样，但是它们展示出来的效果不同。"
+msgstr "The following two circles have the same radius and color, but they show different effects."
+
+#: ../../basics/circle.md:90
+msgid "他们分别是使用不同的方法来绘制出来的：draw()和stroke()"
+msgstr "They are drawn using different methods: draw() and stroke()"
+
+#: ../../basics/circle.md:107
+msgid "线条粗细"
+msgstr "Line Width"
+
+#: ../../basics/circle.md:109
+msgid "再看这两个圆，同样是使用stroke()方法绘制出来，两个圆的线条粗细不同"
+msgstr "Look at these two circles, the same is drawn using the stroke () method, the thickness of the two circles is different"
+
+#: ../../basics/circle.md:113
+msgid "这是通过设置线条粗细line_width来设定线条的宽度，当然，这个属性只对stroke方法有作用。"
+msgstr "This is to set the width of the line by setting the line thickness line_width. Of course, this attribute only works for the stroke method."
+
+#: ../../basics/circle.md:131
+msgid "更多实例 Examples"
+msgstr "Examples"
+
+#: ../../basics/circle.md:133
+msgid "绘制一个圆，圆心位置为（100，100），半径为50，颜色为红色(\"red\")"
+msgstr "Draw a circle with a center position of (100,100), a radius of 50, and a red color (\"red\")"
+
+#: ../../basics/circle.md:148
+msgid "绘制一个空心的圆，线条的粗细为5（像素），圆心位置为（200，200），半径为60，颜色为绿色(\"green\")"
+msgstr "Draw a hollow circle with a thickness of 5 (pixels), a center position of (200,200), a radius of 60, and a color of green (\"green\")"
+

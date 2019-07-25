@@ -1,0 +1,35 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../pyglet/pyglet_zh.md:1
+msgid "pyglet 文档"
+msgstr ""
+
+#: ../../pyglet/pyglet_zh.md:3
+msgid ""
+"pyglet是python的一个跨平台的多媒体库，用于开发游戏以及其他可视化应用。支持窗口显示，用户交互，事件处理，OpenGL图形，加载图片和视频，播放音效与音乐。pyglet能够在windows，OS"
+" X 和 Linux上工作。"
+msgstr ""
+"pyglet is a cross-platform multimedia library for Python for developing games and other visual applications. Support for window display, user interaction, event processing, OpenGL graphics, loading images and videos, playing sound effects and music. pyglet can be used in windows, OS "
+"X and Linux work.
+
+#: ../../pyglet/pyglet_zh.md:5
+msgid "编程手册"
+msgstr "Programming manual"
+

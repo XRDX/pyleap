@@ -1,0 +1,47 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../basics/shapes.md:1
+msgid "基本图形"
+msgstr "Basic Shapes"
+
+#: ../../basics/shapes.md:3
+msgid "基本图形类 Shape"
+msgstr "Shape"
+
+#: ../../basics/shapes.md:5
+msgid "所有图形都继承与Shape，Shape拥有以下两个主要的属性"
+msgstr "All graphics inherit from Shape, and Shape has the following two main properties."
+
+#: ../../basics/shapes.md:7
+msgid "Collision，主要用于检测碰撞以及点击事件，详见Collision一节"
+msgstr "Collision, mainly used to detect collisions and click events, as described in the Collision section."
+
+#: ../../basics/shapes.md:8
+msgid "Transform，用于图形的变换处理，详见Transform一节"
+msgstr "Transform, used for transformation processing of graphics, see the Transform section for details."
+
+#: ../../basics/shapes.md:25
+msgid "矩形"
+msgstr "Rectangle"
+
+#: ../../basics/shapes.md:42
+msgid "椭圆"
+msgstr "Ellipse"
+

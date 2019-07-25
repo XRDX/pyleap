@@ -1,0 +1,64 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../basics/audio.md:1
+msgid "音效对象 Audio"
+msgstr "Audio"
+
+#: ../../basics/audio.md:3
+msgid "pyleap支持的音效格式有（不限于以下列出的格式）："
+msgstr "pyleap support those format："
+
+#: ../../basics/audio.md:5
+msgid "AU, MP2, MP3, OGG/Vorbis, WAV, WMA..."
+msgstr "AU, MP2, MP3, OGG/Vorbis, WAV, WMA..."
+
+#: ../../basics/audio.md:7
+msgid "使用网络地址链接，如果使用的是网络地址链接，则会下载该资源到本地，下次运行时将直接读取本地资源"
+msgstr ""
+"use online links, after download the resource, pyleap will read it from "
+"disc directly after"
+
+#: ../../basics/audio.md:25
+msgid "例子 Examples"
+msgstr "Examples"
+
+#: ../../basics/audio.md:27
+msgid "键盘钢琴"
+msgstr "Keyboard Piano"
+
+#: ../../basics/audio.md:85
+msgid "常见问题 Q&A"
+msgstr "Q&A"
+
+#: ../../basics/audio.md:87
+msgid "Q：无法播放音效"
+msgstr "Q: Could not play the audio"
+
+#: ../../basics/audio.md:89
+msgid ""
+"A1：如果是数字按键，确认是英文输入法 "
+"A2：一般情况下无需安装插件即可播放音效，部分电脑无法播放音效，则需要安装Avbin才能播放，请选择正确的版本安装，然后重启电脑。"
+msgstr ""
+"A1：Make sure input method is English"
+"A2：If not works, you have to install Avbin and reboot, choose the right version of Avbin in the list"
+
+#: ../../basics/audio.md:92
+msgid "Avbin下载地址"
+msgstr "Avbin download address"

@@ -1,0 +1,186 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../introduction/firstProgram.md:1
+msgid "第一个小程序"
+msgstr "First Pyleap Program"
+
+#: ../../introduction/firstProgram.md:3
+msgid "让我们开始开发我们的第一个小程序，一个接球的小游戏。在开发这个小游戏时，你可能对其中很多概念都不懂，不要担心，按照提示步骤一步步去做，你会发现这一切是多么的简单！"
+msgstr "Let's start developing our first little program, a small game that catches the ball. When developing this little game, you may not understand many of these concepts, don't worry, follow the prompt steps and do it step by step, you will Find out how easy it is!"
+
+#: ../../introduction/firstProgram.md:5
+msgid "如果还没有安装运行环境，请点击以下软件进行安装"
+msgstr "If you have not installed the operating environment, please click the following software to install"
+
+#: ../../introduction/firstProgram.md:7
+msgid "使用立乐在线"
+msgstr "Use LeapLearner Online"
+
+#: ../../introduction/firstProgram.md:9
+msgid ""
+"下载地址： [windows](https://rss.leaplearner.com/assets/leaponline/win32/立乐在线 "
+"Setup 0.1.0.exe) mac"
+msgstr ""
+"Download： [windows](https://rss.leaplearner.com/assets/leaponline/win32/立乐在线 "
+"Setup 0.1.0.exe) mac"
+
+#: ../../introduction/firstProgram.md:11
+msgid "下载安装后，要尝试pyleap，只要打开软件，切换到python模式，点击运行，就可以看到效果了！在第一次打开这个页面时，我们已经为你创建了默认的代码，你可以尝试着去修改代码中的数字，来看看每个数字代表什么含义。"
+msgstr "After downloading and installing, try pyleap, just open the software, switch to python mode, click Run, you can see the effect! When we first open this page, we have created the default code for you, you can try Go and modify the numbers in the code to see what each number means."
+
+#: ../../introduction/firstProgram.md:15
+msgid "目标：从零开始制作一个接球小游戏"
+msgstr "Goal: Make a catch-up game from scratch"
+
+#: ../../introduction/firstProgram.md:17
+msgid "游戏规则很简单，让小球从上方掉落，每次点中小球，分数加1，同时让小球重新从上方随机掉落，随着分数的提高，小球的下落速度也会越来越快，看看你最高能拿到多少分数！"
+msgstr "The rules of the game are very simple. Let the ball fall from above. Each time you hit the ball, the score is increased by 1. At the same time, the ball is randomly dropped from above. As the score increases, the falling speed of the ball will also increase. The sooner, see how many points you can get!"
+
+#: ../../introduction/firstProgram.md:21
+msgid "了解我们的窗口"
+msgstr "Get touch with LeapLearner Online Platform"
+
+#: ../../introduction/firstProgram.md:23
+msgid "新建一个python项目，修改项目默认代码，在draw(dt)(第4行)函数下添加以下代码，然后点击运行按钮，顺利的话，你就成功创建了一个窗口程序，可以看到在画布上显示出了坐标。"
+msgstr "Create a new python project, modify the project default code, add the following code under the draw(dt) (line 4) function, and then click the Run button. If successful, you will successfully create a window program that you can see on the canvas. The coordinates are displayed."
+
+#: ../../introduction/firstProgram.md:48
+msgid "图中的坐标系也称之为笛卡尔坐标系，在数学中被广泛运用，坐标左下角是原点，往右是x轴正方向，往上是y轴正方向。窗口中的点都和坐标一一对应，由此，我们可以使用数字来确定窗口中任意图形的位置。"
+msgstr "The coordinate system in the figure is also called Cartesian coordinate system. It is widely used in mathematics. The lower left corner of the coordinate is the origin, the right is the positive direction of the x-axis, and the upward is the positive direction of the y-axis. The points in the window are both The coordinates correspond one-to-one, so we can use numbers to determine the position of any graphic in the window."
+
+#: ../../introduction/firstProgram.md:50
+msgid "我们创建一个小球出来"
+msgstr "We create a small ball"
+
+#: ../../introduction/firstProgram.md:52
+msgid ""
+"创建一个小球，名字为ball，小球的中心坐标点为(300, "
+"200)，大小为25，在pyleap中，圆对象叫做Circle，我们一般用首字母大写来表示一类对象。定义圆的x坐标为300，y坐标为200，半径r为25。"
+msgstr ""
+"Create a small ball with the name ball and the center point of the ball is (300, 200), the size is 25. In pyleap, the circle object is called Circle. We generally use a capital letter to represent a class of objects. The circle x is defined as 300, the y coordinate is 200, and the radius r is 25.
+
+#: ../../introduction/firstProgram.md:58
+msgid "如果我们按照x、y、r的顺序来表示Circle的参数，那么就可以省略掉参数的标注，可以直接写成下述方式。"
+msgstr "If we represent the parameters of Circle in the order of x, y, r, then we can omit the label of the parameter, which can be directly written as follows."
+
+#: ../../introduction/firstProgram.md:64
+msgid "在第3行，我们创建了一个ball对象，代表了右侧的这个小球。"
+msgstr "In line 3, we created a ball object that represents the small ball on the right."
+
+#: ../../introduction/firstProgram.md:66
+msgid "第7行，在draw函数中，我们使用小球的draw方法，将这个小球画在了画布上。同样注意这里的括号和空格，以免出现语法错误。"
+msgstr "Line 7, in the draw function, we use the draw method of the ball to draw the ball on the canvas. Also pay attention to the brackets and spaces here to avoid syntax errors."
+
+#: ../../introduction/firstProgram.md:70
+msgid "让小球动起来"
+msgstr "Make the ball move"
+
+#: ../../introduction/firstProgram.md:72
+msgid "为了让小球动起来，我们需要重复做这么一个操作："
+msgstr "In order for the ball to move, we need to repeat this operation:"
+
+#: ../../introduction/firstProgram.md:74
+msgid "把画布清空"
+msgstr "Clear the window"
+
+#: ../../introduction/firstProgram.md:75
+msgid "把小球往下移动一段距离"
+msgstr "Move the ball down a distance"
+
+#: ../../introduction/firstProgram.md:76
+msgid "把小球画在画布上"
+msgstr "Draw the ball on the window"
+
+#: ../../introduction/firstProgram.md:77
+msgid "每隔一段时间执行以上1-3步代码"
+msgstr "Execute the above 1-3 step code every once in a while"
+
+#: ../../introduction/firstProgram.md:79
+msgid "当我们非常快的完成1-3步时，同时不停的重复以上步骤，我们就能感觉小球在画布上动起来了！当然，我们需要让计算机帮我们做这么一件事情。"
+msgstr "When we finish 1-3 steps very quickly, and repeat the above steps at the same time, we can feel the ball moving on the canvas! Of course, we need to let the computer do this for us."
+
+#: ../../introduction/firstProgram.md:81
+msgid "定义一个函数，执行以上1-3步骤功能，每次执行这个函数，就会执行1-3步。"
+msgstr "Define a function that performs the above steps 1-3. Each time this function is executed, steps 1-3 are performed."
+
+#: ../../introduction/firstProgram.md:90
+msgid "最后用repeat方法，每隔一段时间执行这个函数。"
+msgstr "Finally, use the repeat method to execute this function every once in a while."
+
+#: ../../introduction/firstProgram.md:96
+msgid "我们可以看到，小球动起来了，但是画布的坐标也不见了。这是因为我们在清理完画布之后，没有再把坐标画出来。那么，在清理画布后，重新将坐标显示出来就可以了。那么，到这一步，代码就变为下面的代码。我们不再需要第一行的window.showAxis()，因为我们已经在后续的步骤中重复执行这个函数了。"
+msgstr "We can see that the ball is moving, but the coordinates of the canvas are gone. This is because we have not drawn the coordinates after cleaning the canvas. Then, after cleaning the canvas, re-display the coordinates. Then, at this point, the code becomes the following code. We no longer need the first line of window.showAxis() because we have already repeated this function in subsequent steps."
+
+#: ../../introduction/firstProgram.md:114
+msgid "点击小球让小球回到上方"
+msgstr "Click on the ball to get the ball back to the top"
+
+#: ../../introduction/firstProgram.md:116
+msgid "完成小球的移动后，小球会一直往下移动，最终离开画布，重新运行才能再次看到小球。我们希望点击小球的时候能让小球回到上方。为此，我们为小球的点击添加一个函数，这个函数的功能是，让小球的y位置回到100。在代码的最后添加几个新的代码行，并将下面的代码写进去。"
+msgstr "After completing the movement of the ball, the ball will move all the way down, eventually leaving the canvas and re-running to see the ball again. We hope that when the ball is clicked, the ball will be returned to the top. To do this, we add a function to the click of the ball. The function of this function is to return the y position of the ball to 100. Add a few new lines of code at the end of the code and write the code below."
+
+#: ../../introduction/firstProgram.md:123
+msgid "在这个函数的基础上，添加一个事件，当小球被点击的时候触发"
+msgstr "Based on this function, add an event that fires when the ball is clicked."
+
+#: ../../introduction/firstProgram.md:131
+msgid "再次运行，点击小球，小球就可以回到100的位置了。接着，为这个函数添加第二个功能，让小球的x位置随机出现在0到640的位置。"
+msgstr "Run it again, click on the ball, and the ball will return to the 100 position. Next, add a second feature to this function to make the x position of the ball appear randomly from 0 to 640."
+
+#: ../../introduction/firstProgram.md:133
+msgid "添加randint方法，randint用于产生一个随机数，比如randint(0, 100)会产生一个0到100的随机整数"
+msgstr "Add the randint method, randint is used to generate a random number, such as randint (0, 100) will produce a random integer from 0 to 100"
+
+#: ../../introduction/firstProgram.md:139
+msgid "最终完整的代码应该像下面这样，注意前后顺序不能错误。"
+msgstr "The final complete code should look like this, pay more attention to the line order"
+
+#: ../../introduction/firstProgram.md:169
+msgid "最终，完整的代码和运行效果应该如下图所示，快看你的作品是不是完成了呢？"
+msgstr "In the end, the complete code and running results should be as shown below. Is your work finished?"
+
+#: ../../introduction/firstProgram.md:173
+msgid "改变小球掉落的速度"
+msgstr "Change the speed the ball falls"
+
+#: ../../introduction/firstProgram.md:175
+msgid "最后一步，为我们的游戏添加挑战。按照以下步骤，参照最终代码，相信你一定可以完成的！"
+msgstr "The final step is to add challenges to our game. Follow the steps below and refer to the final code, I believe you can do it!"
+
+#: ../../introduction/firstProgram.md:177
+msgid "添加一个属性ball.spee用来记录小球的速度，默认为1分ball.speed = 1"
+msgstr "Add a property ball.speed to record the speed of the ball, the default is 1 point ball.speed = 1"
+
+#: ../../introduction/firstProgram.md:178
+msgid "每次成功点击时，增加1分，ball.speed += 1"
+msgstr "Add 1 point each time a successful click, ball.speed += 1"
+
+#: ../../introduction/firstProgram.md:179
+msgid "同时，修改ball.y -= 1为ball.y -= ball.speed，让小球随着速度变化而移动"
+msgstr "Also, modify ball.y -= 1 to ball.y -= ball.speed to move the ball as the speed changes."
+
+#: ../../introduction/firstProgram.md:180
+msgid "最后，将速度显示在窗口中，Text(str(ball.speed), 150, 150, 30).draw()"
+msgstr "Finally, display the speed in the window，use Text(str(ball.speed), 150, 150, 30).draw()"
+
+#: ../../introduction/firstProgram.md:206
+msgid "至此，一个完整的游戏就制作完成了，你觉得还有什么地方可以改进的呢？"
+msgstr "At this point, a complete game is finished. What do you think can be improved?"
+

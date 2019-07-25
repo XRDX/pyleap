@@ -1,0 +1,86 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../window/window.md:1
+msgid "窗口 window"
+msgstr "window"
+
+#: ../../window/window.md:3
+msgid "pyleap中已经帮你创建了一个window对象，代表了运行的这个窗口。"
+msgstr "Pyleap has created a window object for you, which represents the window that is running."
+
+#: ../../window/window.md:7
+msgid "属性速查 Attributes"
+msgstr "Attributes"
+
+#: ../../window/window.md:32
+msgid "方法速查 Methods"
+msgstr "Methods"
+
+#: ../../window/window.md:69
+msgid "窗口的属性 window attributes"
+msgstr "window attributes"
+
+#: ../../window/window.md:71
+msgid "宽度和高度 window.w, window.h"
+msgstr "window.w, window.h"
+
+#: ../../window/window.md:73
+msgid "设置窗口宽度和高度 举例："
+msgstr "Set window width and height, Example:"
+
+#: ../../window/window.md:80
+msgid "帧数展示 window.show_fps()"
+msgstr "Frame number display: window.show_fps()"
+
+#: ../../window/window.md:84
+msgid ""
+"以文本的形式在屏幕左上角显示当前的fps（Frame per "
+"Second），每秒刷新速率。FPS和电脑的性能及程序的计算量相关，当FPS下降到20以下时，就可以明显感觉到卡顿现象。"
+msgstr ""
+"The current fps (Frame per Second) is displayed in the upper left corner of the screen as text, and the refresh rate per second. The performance of the FPS is related to the performance of the computer and the amount of calculation of the program. When the FPS drops below 20, the stuck phenomenon can be clearly felt."
+
+#: ../../window/window.md:86
+msgid "大量的图片绘制会增加运行时的计算量，因此在使用大量图片时，考虑使用batch功能。另外，优化程序结构和逻辑也会相应的降低运行计算量。"
+msgstr "lot of picture drawing will increase the amount of calculations at runtime, so consider using the batch function when using a lot of pictures. In addition, optimizing the program structure and logic will reduce the amount of running computation accordingly."
+
+#: ../../window/window.md:88
+msgid "window.show_fps()只是一个普通的显示 示例代码"
+msgstr Window.show_fps() is just a normal display, sample code"
+
+#: ../../window/window.md:103
+msgid "保持窗口在最前面 window.keep_on_top()"
+msgstr "Keep the window at the front window.keep_on_top()"
+
+#: ../../window/window.md:105
+msgid "窗口保持在最前面需要操作系统的支持，对windows来说，需要安装win32模块允许python操作操作系统。第一次使用时，在立乐在线中输入pywin32进行安装，文件较大，需要花费较长的时间。如果通过模块来安装，使用以下命令"
+msgstr "The window needs to be supported by the operating system at the top. For Windows, you need to install the win32 module to allow Python to operate the operating system. When using it for the first time, enter pywin32 in the Lele Online to install it. The file size is large and takes a long time. If installing through a module, use the following command"
+
+#: ../../window/window.md:111
+msgid "keep_on_top()只要调用一次，就可以设置成功，无需循环调用。"
+msgstr "Keep_on_top() can be set once, and it can be set successfully without looping."
+
+#: ../../window/window.md:113
+msgid "示例代码"
+msgstr "Sample code"
+
+#: ../../window/window.md:129
+msgid "重要的问题： 当你在使用zoom进行屏幕共享的时候，keep_on_top()方法会和zoom的屏幕共享功能发生冲突"
+msgstr "Known issue: When you are using zoom for screen sharing, the keep_on_top() method will conflict with zoom's screen sharing feature."
+

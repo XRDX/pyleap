@@ -1,0 +1,43 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../style/color.md:1
+msgid "颜色"
+msgstr "Color"
+
+#: ../../style/color.md:3
+msgid "颜色是我们最常见的"
+msgstr "Color is our most common"
+
+#: ../../style/color.md:5
+msgid "颜色常量 constant color"
+msgstr "constant color"
+
+#: ../../style/color.md:7
+msgid ""
+"\"orange\" \"red\", \"orange\", \"yellow\", \"green\", \"cyan\", "
+"\"blue\", \"purple\"都是我们常见的颜色常量，可以直接用来表示对于的颜色。"
+msgstr ""
+"\"orange\" \"red\", \"orange\", \"yellow\", \"green\", \"cyan\", "
+"\"blue\", \"purple\" are our common color constants that can be used directly to indicate the color of the color."
+
+#: ../../style/color.md:10
+msgid "附录： 可用的颜色常量列表"
+msgstr "Appendix: List of available color constants"
+

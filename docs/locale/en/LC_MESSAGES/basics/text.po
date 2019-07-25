@@ -1,0 +1,119 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../basics/text.md:1
+msgid "文字 Text"
+msgstr "Text"
+
+#: ../../basics/text.md:3
+msgid "在pyleap中显示文字"
+msgstr "Text in pyleap"
+
+#: ../../basics/text.md:5
+msgid "Text的定义"
+msgstr "Definition of Text"
+
+#: ../../basics/text.md:12
+msgid "Text的属性"
+msgstr "Attributes of Text"
+
+#: ../../basics/text.md:14
+msgid "src: 文字内容"
+msgstr "src: the content of Text"
+
+#: ../../basics/text.md:15
+msgid "x, y: 文字左下角的位置"
+msgstr "x, y: The position in the lower left corner of the text"
+
+#: ../../basics/text.md:16
+msgid "font_size: 文字大小，数字"
+msgstr "font_size: Text size, integer"
+
+#: ../../basics/text.md:17
+msgid "color: 文字颜色"
+msgstr "color: the color of text"
+
+#: ../../basics/text.md:18
+msgid "font_name: 字体"
+msgstr "font_name: font name"
+
+#: ../../basics/text.md:20
+msgid "Text的其他属性"
+msgstr "Other attributes of Text"
+
+#: ../../basics/text.md:22
+msgid "w: 宽度，文字的宽度，只读属性"
+msgstr "w: width, width of text, read-only attribute"
+
+#: ../../basics/text.md:23
+msgid "h: 高度，文字的高度，只读属性"
+msgstr "h: height, height of text, read-only attribute"
+
+#: ../../basics/text.md:25
+msgid "Text的方法"
+msgstr "Methods of Text"
+
+#: ../../basics/text.md:27
+msgid "draw()"
+msgstr "draw()"
+
+#: ../../basics/text.md:29
+msgid "将文字绘制出来"
+msgstr "Draw text"
+
+#: ../../basics/text.md:31
+msgid "举例"
+msgstr "Examples"
+
+#: ../../basics/text.md:59
+msgid "字体查询"
+msgstr "Fonts name"
+
+#: ../../basics/text.md:61
+msgid "能够使用的字体是和系统相关的，在不同系统下常见字体如下："
+msgstr "The fonts that can be used are system-dependent. The common fonts under different systems are as follows:"
+
+#: ../../basics/text.md:63
+msgid "字体名称速查"
+msgstr "Font name quick check"
+
+#: ../../basics/text.md:65
+msgid "以下字体能否可用，要看系统上是否安装了该字体，不同的系统上支持不一样的字体。"
+msgstr "Whether the following fonts are available depends on whether the font is installed on the system or not, and different fonts are supported on different systems."
+
+#: ../../basics/text.md:67
+msgid "Windows 系统上可用的字体"
+msgstr "Fonts available on Windows systems"
+
+#: ../../basics/text.md:112
+msgid "The fonts that can be used on Mac Os are"
+msgstr ""
+
+#: ../../basics/text.md:149
+msgid "如果安装了Microsoft Office软件，那么还可以使用以下字体"
+msgstr "If you have Microsoft Office software installed, you can also use the following fonts"
+
+#: ../../basics/text.md:218
+msgid "等宽字体"
+msgstr "Monospaced font"
+
+#: ../../basics/text.md:220
+msgid "如果一个字体所有字母的宽度都一样，那么这个字体就是一个等宽字体。在一些特殊情况下，我们可能需要使用等宽字体，比如代码区域，为了便于阅读和差错，大多数人更喜欢使用等宽字体。"
+msgstr "If the width of all the letters of a font is the same, then the font is a monospaced font. In some special cases, we may need to use monospaced fonts, such as code areas, and most people prefer to use monospaced fonts for readability and error."
+

@@ -1,0 +1,79 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../introduction/introduction.md:1
+msgid "课程概述"
+msgstr "Course overview"
+
+#: ../../introduction/introduction.md:3
+msgid ""
+"提高学习编程，许多人第一反应就是 "
+"“难”。的确，编程作为一个和计算机交流的语言，语法非常严谨，任何一个小错误都可能导致程序运行出错，因此，在教学时一般采用自下而上的方式，先花费大量的时间讲述基本概念，然后是大量而冗长的练习。在这之后，才开始接触一些编程的应用，从而，真正能体会到编程乐趣的人少之又少，大部分学生都在学习过程中降低了对编程的兴趣，视“编程”为猛虎，从此不敢再碰编程一下。"
+msgstr ""
+"When talking about learning programming, many people respond first"
+"It's difficult." Indeed, programming is a language that communicates with computers. The grammar is very rigorous. Any small mistake can cause the program to run incorrectly. Therefore, the bottom-up approach is generally used in teaching, which takes a lot of time. After telling the basic concepts, then a lot of lengthy exercises. After that, I started to get into some programming applications, so that there are very few people who can really experience the fun of programming. Most of the students have reduced their learning during the learning process. The interest in programming, depending on "programming" as a tiger, has never dared to touch programming again."
+
+#: ../../introduction/introduction.md:7
+msgid "针对这种情况，我们开发了这一系列的图形编程课程。课程以自上而下的方式，先体验编程乐趣，再讲解编程知识，不再拘泥于讨论语法细节，而在于使用编程来开发项目，在项目开发中不断的去应用编程语法知识。我们认为，应用->反馈->学习的途径，是学习编程并保持对编程兴趣的最好方式。"
+msgstr "In response to this situation, we have developed this series of graphical programming courses. The course is a top-down approach, first experience programming fun, then explain programming knowledge, no longer stick to discussing grammatical details, but use programming to develop Projects, constantly applying programming grammar knowledge in project development. We believe that application->feedback->learning is the best way to learn programming and maintain interest in programming."
+
+#: ../../introduction/introduction.md:9
+msgid "做游戏，学编程。"
+msgstr "Making games, learning programming."
+
+#: ../../introduction/introduction.md:11
+msgid "俗话说，兴趣是最好的老师。本书利用最少的语法知识，进行游戏的开发。再把游戏开发应用于Python语言教学。从无到有开发游戏，通过游戏案例逐步应用语法知识，提升对编程的兴趣和能力，进而更主动的去掌握编程语言知识。"
+msgstr "As the saying goes, interest is the best teacher. This book uses the least grammar knowledge to develop the game. Then apply the game development to Python language teaching. Develop games from scratch, gradually apply grammar knowledge through game cases, improve The interest and ability of programming, and then more active to master the knowledge of programming language."
+
+#: ../../introduction/introduction.md:13
+msgid "例子：做游戏，学编程"
+msgstr "Example: Making games, learning programming"
+
+#: ../../introduction/introduction.md:17
+msgid "为什么选择Python"
+msgstr "Why Python"
+
+#: ../../introduction/introduction.md:19
+msgid "和Scratch对比"
+msgstr "Compare with Scratch"
+
+#: ../../introduction/introduction.md:21
+msgid "Scratch是MIT开发的一门面向儿童的图形化编程语言，适合于一二年级的小朋友。作为入门编程语言，Scratch简化了许多编程概念，不再需要小朋友输入文本，也几乎不会有语法错误发生，积木块式的编程语言不需要太多的学习就可以创作错许多动画和游戏。"
+msgstr "Scratch is a children-oriented graphical programming language developed by MIT. It is suitable for children in grades one and two. As an entry-level programming language, Scratch simplifies many programming concepts, eliminating the need for children to enter text and almost no syntax errors. Occurs, block-type programming languages can create a lot of animations and games without too much learning."
+
+#: ../../introduction/introduction.md:25
+msgid "从Scratch到实用编程语言，中间是有明显的间断，很多Scratch用的很熟练的小朋友在继续学习其他编程语言时，会明显感到不适，不仅简单的操作没有了，连输出也变的苍白无力，更别提到处无法预知的bug了。"
+msgstr "From Scratch to the practical programming language, there are obvious gaps in the middle. Many very skilled children of Scratch will obviously feel uncomfortable while continuing to learn other programming languages. Not only the simple operation is gone, but the output is also pale and weak. Not to mention unpredictable bugs."
+
+#: ../../introduction/introduction.md:27
+msgid "因此，在深入学习编程语言之前，还需要使用选择更适合自身的编程语言和方式。"
+msgstr "So, before you dive into the programming language, you need to choose a programming language and method that suits you better."
+
+#: ../../introduction/introduction.md:29
+msgid "表：编程学习过程"
+msgstr "Table: Programming Learning Process"
+
+#: ../../introduction/introduction.md:86
+msgid "本课程适用人群"
+msgstr "This course applies to the crowd"
+
+#: ../../introduction/introduction.md:88
+msgid "编程零基础，想要学习编程，编程水平在L1、L2阶段的同学。本课程使用了大量的游戏例子，对游戏感兴趣的学生能够从中获得更多的乐趣。"
+msgstr "Programming zero-based, students who want to learn programming, programming level in the L1, L2 stage. This course uses a large number of game examples, students interested in the game can get more fun."
+

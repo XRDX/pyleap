@@ -1,0 +1,35 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../basics/line.md:1
+msgid "线段"
+msgstr "Line"
+
+#: ../../basics/line.md:3
+msgid "将平面上的两点连接起来，就组成了一条线段。只要确定了线段的两个端点，就可以确定了整个线段的位置。"
+msgstr "By connecting the two points on the plane, a line segment is formed. Once the two endpoints of the line segment are determined, the position of the entire line segment can be determined."
+
+#: ../../basics/line.md:5
+msgid "线段的定义"
+msgstr "Definition of line segment"
+
+#: ../../basics/line.md:16
+msgid "跳跃的线条"
+msgstr "Jumping lines"
+

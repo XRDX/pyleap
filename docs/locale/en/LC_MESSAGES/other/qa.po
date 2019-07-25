@@ -1,0 +1,39 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../other/qa.md:1
+msgid "常见问题解答"
+msgstr "Frequently Asked Questions"
+
+#: ../../other/qa.md:3
+msgid "启动黑屏"
+msgstr "Start with a black screen"
+
+#: ../../other/qa.md:5
+msgid "现象：启动以后显示黑屏"
+msgstr "Statu: display a black screen after startup"
+
+#: ../../other/qa.md:7
+msgid "A：将默认的使用的显卡驱动修改为Nvidia"
+msgstr "A: Change the default graphics driver used to Nvidia"
+
+#: ../../other/qa.md:9
+msgid "右键菜单 -> 找到Nvidia设置 -> 3d设置-> 默认选择Nvidia"
+msgstr "Right-click menu -> find Nvidia settings -> 3d settings -> default selection Nvidia"
+

@@ -1,0 +1,69 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../style/hsl.md:1
+msgid "hsl颜色表示法"
+msgstr "Hsl color representation"
+
+#: ../../style/hsl.md:3
+msgid "HSL色彩模式是工业界的一种颜色标准，是通过对色相(H)、饱和度(S)、明度(L)三个颜色通道的变化以及它们相互之间的叠加来得到各式各样的颜色的，HSL即是代表色相，饱和度，明度三个通道的颜色，这个标准几乎包括了人类视力所能感知的所有颜色，是迄今运用最广的颜色系统之一。"
+msgstr "HSL color mode is a color standard in the industry. It is obtained by changing the three color channels of hue (H), saturation (S) and lightness (L) and superimposing them on each other. Color, HSL is the color of the three channels representing hue, saturation, and lightness. This standard includes almost all colors that human vision can perceive. It is one of the most widely used color systems."
+
+#: ../../style/hsl.md:5
+msgid "hsl颜色表示法是一个更适合人类理解的颜色表示法"
+msgstr "Hsl color representation is a color representation that is more suitable for human understanding."
+
+#: ../../style/hsl.md:7
+msgid "模型原理"
+msgstr "Model principle"
+
+#: ../../style/hsl.md:9
+msgid ""
+"H： Hue 色相 S：Saturation 饱和度 L ：Lightness 明度 "
+"HSL色彩模式使用HSL模型为图像中每一个像素的HSL分量分配一个0~255范围内的强度值。HSL图像只使用三种通道，就可以使它们按照不同的比例混合，在屏幕上重现16777216种颜色。"
+" 在 HSL 模式下，每种 HSL 成分都可使用从 0到 255的值。（其中L是从黑（0）到白（255）渐变）"
+msgstr ""
+"H: Hue Hue S: Saturation Saturation L: Lightness Lightness"
+"HSL color mode uses the HSL model to assign an intensity value in the range of 0 to 255 for each pixel of the image. The HSL image uses only three channels, allowing them to be mixed in different proportions and reproduced on the screen. 16777216 colors."
+" In HSL mode, each HSL component can use values from 0 to 255. (where L is a gradient from black (0) to white (255)"
+
+#: ../../style/hsl.md:15
+msgid "色相 Hue"
+msgstr "Hue"
+
+#: ../../style/hsl.md:17
+msgid "HSL的H(hue)分量，代表的是人眼所能感知的颜色范围，这些颜色分布在一个平面的色相环上，取值范围是0°到360°的圆心角，每个角度可以代表一种颜色。色相值的意义在于，我们可以在不改变光感的情况下，通过旋转色相环来改变颜色。在实际应用中，我们需要记住色相环上的六大主色，用作基本参照：360°/0°红、60°黄、120°绿、180°青、240°蓝、300°洋红，它们在色相环上按照60°圆心角的间隔排列。"
+msgstr "H (hue) component of HSL represents the range of colors that the human eye can perceive. These colors are distributed on a flat hue circle, ranging from 0° to 360°, and each angle can represent A color. The significance of the hue value is that we can change the color by rotating the hue ring without changing the light perception. In practical applications, we need to remember the six main colors on the hue ring, which are used as basics. Reference: 360°/0° red, 60° yellow, 120° green, 180° green, 240° blue, 300° magenta, they are arranged on the hue circle at intervals of 60° center angle."
+
+#: ../../style/hsl.md:21
+msgid "饱和度 Saturation"
+msgstr "Saturation"
+
+#: ../../style/hsl.md:23
+msgid "HSL的S(saturation)分量，指的是色彩的饱和度，它用0%至100%的值描述了相同色相、明度下色彩纯度的变化。数值越大，颜色中的灰色越少，颜色越鲜艳，呈现一种从理性(灰度)到感性(纯色)的变化。"
+msgstr "The S (saturation) component of HSL refers to the saturation of color. It uses 0% to 100% of the value to describe the change in color purity under the same hue and brightness. The larger the value, the less gray in the color, the color The more vivid, the change from rational (grayscale) to perceptual (solid color)."
+
+#: ../../style/hsl.md:27
+msgid "亮度：Lightness"
+msgstr "Lightness"
+
+#: ../../style/hsl.md:29
+msgid "HSL的L(lightness)分量，指的是色彩的明度，作用是控制色彩的明暗变化。它同样使用了0%至100%的取值范围。数值越小，色彩越暗，越接近于黑色；数值越大，色彩越亮，越接近于白色。"
+msgstr "The L (lightness) component of HSL refers to the brightness of the color, which controls the change of color. It also uses a range of 0% to 100%. The smaller the value, the darker the color, the closer to black. The larger the value, the brighter the color, the closer it is to white."
+

@@ -1,0 +1,67 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../introduction/brief.md:1
+msgid "pyleap简介"
+msgstr "A brief to pyleap"
+
+#: ../../introduction/brief.md:3
+msgid "pyleap是由LeapLeaner开发的基于python的一个插件，有了pyleap，我们就可以在浏览器上使用简单的一些命令进行动画的创作，开发各种小游戏等。利用pyleap学习python，可以让你在学习python的过程中充满乐趣。"
+msgstr "pyleap is a python-based plugin developed by LeapLeaner. With pyleap, we can use a few simple commands on the browser to create animations, develop various games, etc. Using pyleap to learn python allows you to The process of learning python is full of fun."
+
+#: ../../introduction/brief.md:5
+msgid "【推荐】使用立乐在线"
+msgstr "[Recommended] Use LeapLearner Online"
+
+#: ../../introduction/brief.md:7
+msgid ""
+"下载地址： [windows](https://rss.leaplearner.com/assets/leaponline/win32/立乐在线 "
+"Setup 0.1.0.exe) mac"
+msgstr ""
+"Download： [windows](https://rss.leaplearner.com/assets/leaponline/win32/立乐在线 "
+"Setup 0.1.0.exe) mac"
+
+#: ../../introduction/brief.md:9
+msgid "下载安装后，要尝试pyleap，只要打开软件，切换到python模式，点击运行，就可以看到效果了！在第一次打开这个页面时，我们已经为你创建了默认的代码，你可以尝试着去修改代码中的数字，来看看每个数字代表什么含义。"
+msgstr "After downloading and installing, try pyleap, just open the software, switch to python mode, click Run, you can see the effect! When we first open this page, we have created the default code for you, you can try Go and modify the numbers in the code to see what each number means."
+
+#: ../../introduction/brief.md:13
+msgid "独立的pyleap运行环境"
+msgstr "Independent pyleap runtime environment"
+
+#: ../../introduction/brief.md:15
+msgid "安装pyleap"
+msgstr "Install pyleap"
+
+#: ../../introduction/brief.md:17
+msgid "首先，确保你已经安装了python3.x版本，然后使用命令行安装pyleap模块以及网页pyleap运行环境的，命令为"
+msgstr "First, make sure you have the python3.x version installed, then use the command line to install the pyleap module and the pyleap runtime environment, the command is "
+
+#: ../../introduction/brief.md:23
+msgid "安装过程中会前置库pyglet、leapserver。"
+msgstr "The pre-database pyglet, leapserver will be installed during the installation process."
+
+#: ../../introduction/brief.md:25
+msgid "使用pyleap"
+msgstr "pyleap usage"
+
+#: ../../introduction/brief.md:27
+msgid "在代码中引入pyleap即可使用pyleap所带的功能"
+msgstr "Introducing pyleap into your code will take advantage of the features that pyleap brings"
+

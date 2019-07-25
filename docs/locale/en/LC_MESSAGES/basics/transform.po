@@ -1,0 +1,82 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../basics/transform.md:1
+msgid "形变"
+msgstr "Transform"
+
+#: ../../basics/transform.md:3
+msgid "形变包括旋转、缩放等方式"
+msgstr "Transform includes rotation, scaling, etc."
+
+#: ../../basics/transform.md:5
+msgid "属性值"
+msgstr "Attributes"
+
+#: ../../basics/transform.md:6
+msgid "rotation"
+msgstr "rotation"
+
+#: ../../basics/transform.md:8
+msgid "设置或者获取旋转角度，默认为0，360度制"
+msgstr "Set or get the rotation angle, the default is 0, 360 degree system"
+
+#: ../../basics/transform.md:14
+msgid "scale"
+msgstr "scale"
+
+#: ../../basics/transform.md:16
+msgid "设置或者获取缩放比例，默认为1 设置为2时，即为原来的2倍大小 设置为0.5时，几位原来的1/2大小"
+msgstr "Set or get the zoom ratio, the default is 1 When set to 2, it is the original 2 times the size is set to 0.5, several original 1/2 size"
+
+#: ../../basics/transform.md:24 ../../basics/transform.md:32
+msgid "scale_x"
+msgstr ""
+
+#: ../../basics/transform.md:26
+msgid "设置或者获取图形水平方向的缩放比例，和上述的scale相互叠加"
+msgstr "Set or get the scale of the horizontal direction of the graphic, and superimpose the above scale"
+
+#: ../../basics/transform.md:34
+msgid "设置或者获取图形垂直方向的缩放比例，和上述的scale相互叠加"
+msgstr "Set or get the scaling of the vertical direction of the graphic, and superimpose the above scale"
+
+#: ../../basics/transform.md:40
+msgid "方法"
+msgstr "Methods"
+
+#: ../../basics/transform.md:41
+msgid "set_anchor(x, y)"
+msgstr ""
+
+#: ../../basics/transform.md:43
+msgid "设置图形形变的中心点，参数为坐标值"
+msgstr "Set the center point of the shape deformation, the parameter is the coordinate value"
+
+#: ../../basics/transform.md:49
+msgid "set_anchor_rate(x_r, y_r)"
+msgstr ""
+
+#: ../../basics/transform.md:51
+msgid ""
+"设置图形形变的百分比，默认为(0.5, 0.5)，即图像中心点 设置为(0, 0)，即沿着图形左下角进行形变 设置为(1, 1), "
+"即沿着图形右上角进行形变"
+msgstr ""
+"Set the percentage of the shape transform, the default is (0.5, 0.5), that is, the image center point is set to (0, 0), that is, the transform along the lower left corner of the graph is set to (1, 1),"
+"that is, transform along the upper right corner of the graph"

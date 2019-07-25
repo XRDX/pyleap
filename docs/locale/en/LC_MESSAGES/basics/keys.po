@@ -1,0 +1,39 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2018, Vic Wang
+# This file is distributed under the same license as the pyleap 教程 package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: pyleap 教程 0.1\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-25 11:47+0800\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.7.0\n"
+
+#: ../../basics/keys.md:1
+msgid "按键"
+msgstr "Key"
+
+#: ../../basics/keys.md:3
+msgid "按键的状态"
+msgstr "Key Status"
+
+#: ../../basics/keys.md:5
+msgid "按键的事件"
+msgstr "Key Event"
+
+#: ../../basics/keys.md:31
+msgid "例子：A键事件和状态"
+msgstr "Example: Key A event and status"
+
+#: ../../basics/keys.md:52
+msgid "包装器写法"
+msgstr "Write in decoration"
+
