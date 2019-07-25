@@ -99,7 +99,7 @@ bl = 0
 def emit_bullet(dt):
     bullet1 = Sprite(bullet.src, player.x, player.y)
     bullet1.scale = bullet.scale
-    bullet1.speed = 300 / bullet.y
+    bullet1.speed = 3
     player.bullets.append(bullet1)
 
 
@@ -107,19 +107,19 @@ def emit_bullet(dt):
 def new_enemy(dt):
     enemy_a = Sprite(enemy1.src, random.randint(0, 600), 600)
     enemy_a.scale = enemy1.scale
-    enemy_a.speed = random.randint(3,5) / enemy.y
+    enemy_a.speed = random.randint(3,5)
     enemys.append(enemy_a)
 
     if enemy2.src != "https://r.leaplearner.com/ud/production/958096/MBPg.jpg":    
         enemy_a = Sprite(enemy2.src, random.randint(0, 600), 800)
         enemy_a.scale = enemy2.scale
-        enemy_a.speed = random.randint(3,5) / enemy.y
+        enemy_a.speed = random.randint(3,5) 
         enemys.append(enemy_a)
 
     if enemy3.src != "https://r.leaplearner.com/ud/production/958096/VXdc.png":    
         enemy_a = Sprite(enemy3.src, random.randint(0, 600), 650)
         enemy_a.scale = enemy3.scale
-        enemy_a.speed = random.randint(3,5) / enemy.y
+        enemy_a.speed = random.randint(3,5) 
         enemys.append(enemy_a)
 
 #陨石工厂
