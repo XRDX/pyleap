@@ -24,7 +24,7 @@ source_parsers = {
 
 # -- Project information -----------------------------------------------------
 
-project = 'pyleap 教程'
+project = 'pyleap tutorial'
 copyright = '2018, Vic Wang'
 author = 'Vic Wang'
 

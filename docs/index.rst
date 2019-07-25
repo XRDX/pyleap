@@ -1,6 +1,8 @@
 pyleap 教程
 =======================================
 
+`English`_ 
+
 .. toctree::
    :maxdepth: 2
 
@@ -11,3 +13,5 @@ pyleap 教程
    other/qa
 
    pyglet/index
+
+.. _English: ./en/
