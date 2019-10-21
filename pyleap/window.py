@@ -77,17 +77,8 @@ class Window(pyglet.window.Window):
         location_x, location_y = config.get_window_position()
         self.set_location(location_x, location_y)
         self.axis_batch = None
+        self.set_size()
         init_event(self)
-
-    @property
-    def w(self):
-        """ width """
-        return self.width
-
-    @property
-    def h(self):
-        """ height """
-        return self.height
 
     @property
     def center_x(self):
@@ -103,6 +94,11 @@ class Window(pyglet.window.Window):
     
     def set_caption(self, caption):
         self._title = caption
+
+    def set_size(self, w=640, h=480):
+    	super().set_size(w, h)
+    	self.w = w
+    	self.h = h
 
     def update_caption(self, mouse):
         """ 添加坐标显示 """
