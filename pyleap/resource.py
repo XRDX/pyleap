@@ -12,6 +12,7 @@ import urllib.request
 
 __all__ = ['rss']
 
+ssl._create_default_https_context = ssl._create_unverified_context
 
 class Resource():
 
@@ -46,9 +47,10 @@ class Resource():
 
         print("Downloading: " + url)
         # urllib.request.urlretrieve(url, filename=fullname)
-        with urllib.request.urlopen(url, context=self.ctx) as u, \
-            open(fullname, 'wb') as f:
-            f.write(u.read())
+        urllib.request.urlretrieve(url, fullname)
+        # with urllib.request.urlopen(, context=self.ctx) as u, \
+        #     open(, 'wb') as f:
+        #     f.write(u.read())
 
     def is_url(self, url):
         regex = re.compile(
