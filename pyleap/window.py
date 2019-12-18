@@ -5,6 +5,7 @@ from pyleap.mouse import mouse
 from pyleap.collision import shape_clicked
 from pyleap.util import all_shapes, config, get_fps, screen
 from pyleap.key import key
+from pyleap.resource import rss
 
 __all__ = ['window', "Window"]
 
@@ -237,3 +238,6 @@ except Exception as e:
     config.set_window_quality("low")
     window = Window()
 
+icon1 = pyglet.image.load(rss.get('https://rss.leaplearner.com/assets/pc/favicon.ico'))
+icon2 = pyglet.image.load(rss.get('https://rss.leaplearner.com/assets/pc/favicon.ico'))
+window.set_icon(icon1, icon2)
