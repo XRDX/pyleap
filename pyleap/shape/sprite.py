@@ -4,7 +4,6 @@ from pyleap.resource import rss
 from pyleap.window import window
 from pyleap.shape.rectangle import Rectangle
 
-
 cache_images = {}
 
 
@@ -45,17 +44,36 @@ class Sprite(Rectangle):
     @src.setter
     def src(self, src):
         if src not in cache_images:
-              img = pyglet.image.load(rss.get(src))
-              self.center_image(img)
-              cache_images[src] = img
+            try:
+                img = pyglet.image.load(rss.get(src))
+            except pyglet.image.codecs.ImageDecodeException:
+                import os, sys
+                print("无法加载图片,请检测图片是否可以正常显示，建议删除该图片后重试")
+                print("错误图片：{}\\{}".format(os.getcwd(), rss.get(src)))
+                sys.exit()
+
+            
+            self.center_image(img)
+            cache_images[src] = img
 
         self._src = src
         self.img = cache_images[src]
         
-        try:
+        if hasattr(self, "_sprite"):
             self._sprite.image = self.img
-        except Exception:
-            self._sprite = pyglet.sprite.Sprite(img=self.img, batch=self.batch)
+        else:
+            try:
+                self._sprite = pyglet.sprite.Sprite(img=self.img, batch=self.batch)
+            except pyglet.gl.lib.GLException:
+                from ctypes import c_long
+                import sys,os
+                i = c_long()
+                pyglet.gl.glGetIntegerv(pyglet.gl.GL_MAX_TEXTURE_SIZE, i)
+                print("你的显卡支持的最大图片长宽为：{}x{}".format(i.value, i.value))
+                print("请将图片大小调整为合适大小后重试")
+                print("错误图片：{}\\{}".format(os.getcwd(), rss.get(src)))
+                sys.exit()
+
 
     @property
     def x(self):
