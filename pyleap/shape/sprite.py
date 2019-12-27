@@ -45,7 +45,13 @@ class Sprite(Rectangle):
     def src(self, src):
         if src not in cache_images:
             try:
-                img = pyglet.image.load(rss.get(src))
+                file_name = rss.get(src);
+                if file_name[-4:] == ".gif":
+                    img = pyglet.image.load_animation(file_name)
+                    img.height = img.get_max_height()
+                    img.width = img.get_max_width()
+                else:
+                    img = pyglet.image.load(file_name)
             except pyglet.image.codecs.ImageDecodeException:
                 import os, sys
                 print("无法加载图片,请检测图片是否可以正常显示，建议删除该图片后重试")
