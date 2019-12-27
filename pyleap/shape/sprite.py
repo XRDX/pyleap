@@ -119,6 +119,8 @@ class Sprite(Rectangle):
 
     def draw(self):
         self._before_draw()
+        if(type(self._sprite.image)==pyglet.image.Animation):
+            pyglet.gl.glTranslatef(-self.w//2, -self.h//2, 0)
         self._sprite.draw()
         self._after_draw()
 

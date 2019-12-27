@@ -2,7 +2,7 @@ from pyleap import *
 from pyglet.gl import *
 
 
-hero = Sprite("https://rss.leaplearner.com/Image/Role/Fish6.png", 300, 300, 100, 100)
+hero = Sprite("https://r.leaplearner.com/ud/production/958096/QcMd.gif", 300, 300, 100, 100)
 enemy = Sprite("https://rss.leaplearner.com/Image/Role/Fighter10.png", 300, 300, 100, 100)
 
 p = Point(point_size=10)
