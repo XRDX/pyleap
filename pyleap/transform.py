@@ -116,3 +116,9 @@ class TransformMixin():
 
     def set_anchor_rate(self, x_r, y_r):
         self.transform.set_anchor_rate(x_r, y_r) 
+
+    def flip(self):
+        self.scale_x = -self.scale_x
+
+    def v_flip(self):
+        self.scale_y = -self.scale_y
