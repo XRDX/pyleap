@@ -11,6 +11,7 @@ pyleap 教程
    style/index
    window/index
    other/qa
+   samples/index
 
    pyglet/index
 
