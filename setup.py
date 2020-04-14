@@ -1,6 +1,8 @@
 import setuptools
 
 # pip install twine wheel
+
+# window: rmdir /s/q dist
 # python setup.py sdist bdist_wheel
 # twine upload dist/* -u VicWang -p PYPI******
 
@@ -15,9 +17,7 @@ setuptools.setup(
     url='http://github.com/XRDX/pyleap',
     packages=setuptools.find_packages(),
     install_requires=[
-        'pyglet==1.3.2',
-        'leapserver>=2020.3.27',
-        'leaptask>=2020.3.27'
+        'leaptask>=2020.4.2'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

@@ -1,11 +1,12 @@
 import setuptools
 
+# window: rmdir /s/q dist
 # -$ python setup.py sdist bdist_wheel
 # -$ twine upload dist/* -u VicWang -p PYPI******
 
 setuptools.setup(
     name="leaptask",
-    version="2020.4.2.15",
+    version="2020.4.14",
     author="Vic Wang",
     author_email="305880887@qq.com",
     description='leap task',

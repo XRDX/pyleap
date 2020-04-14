@@ -12,7 +12,7 @@ faceAI = FaceAI()
 ty = Text("",860,550,20,"red",font_name="STHupo")
 window.set_size(1000,600)
 Open = Sprite("https://rss.leaplearner.com/ud/production//19671/158520767187985.png",880,50,200,70)
-bg = Sprite("https://rss.leaplearner.com/teachfiles/Media/158580755490250.png",350,300,700,550)
+bg = Sprite("https://rss.leaplearner.com/teachfiles/Media/158580755490250.png",350,300,700,610)
 faceAI.a=0
 faceAI.state = 1
 faceAI.m =1
@@ -42,6 +42,7 @@ def judge():
         if R != None:
             faceAI.state = 1
             Result = response['result']['face_list'][0]
+            faceAI.Result = Result
             pprint(Result)
             error.src = ""
             score = int(Result['beauty'])
@@ -79,3 +80,4 @@ def Next():
         faceAI.a += 1
     pic.src = faceAI.photo[faceAI.a]
 Open.on_press(Next)
+
