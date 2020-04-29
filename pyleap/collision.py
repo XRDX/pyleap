@@ -148,3 +148,12 @@ class CollisionMixin():
         """ 注册on_press函数，当图形被点击时，触发func函数 """
         self._press = f
 
+    def on_click(self, f):
+        self._press = f
+
+    def on_right_press(self, f):
+        self._right_press = f
+
+    def on_right_click(self, f):
+        self._right_press = f
+

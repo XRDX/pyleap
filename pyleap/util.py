@@ -4,7 +4,7 @@ import os
 import configparser
 
 __all__ = ['null', 'run', 'stop', 'repeat', 'run_after', 'all_shapes',
-           'P', 'get_fps', 'Batch', 'config', 'screen']
+        'all_right_shapes', 'P', 'get_fps', 'Batch', 'config', 'screen']
 
 get_fps = pyglet.clock.get_fps
 Batch = pyglet.graphics.Batch
@@ -36,6 +36,7 @@ def run():
 
 # all_shapes, use for track all the shapes draw on the windows
 all_shapes = set()
+all_right_shapes = set()
 
 
 class P:

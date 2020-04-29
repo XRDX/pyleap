@@ -12,7 +12,7 @@ import math
 from pyleap.transform import Transform, TransformMixin
 from pyleap.collision import CollisionMixin
 from pyleap.color import color_to_tuple
-from pyleap.util import all_shapes, null
+from pyleap.util import all_shapes, all_right_shapes, null
 
 
 class Shape(CollisionMixin, TransformMixin):
@@ -37,6 +37,7 @@ class Shape(CollisionMixin, TransformMixin):
 
         # 用于记录press事件函数
         self._press = null
+        self._right_press = null
 
         # 仅Point类point_size属性有效
         self.point_size = 1
@@ -142,7 +143,11 @@ class Shape(CollisionMixin, TransformMixin):
         # handle shapes click envets
         all_shapes.discard(self)
         if(self._press != None):
-            all_shapes.add(self)     
+            all_shapes.add(self)
+
+        all_right_shapes.discard(self)
+        if(self._right_press != None):
+            all_right_shapes.add(self)  
 
     def update_points(self):
         """ translate shapes to points，在子类中实现 """

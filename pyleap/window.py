@@ -3,7 +3,7 @@ import platform
 
 from pyleap.mouse import mouse
 from pyleap.collision import shape_clicked
-from pyleap.util import all_shapes, config, get_fps, screen
+from pyleap.util import all_shapes, all_right_shapes, config, get_fps, screen
 from pyleap.key import key
 from pyleap.resource import rss
 
@@ -108,6 +108,7 @@ class Window(pyglet.window.Window):
 
     def clear(self):
         all_shapes.clear()
+        all_right_shapes.clear()
         # super().clear()
         pyglet.graphics.vertex_list(4,
             ('v2i', (0, 0, self.w, 0, self.w, self.h, 0, self.h)),
@@ -191,15 +192,22 @@ def init_event(window):
         """ 
         if button == 1: #MouseKeyCode.LEFT:
             mouse.press()
+                    # 判断是否有图形的点击事件被触发了
+            shapes = list(all_shapes)
+            while shapes:
+                shape = shapes.pop()
+                if(shape._press and shape_clicked(shape)):
+                    shape._press()
         elif button == 4: #MouseKeyCode.RIGHT:
             mouse.right_press()
 
-        # 判断是否有图形的点击事件被触发了
-        shapes = list(all_shapes)
-        while shapes:
-            shape = shapes.pop()
-            if(shape._press and shape_clicked(shape)):
-                shape._press()
+            # 判断是否有图形的点击事件被触发了
+            shapes = list(all_right_shapes)
+            while shapes:
+                shape = shapes.pop()
+                if(shape._right_press and shape_clicked(shape)):
+                    shape._right_press()
+
 
 
     @window.event
