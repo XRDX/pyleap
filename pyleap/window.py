@@ -3,7 +3,7 @@ import platform
 
 from pyleap.mouse import mouse
 from pyleap.collision import shape_clicked
-from pyleap.util import all_shapes, all_right_shapes, config, get_fps, screen
+from pyleap.util import all_shapes, all_right_shapes, config, get_fps
 from pyleap.key import key
 from pyleap.resource import rss
 
@@ -66,7 +66,7 @@ class Window(pyglet.window.Window):
         
         elif platform.system() == "Windows":
             template = pyglet.gl.Config(alpha_size=8, sample_buffers=1, samples=4)
-            configs = screen.get_matching_configs(template)
+            configs = Window.get_matching_configs(template)
             if configs:
                 super().__init__(config=configs[0])
                 enable_smooth_multisample_blend()

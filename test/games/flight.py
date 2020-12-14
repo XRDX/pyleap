@@ -43,8 +43,9 @@ def draw():
 
     window.show_fps()
 
-# 主函数
-def game(dt):
+
+@window.event
+def on_draw():
     global timer
 
     player.x = mouse.x
@@ -122,7 +123,6 @@ def new_enemy(dt):
 
 retry_txt.on_press(retry)
 
-repeat(game)
 repeat(emit_bullet, 0.05)
 repeat(new_enemy, 0.2)
 

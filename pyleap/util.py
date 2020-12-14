@@ -10,8 +10,7 @@ get_fps = pyglet.clock.get_fps
 Batch = pyglet.graphics.Batch
 stop = pyglet.clock.unschedule
 
-platform = pyglet.window.get_platform()
-display = platform.get_default_display()
+display = pyglet.canvas.get_display()
 screen = display.get_default_screen()
 
 def null():
@@ -21,7 +20,7 @@ def null():
 def repeat(f, dt=1/60):
     """ 重复执行函数f，时间间隔dt """
     stop(f)
-    pyglet.clock.schedule_interval(f, dt)
+    pyglet.clock.schedule_interval_soft(f, dt)
 
 
 def run_after(f, dt=1/60):

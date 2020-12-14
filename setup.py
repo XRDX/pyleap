@@ -17,7 +17,7 @@ setuptools.setup(
     url='http://github.com/XRDX/pyleap',
     packages=setuptools.find_packages(),
     install_requires=[
-        'pyglet==1.3.3',
+        'pyglet==1.5.11',
         'leaptask>=2020.4.2'
     ],
     classifiers=[

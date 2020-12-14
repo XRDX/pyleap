@@ -13,7 +13,7 @@ def draw(dt):
 
     Line(100, 100, 600, 100, 100, 'pink').draw()
     Polygon(200, 50, 300, 50, 250, 150, "green").draw()
-    Circle(200, 200, 120, "#ff000080").draw()
+    Circle(200, 200, 120, "#ff000010").draw()
     Text('Hello, world', 350, 100).draw()
     window.show_fps()
 
