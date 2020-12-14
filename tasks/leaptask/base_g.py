@@ -444,7 +444,10 @@ run_after(update_bg,1/50)
 #设置陨石出现频率
 repeat(emit_rock,1.3)
 #运行游戏
-repeat(game,1/50)
+@window.event
+def on_draw():
+    game()
+
 repeat(remove,1.5)
 #retry_txt.on_press(retry)
 #run()

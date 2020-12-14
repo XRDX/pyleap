@@ -8,7 +8,7 @@ import setuptools
 
 setuptools.setup(
     name="pyleap",
-    version="2020.4.24",
+    version="2020.12.14",
     author="Vic Wang",
     author_email="305880887@qq.com",
     description='A simple 2D game engine base on pyglet',
@@ -18,7 +18,7 @@ setuptools.setup(
     packages=setuptools.find_packages(),
     install_requires=[
         'pyglet==1.5.11',
-        'leaptask>=2020.4.2'
+        'leaptask>=2020.12.14'
     ],
     classifiers=[
         "Programming Language :: Python :: 3",

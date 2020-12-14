@@ -6,7 +6,7 @@ import setuptools
 
 setuptools.setup(
     name="leaptask",
-    version="2020.4.14",
+    version="2020.12.14",
     author="Vic Wang",
     author_email="305880887@qq.com",
     description='leap task',

@@ -317,7 +317,10 @@ def game(dt):
 #设置陨石出现频率
 repeat(emit_rock,0.8)
 #运行游戏
-repeat(game,1/50)
+
+@window.event
+def on_draw():
+    game(1)
 
 #retry_txt.on_press(retry)
 #run()

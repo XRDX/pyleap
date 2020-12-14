@@ -342,8 +342,9 @@ def score(dt):
         player.score += 10
 
     
-#游戏引擎（发动机）2            
-def game(dt):
+#游戏引擎（发动机）2  
+@window.event         
+def on_draw():
     global game_over
     if(game_over):
         retry_txt.draw()
@@ -359,7 +360,52 @@ run_after(update_bg,1/50)
 
 #设置陨石出现频率
 repeat(emit_rock,0.8)
-#运行游戏
-repeat(game,1/50)
+
 #retry_txt.on_press(retry)
 #run()
+
+
+if __name__ == '__main__':
+    #设置角色图片
+    player.src = "https://r.leaplearner.com/i/1c763f.png"
+    enemy1.src = "https://r.leaplearner.com/i/4aa9e7.png"
+
+
+
+    #改变玩家大小
+    player.scale = 1
+
+    #改变敌机大小
+
+
+    #改变防护大小
+
+
+    #改变小颗粒大小
+
+
+    #子弹大小
+
+
+    #陨石大小
+
+
+    def move(dt):        
+        #改变敌机(enemy)速度
+        for enemy in enemys:
+            pass   
+
+        #改变子弹(bullet)速度
+        for bullet in player.bullets:
+            pass    
+
+
+
+    #改变敌机出现数量
+    repeat(new_enemy, 1) 
+    #设置子弹发射的数量
+    repeat(emit_bullet, 0.3)
+    #控制游戏开始
+    repeat(move)
+    repeat(score)
+    run()
