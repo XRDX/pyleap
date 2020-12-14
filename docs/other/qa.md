@@ -29,8 +29,8 @@ window.set_quality("low")
 ```python
 
 def draw(dt):
-	a.draw()
-	b.draw()
+    a.draw()
+    b.draw()
 
 repeat(draw)
 ```
@@ -40,8 +40,8 @@ repeat(draw)
 ```python
 @window.event
 def on_draw():
-	a.draw()
-	b.draw()
+    a.draw()
+    b.draw()
 
 ```
 
