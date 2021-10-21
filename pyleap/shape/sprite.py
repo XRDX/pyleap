@@ -54,8 +54,8 @@ class Sprite(Rectangle):
                     img = pyglet.image.load(file_name)
             except pyglet.image.codecs.ImageDecodeException:
                 import os, sys
-                print("无法加载图片,请检测图片是否可以正常显示，建议删除该图片后重试")
-                print("错误图片：{}\\{}".format(os.getcwd(), rss.get(src)))
+                print("Couldn't load image, please delete the picture and retry.")
+                print("Error picture: {}\\{}".format(os.getcwd(), rss.get(src)))
                 sys.exit()
 
             
@@ -75,10 +75,19 @@ class Sprite(Rectangle):
                 import sys,os
                 i = c_long()
                 pyglet.gl.glGetIntegerv(pyglet.gl.GL_MAX_TEXTURE_SIZE, i)
-                print("你的显卡支持的最大图片长宽为：{}x{}".format(i.value, i.value))
-                print("请将图片大小调整为合适大小后重试")
-                print("错误图片：{}\\{}".format(os.getcwd(), rss.get(src)))
-                sys.exit()
+
+                width = self.img.width
+                height = self.img.height
+
+                n = max(width//i.value, height//i.value) + 1 # 缩小倍数
+                self.img.width //= n
+                self.img.height //=n 
+                self._sprite = pyglet.sprite.Sprite(img=self.img, batch=self.batch)
+
+                # print("The limit size of picture： on your PC is: {}x{}".format(i.value, i.value))
+                # print("Resize the size of picture：")
+                # print("Error picture：{}\\{}".format(os.getcwd(), rss.get(src)))
+                # sys.exit()
 
 
     @property
