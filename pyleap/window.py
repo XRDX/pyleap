@@ -72,6 +72,9 @@ class Window(pyglet.window.Window):
                 enable_smooth_multisample_blend()
             else:
                 super().__init__()
+                
+        pyglet.gl.glBlendFunc(pyglet.gl.GL_SRC_ALPHA, pyglet.gl.GL_ONE_MINUS_SRC_ALPHA)
+        pyglet.gl.glEnable(pyglet.gl.GL_BLEND)
     
         self.set_caption("LeapLearner")
 
