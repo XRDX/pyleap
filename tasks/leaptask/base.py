@@ -56,7 +56,7 @@ shan.scale = 1
 
 boomscale = 0.3            
 playerscale = 0.5          
-boom = Sprite("https://llcs-1252287760.cossh.myqcloud.com/images/Boom2.png")
+boom = Sprite("https://r.leaplearner.com/i/0c4952.png")
 #改变爆炸大小
 boom.scale = 0.5
 boom_rock = Sprite('https://r.leaplearner.com/i/0c4952.png')
@@ -342,7 +342,7 @@ def score(dt):
         player.score += 10
 
     
-#游戏引擎（发动机）2  
+#游戏引擎（发动机）2            
 @window.event         
 def on_draw():
     global game_over
