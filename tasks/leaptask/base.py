@@ -208,8 +208,8 @@ def update():
         rock.y += rock.ys
         rock.x += rock.xs
             
-    score_txt.src = "得分：" + str(player.score)
-    time_txt.src = "剩余时间：" + str(math.floor(time_one - (time.time() - start_time)))
+    # score_txt.src = "得分：" + str(player.score)
+    # time_txt.src = "剩余时间：" + str(math.floor(time_one - (time.time() - start_time)))
 
 #背景函数
 def bg_run():
