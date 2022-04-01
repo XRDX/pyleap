@@ -69,11 +69,11 @@ txt_live = Text("Lives: 0",130,580)
 txt_victory = Text("VICTORY", 140, 800, 60,'yellow')
 # Is it possible to make it that the kids can write from here without seeing the rest of the code, to not intimidate them?
 
+def game():
+    pass
 
-
-def game(dt):
- 
-    
+@window.event
+def on_draw():  
     #עושים ציור לדברים
     bg.draw()
     player_bullet.draw()
@@ -91,11 +91,15 @@ def game(dt):
     laser.draw()
     boss.draw()
     health_bar.draw()
-    
+
+    if player.lives <= 0:
+        Text("GAME OVER",110,300,50).draw()
     
     #עושים ציור לדברים וכותבים את הטקסט
 #    txt_live.draw()
     txt_score.draw()
+
+def update(dt):
 #    txt_live.src = "Lives: " + str(player.lives)
     txt_score.src = "Score: " + str(player.score)
     
@@ -208,8 +212,9 @@ def game(dt):
     
     #אם הלבבות של השחקן הם 0 אז נגמר המשחק
     if player.lives <= 0:
-        Text("GAME OVER",110,300,50).draw()
-        stop(game)
+        
+        stop(update)
+        # Text("GAME OVER",110,300,50).draw()
         #Rectangle(0,0,600,600,"green").draw()
         #Text("GAME OVER",110,300,50).draw()
         #res_b.draw()
@@ -323,12 +328,13 @@ def reset():
     
     
     
-    
+repeat(update)
 
 #בלחיצת עכבר תפעיל פוקנציה שבסוגריים
-# mouse.on_press(shoot)
-# res_b.on_press(reset)    
-    
-# repeat(game)   
+mouse.on_press(shoot)
+res_b.on_press(reset)    
 
-# run()
+if __name__ == "__main__":
+    # repeat(game)   
+
+    run()
