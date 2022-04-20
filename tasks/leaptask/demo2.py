@@ -69,7 +69,7 @@ txt_live = Text("Lives: 0",130,580)
 txt_victory = Text("VICTORY", 140, 800, 60,'yellow')
 # Is it possible to make it that the kids can write from here without seeing the rest of the code, to not intimidate them?
 
-def game():
+def game(dt):
     pass
 
 @window.event
@@ -292,7 +292,7 @@ def update(dt):
         txt_victory.y -= 5
     
     if txt_victory.y < -100: 
-        stop(game)
+        stop(update)
         #Rectangle(0,0,600,600,"cyan").draw()
         #Text("YOU WIN",160,300,50).draw()
         #res_b.draw()
